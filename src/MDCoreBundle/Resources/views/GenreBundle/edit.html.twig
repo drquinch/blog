@@ -1,0 +1,8 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ render(controller("MDGameBundle:Genre:edit", {'id': id})) }}
+    <a href="{{ path('md_core_genre_view, {'id': id}) }}">Retour vers genre</a><br /> 
+{% endblock %}

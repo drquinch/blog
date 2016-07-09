@@ -1,0 +1,11 @@
+{# Must be included in the core Bundle #}
+
+<h1>{{ news.title }}</h1>
+<i>Par {{ news.author }}, le {{ news.dateCreation|date('d/m/Y') }}</i>
+
+<div class="news_content">
+	<p>
+		{{ news.content }}
+	</p>
+</div>
+

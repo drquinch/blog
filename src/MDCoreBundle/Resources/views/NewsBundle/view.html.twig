@@ -1,0 +1,13 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	{{ render(controller("MDArticlesBundle:News:view", {'news_id': id})) }}
+	<p>
+	<a href="{{ path('md_core_home') }}">Retour aux news</a><br />
+	<a href="{{ path('md_core_news_edit', {'id': id}) }}">Modifier</a><br />
+	<a href="{{ path('md_core_news_delete', {'id': id}) }}">Supprimer</a><br />
+	</p>
+	{{ render(controller("MDCoreBundle:CommentBundle:viewBatch", {'batch': batch_comment, 'articleId': id})) }}
+{% endblock %}

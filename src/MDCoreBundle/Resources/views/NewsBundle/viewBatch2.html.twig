@@ -1,0 +1,14 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<h1>News</h1>
+	<p>
+		<ul>
+			{% for news in listNews %}
+				<li><a href="{{ path('md_core_news_view', {'id': news.id}) }}">{{ news.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</p>
+{% endblock %}

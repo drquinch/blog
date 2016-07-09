@@ -1,0 +1,8 @@
+services:
+#    md_category.example:
+#        class: MDCategoryBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    md_category.batch.category:
+        class: MDCategoryBundle\Services\BatchService
+        arguments: ["@doctrine.orm.entity_manager"]

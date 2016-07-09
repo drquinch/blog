@@ -1,0 +1,8 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ render(controller("MDGameBundle:Developer:edit", {'id': id})) }}
+    <a href="{{ path('md_core_developer_view, {'id': id}) }}">Retour vers developer</a><br /> 
+{% endblock %}

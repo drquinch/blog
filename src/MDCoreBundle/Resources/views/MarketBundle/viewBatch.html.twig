@@ -1,0 +1,19 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1>Market</h1>
+    <p>
+        <ul>
+            {% for market in listMarket %}
+                <li><a href="{{ path('md_core_market_view', {'id': market.id}) }}"></a></li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        {% for page in pages %}
+            <li><a href="{{ path('md_core_market_viewbatch', {'batch': batch_market, 'page': page}) }}">{{ page }}</a></li>
+        {% endfor %}
+    </p>
+{% endblock %}

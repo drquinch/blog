@@ -1,0 +1,19 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1>Licence</h1>
+    <p>
+        <ul>
+            {% for licence in listLicence %}
+                <li><a href="{{ path('md_core_licence_view', {'id': licence.id}) }}"></a></li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        {% for page in pages %}
+            <li><a href="{{ path('md_core_licence_viewbatch', {'batch': batch_licence, 'page': page}) }}">{{ page }}</a></li>
+        {% endfor %}
+    </p>
+{% endblock %}

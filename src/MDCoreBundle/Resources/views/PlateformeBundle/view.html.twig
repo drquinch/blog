@@ -1,0 +1,12 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ render(controller("MDGameBundle:Plateforme:view", {'id': id})) }}
+    <p>
+    <a href="{{ path('md_core_home') }}">Retour aux plateforme</a><br />
+    <a href="{{ path('md_core_plateforme_edit') }}">Modifier</a><br />
+    <a href="{{ path('md_core_plateforme_delete') }}">Supprimer</a><br />
+    </p>
+{% endblock %}

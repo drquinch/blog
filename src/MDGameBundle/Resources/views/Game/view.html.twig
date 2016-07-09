@@ -1,0 +1,38 @@
+{# Must be included in the core bundle #}
+
+<h1>{{ game.name }}</h1>
+<p>{{ game.licence }}, {{ game.releasedate }} {{ game.website }}</p>
+<h3>Publishers</h3>
+<ul>
+{% for publisher in game.publishers %}
+<li>{{ publisher.name }}</li>
+{% endfor %}
+</ul>
+
+<h3>Developers</h3>
+<ul>
+{% for developer in game.developers %}
+<li>{{ developer.name }}</li>
+{% endfor %}
+</ul>
+
+<h3>plateformes</h3>
+<ul>
+{% for plateforme in game.plateformes %}
+<li>{{ plateforme.name }}</li>
+{% endfor %}
+</ul>
+
+<h3>genres</h3>
+<ul>
+{% for genre in game.genres %}
+<li>{{ genre.name }}</li>
+{% endfor %}
+</ul>
+
+<h3>themes</h3>
+<ul>
+{% for theme in game.themes %}
+<li>{{ theme.name }}</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,28 @@
+md_comment_add:
+    path:    /admin/comment/add
+    defaults: { _controller: MDCommentBundle:Comment:add}
+
+md_comment_viewbatch:
+    path:    /comment/viewbatch/{batch}
+    defaults: { _controller: MDCommentBundle:Comment:viewBatch}
+    requirements:
+        batch: \d+
+
+md_comment_view:
+    path:    /comment/view/{id}
+    defaults: { _controller: MDCommentBundle:Comment:view }
+    requirements:
+        id: \d+
+
+md_comment_edit:
+    path:    /admin/comment/edit/{id}
+    defaults: { _controller: MDcommentBundle:Comment:edit }
+    requirements:
+        id: \d+
+
+md_comment_delete:
+    path:    /admin/comment/delete/{id}
+    defaults: { _controller: MDCommentBundle:Comment:delete }
+    requirements:
+        id: \d+
+

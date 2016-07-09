@@ -1,0 +1,19 @@
+{# Must be included in the core bundle #}
+
+{% block title %}
+Suppression plateforme
+{% endblock %}
+
+{% block body %}
+    {% if form is defined %}
+        <h2>Suppression plateforme</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_plateforme_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_plateforme_view', {'id': plateforme.id}) }}">Retour vers plateforme</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

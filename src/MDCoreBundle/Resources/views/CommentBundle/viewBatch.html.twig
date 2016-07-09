@@ -1,0 +1,18 @@
+{# Must be rendered in CoreBundle #}
+
+{% if listComment %}
+<p>
+    <ul>
+        {% for comment in listComment %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+</p>
+<p>
+    <ul>
+    	{% for page in pages %}
+    	    <li><a href="">{{ page }}</a></li>
+    	{% endfor %}
+    </ul>
+</p>
+{% endif %}

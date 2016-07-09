@@ -1,0 +1,28 @@
+#parameters:
+#    news.entity: MDArticlesBundle:News
+
+services:
+#    md_articles.example:
+#        class: MDArticlesBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+#    md_articles.news.repository:
+#        class: MDArticlesBundle\Entity\NewsRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments: ["@doctrine.orm.entity_manager", %news.entity%]
+
+    md_articles.batch.news:
+        class: MDArticlesBundle\Services\BatchService
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    md_articles.beta.html_adder:
+        class: MDArticlesBundle\Beta\BetaHTMLAdder
+    
+    md_articles.beta.listener:
+        class: MDArticlesBundle\Beta\BetaListener
+        arguments:
+            - "@md_articles.beta.html_adder"
+            - "2017-06-01"
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: processBeta }

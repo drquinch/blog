@@ -1,0 +1,10 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	{% for flashbag in app.session.flashbag.get('notice') %}
+		{{ flashbag }}
+	{% endfor %}
+	{{ render(controller("MDArticlesBundle:News:create")) }}
+{% endblock %}

@@ -1,0 +1,21 @@
+{# Must be included in the core Bundle #}
+
+<h1>Modification de votre annonce</h1>
+
+{% if form is defined %}
+    {{ include("MDArticlesBundle:News:form.html.twig") }}
+{% endif %}
+
+{% if news is defined %}
+    <p>{{ news.title }}<br />
+    {{ news.author }}<br />
+    {{ news.content }}</br>
+    {#{{ news.dateCreation }}<br />
+    {{ news.datePublication }}<br />#}
+    {{ news.published }}</p>
+{% endif %}
+
+<p>
+    {{ include("MDArticlesBundle:Core:newsbatch.html.twig") }}
+</p>
+

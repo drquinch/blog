@@ -1,0 +1,11 @@
+{% extends "MDCoreBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block body %}
+
+Home Block
+
+{{ render(controller("MDCoreBundle:NewsBundle:viewBatch", {'batch': batch_news, 'page': 0})) }}
+
+{% endblock %}

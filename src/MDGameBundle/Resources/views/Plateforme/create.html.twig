@@ -1,0 +1,11 @@
+{# Must be included in the core bundle #}
+
+<h1>Formulaire d'enregistrement</h1>
+
+{% if form is defined %}
+    {{ include("MDGameBundle:Plateforme:form.html.twig") }}
+{% endif %}
+
+{% if plateforme is defined %}
+    <p>TODO</p>
+{% endif %}

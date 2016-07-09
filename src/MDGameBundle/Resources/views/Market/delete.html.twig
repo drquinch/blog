@@ -1,0 +1,19 @@
+{# Must be included in the core bundle #}
+
+{% block title %}
+Suppression market
+{% endblock %}
+
+{% block body %}
+    {% if form is defined %}
+        <h2>Suppression market</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_market_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_market_view', {'id': market.id}) }}">Retour vers market</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

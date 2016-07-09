@@ -1,0 +1,8 @@
+{% extends "MDCoreBundle::layout.html.twig %}
+
+(block title %}{% endblock %}
+
+{% block body %}
+    {{ render(controller("MDGameBundle:Licence:delete", {'id': id})) }}
+    <a href="{{ path('md_core_licence:view, {'id': id}) }}">Retour vers licence</a><br />
+{% endblock %}

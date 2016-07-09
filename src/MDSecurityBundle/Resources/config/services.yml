@@ -1,0 +1,8 @@
+services:
+#    md_security.example:
+#        class: MDSecurityBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+services:
+    md_security.antispam:
+        class: MDSecurityBundle\Antispam\MDAntispam
+        arguments: [50]

@@ -1,0 +1,8 @@
+{% extends "MDCoreBundle::layout.html.twig %}
+
+(block title %}{% endblock %}
+
+{% block body %}
+    {{ render(controller("MDGameBundle:Market:delete", {'id': id})) }}
+    <a href="{{ path('md_core_market:view, {'id': id}) }}">Retour vers market</a><br />
+{% endblock %}
