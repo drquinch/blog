@@ -1,0 +1,56 @@
+*
+{
+margin: 0px;
+padding: 0px;
+border: 0px;
+outline: 0px;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+}
+
+html
+{
+margin: 0px;
+padding: 0px;
+height: 100%;
+}
+
+body
+{
+background-color: rgb(5,5,5);
+font-color: white;
+height: 100%;
+margin: auto;
+padding: 0px;
+font-family: "Open Sans", Arial, sans-serif;
+color: rgb(180,180,180);
+}
+
+#body
+{
+width: 1024px;
+height: 100%;
+margin: auto;
+}
+
+ul
+{
+padding: 0px;
+}
+
+li
+{
+list-style-type: none;
+}
+
+a
+{
+text-decoration: none;
+font-color: white;
+}
+
+a:visited
+{
+font-color: white;
+}

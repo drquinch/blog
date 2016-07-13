@@ -9,7 +9,7 @@ class MarketBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listMarket = $this->container->get('md_mdgame.batch')->batchMarket($batch, $page);
+        $listMarket = $this->container->get('md_game.batch')->batchMarket($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Market");
         return $this->render('MDCoreBundle:MarketBundle:viewBatch.html.twig', array('listMarket' => $listMarket, 'pages' => $pages));
     }

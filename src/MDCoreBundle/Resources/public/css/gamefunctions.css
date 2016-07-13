@@ -1,0 +1,11 @@
+#game_list_function
+{
+padding-top: 30px;
+padding-left: 30px;
+}
+
+#game_list_function a
+{
+display: block;
+padding: 5px;
+}

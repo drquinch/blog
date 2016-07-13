@@ -9,7 +9,7 @@ class DeveloperBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listDeveloper = $this->container->get('md_mdgame.batch')->batchDeveloper($batch, $page);
+        $listDeveloper = $this->container->get('md_game.batch')->batchDeveloper($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Developer");
         return $this->render('MDCoreBundle:DeveloperBundle:viewBatch.html.twig', array('listDeveloper' => $listDeveloper, 'pages' => $pages));
     }

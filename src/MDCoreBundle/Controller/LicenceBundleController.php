@@ -9,7 +9,7 @@ class LicenceBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listLicence = $this->container->get('md_mdgame.batch')->batchLicence($batch, $page);
+        $listLicence = $this->container->get('md_game.batch')->batchLicence($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Licence");
         return $this->render('MDCoreBundle:LicenceBundle:viewBatch.html.twig', array('listLicence' => $listLicence, 'pages' => $pages));
     }

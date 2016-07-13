@@ -9,7 +9,7 @@ class GenreBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listGenre = $this->container->get('md_mdgame.batch')->batchGenre($batch, $page);
+        $listGenre = $this->container->get('md_game.batch')->batchGenre($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Genre");
         return $this->render('MDCoreBundle:GenreBundle:viewBatch.html.twig', array('listGenre' => $listGenre, 'pages' => $pages));
     }

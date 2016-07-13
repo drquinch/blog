@@ -19,4 +19,5 @@ class BatchService
 		$newsRepository = $this->em->getRepository('MDArticlesBundle:News');
 		return $newsRepository->findLimitedAll($batch, $page);
 	}
+
 }

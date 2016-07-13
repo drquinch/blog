@@ -9,7 +9,7 @@ class GameBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listGame = $this->container->get('md_mdgame.batch')->batchGame($batch, $page);
+        $listGame = $this->container->get('md_game.batch')->batchGame($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Game");
         return $this->render('MDCoreBundle:GameBundle:viewBatch.html.twig', array('listGame' => $listGame, 'pages' => $pages));
     }

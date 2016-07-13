@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>{% block title %}{%endblock %}
+	<meta charset="utf-8" />
+	<title>Striptease-ludique.com - {% block title %}{%endblock %}</title>
+	<link href="{{ asset('bundles/mdcore/css/admin_left_menu.css') }}" type="text/css" rel="stylesheet" />
+	<link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
+	{% block stylesheets %}{% endblock %}
 </head>
 <body>
 <div id="body">
-{# TODO bar du dessus / menu droit admin #}
 	{% block body %}{% endblock %}
-
 </div>
 </body>
 </html>

@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}{% endblock %}</title>
+	<title>Striptease-ludique.com - {% block title %}{% endblock %}</title>
+	<link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
 </head>
 <body>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

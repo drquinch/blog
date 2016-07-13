@@ -1,0 +1,18 @@
+{# menu / must be included in other view #}
+
+<div id="admin_left_menu">
+
+<ul>
+{% if is_granted('ROLE_WRITTER') %}
+<li><a href="{{ path('md_core_admin_list_articles_news') }}">News</a></li>
+<li><a href="">Test</a></li>
+<li><a href="">Review</a></li>
+<li><a href="{{ path('md_core_admin_list_game_function') }}">Fiches de jeux</a></li>
+{% endif %}
+
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+
+{% endif %}
+</ul>
+
+</div>

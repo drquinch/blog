@@ -9,7 +9,7 @@ class PlateformeBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listPlateforme = $this->container->get('md_mdgame.batch')->batchPlateforme($batch, $page);
+        $listPlateforme = $this->container->get('md_game.batch')->batchPlateforme($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Plateforme");
         return $this->render('MDCoreBundle:PlateformeBundle:viewBatch.html.twig', array('listPlateforme' => $listPlateforme, 'pages' => $pages));
     }

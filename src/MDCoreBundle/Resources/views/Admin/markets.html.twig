@@ -1,0 +1,27 @@
+{% extends "MDCoreBundle::layoutadmin.html.twig" %}
+
+{% block title %}administration de distributeurs{% endblock %}
+
+{% block body %}
+
+{% include 'MDCoreBundle:Admin:menu.html.twig' %}
+<p><a href="{{ path('md_core_game_game_create') }}">Ajouter un distributeur de jeux (market)</a></p>
+
+<div id="list_functions">
+
+<ul>
+{% for l in listobjects %}
+<li><a href="{{ path('md_core_game_market_view', {'id': l.id}) }}">{{ l.name }}</a> <a href="{{ path ('md_core_game_market_edit', {'id': l.id}) }}">edit</a>
+{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('md_core_game_market_delete', {'id': l.id}) }}">delete</a>{% endif %}
+</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for page in paging %}
+<li><a href="{{ path('md_core_admin_game_markets', {'batch': batch, 'page': page}) }}">{{ page }}</a></li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}

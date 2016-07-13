@@ -9,7 +9,7 @@ class PublisherBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listPublisher = $this->container->get('md_mdgame.batch')->batchPublisher($batch, $page);
+        $listPublisher = $this->container->get('md_game.batch')->batchPublisher($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Publisher");
         return $this->render('MDCoreBundle:PublisherBundle:viewBatch.html.twig', array('listPublisher' => $listPublisher, 'pages' => $pages));
     }

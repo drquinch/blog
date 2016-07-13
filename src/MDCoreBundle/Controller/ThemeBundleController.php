@@ -9,7 +9,7 @@ class ThemeBundleController extends Controller
 {
     public function viewBatchAction($batch, $page)
     {
-        $listTheme = $this->container->get('md_mdgame.batch')->batchTheme($batch, $page);
+        $listTheme = $this->container->get('md_game.batch')->batchTheme($batch, $page);
         $pages = $this->container->get('md_paging.paging')->paging($batch, "MDGameBundle:Theme");
         return $this->render('MDCoreBundle:ThemeBundle:viewBatch.html.twig', array('listTheme' => $listTheme, 'pages' => $pages));
     }

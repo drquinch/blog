@@ -1,0 +1,32 @@
+#admin_left_menu
+{
+background-color: rgb(20,20,20);
+float: left;
+width: 250px;
+height: 100%;
+}
+
+#admin_left_menu ul
+{
+padding-top: 20px;
+}
+
+#admin_left_menu a
+{
+display: block;
+padding-left: 15px;
+padding-top: 5px;
+padding-bottom: 5px;
+font-weight: bold;
+}
+
+#admin_left_menu a:hover
+{
+background-color: rgb(10,10,10);
+box-shadow: 0px 0px 10px rgb(5,5,5) inset;
+}
+
+#admin_left_menu a:visited
+{
+color: rgb(200,200,200);
+}
