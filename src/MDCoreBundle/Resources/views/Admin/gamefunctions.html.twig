@@ -1,14 +1,10 @@
 {% extends "MDCoreBundle::layoutadmin.html.twig" %}
 
 {% block title %}administration des jeux{% endblock %}
-{% block stylesheets %}<link href="{{ asset('bundles/mdcore/css/main_admin.css') }}" type="text/css" rel="stylesheet" />
-<link href="{{ asset('bundles/mdcore/css/gamefunctions.css') }}" type="text/css" rel="stylesheet" />{% endblock %}
+{% block stylesheets %}<link href="{{ asset('bundles/mdcore/css/gamefunctions.css') }}" type="text/css" rel="stylesheet" />{% endblock %}
 
 {% block body %}
 
-{% include 'MDCoreBundle:Admin:menu.html.twig' %}
-
-<div id="content">
 <ul id="game_list_function">
     <li><a href="{{ path('md_core_admin_game_games') }}">Fiches de jeux</a> <a href="{{ path('md_core_game_game_create') }}"></a>
     <li><a href="{{ path('md_core_admin_game_genres') }}">Genres</a> <a href="{{ path('md_core_game_genre_create') }}"></a>
@@ -19,6 +15,5 @@
     <li><a href="{{ path('md_core_admin_game_licences') }}">Licences de jeux</a> <a href="{{ path('md_core_game_licence_create') }}"></a>
     <li><a href="{{ path('md_core_admin_game_themes') }}">Thèmes</a> <a href="{{ path('md_core_game_theme_create') }}"></a>
 </ul>
-</div>
 
 {% endblock %}

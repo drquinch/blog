@@ -1,8 +1,0 @@
-{% extends "MDCoreBundle::layout.html.twig" %}
-
-{% block title %}{% endblock %}
-
-{% block body %}
-	{{ render(controller("MDArticlesBundle:News:edit", {'id': id})) }}
-	<a href="{{ path('md_core_news_view', {'id': id}) }}">Retour à la news</a><br />
-{% endblock %}

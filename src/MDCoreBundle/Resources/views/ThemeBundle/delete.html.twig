@@ -1,8 +1,0 @@
-{% extends "MDCoreBundle::layout.html.twig %}
-
-(block title %}{% endblock %}
-
-{% block body %}
-    {{ render(controller("MDGameBundle:Theme:delete", {'id': id})) }}
-    <a href="{{ path('md_core_theme:view, {'id': id}) }}">Retour vers theme</a><br />
-{% endblock %}

@@ -1,8 +1,0 @@
-{% extends "MDCoreBundle::layout.html.twig %}
-
-(block title %}{% endblock %}
-
-{% block body %}
-    {{ render(controller("MDGameBundle:Plateforme:delete", {'id': id})) }}
-    <a href="{{ path('md_core_plateforme:view, {'id': id}) }}">Retour vers plateforme</a><br />
-{% endblock %}

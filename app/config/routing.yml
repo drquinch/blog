@@ -24,7 +24,7 @@ md_security:
 
 md_articles:
     resource: "@MDArticlesBundle/Resources/config/routing.yml"
-    prefix:   /articles
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

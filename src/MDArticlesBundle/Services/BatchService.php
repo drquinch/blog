@@ -19,5 +19,10 @@ class BatchService
 		$newsRepository = $this->em->getRepository('MDArticlesBundle:News');
 		return $newsRepository->findLimitedAll($batch, $page);
 	}
-
+    
+    public function batchTest($batch, $page)
+    {
+        $testRepository = $this->em->getRepository('MDArticlesBundle:Test');
+        return $testRepository->findLimitedAll($batch, $page);
+    }
 }

@@ -21,7 +21,6 @@ class NewsType extends AbstractType
     {
         $builder
             ->add('dateCreation', DateType::class)
-            ->add('author', TextType::class)
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
             ->add('datePublication', DateType::class)

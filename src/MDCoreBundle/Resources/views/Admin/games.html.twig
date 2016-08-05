@@ -4,15 +4,13 @@
 
 {% block body %}
 
-{% include 'MDCoreBundle:Admin:menu.html.twig' %}
-<p><a href="{{ path('md_core_game_game_create') }}">Ajouter une fiche de jeu</a></p>
-
-<div id="list_functions">
+<p><a href="{{ path('md_core_game_game_create') }}" class="button_add_element">Ajouter une fiche de jeu</a></p>
+<div id="list_elements">
 
 <ul>
 {% for l in listobjects %}
-<li><a href="{{ path('md_core_game_game_view', {'id': l.id}) }}">{{ l.name }}</a> <a href="{{ path ('md_core_game_game_edit', {'id': l.id}) }}">edit</a>
-{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('md_core_game_game_delete', {'id': l.id}) }}">delete</a>{% endif %}
+<li class="el_li"><a href="{{ path('md_core_game_game_view', {'id': l.id}) }}" class="el_name">{{ l.name }}</a> <a href="{{ path ('md_core_game_game_edit', {'id': l.id}) }}" class="el_edit">edit</a>
+{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('md_core_game_game_delete', {'id': l.id}) }}" class="el_delete">delete</a>{% endif %}
 </li>
 {% endfor %}
 </ul>

@@ -41,6 +41,7 @@ class NewsController extends Controller
 	{
 		$request = $this->container->get('request_stack')->getMasterRequest();
 		$news = new News();
+		$news->setAuthor($this->getUser());
 		$form = $this->get('form.factory')->create(NewsType::class, $news);
 
 		if($request->isMethod('POST'))

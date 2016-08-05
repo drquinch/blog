@@ -32,7 +32,8 @@ class News implements iArticle
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="MDUserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
@@ -298,5 +299,6 @@ class News implements iArticle
     {
     	$this->setUpdatedAt(new \Datetime());
     }
+
 
 }

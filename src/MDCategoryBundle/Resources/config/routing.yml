@@ -1,21 +1,21 @@
 md_category_create:
-    path:     /admin/cat/c
+    path:     /admin/category/create
     defaults: { _controller: MDCategoryBundle:Category:Category }
 
 md_category_edit:
-    path:    /admin/cat/e/{id}
+    path:    /admin/category/edit/{id}
     defaults: { _controller: MDCategoryBundle:Category:Category }
     requirements:
         id: \d+
 
 md_category_view:
-    path:    /cat/v/{id}
+    path:    /category/view/{id}
     defaults: { _controller: MDCategory:Category:Category }
     requirements:
         id: \d+
 
 md_category_delete:
-    path:    /admin/cat/d/{id}
+    path:    /admin/category/delete/{id}
     defaults: { _controller: MDCategory:Category:Category }
     requirements:
         id: \d+

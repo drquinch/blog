@@ -1,199 +1,199 @@
 md_genre_view:
-    path:    /ga/ge/vi/{genre_id}
+    path:    /game/genre/view/{genre_id}
     defaults:
         _controller: MDGameBundle:Genre:view
     requirements:
         genre_id: \d+
 
 md_genre_create:
-    path:    /admin/ga/ge/cr
+    path:    /admin/game/genre/create
     defaults:
         _controller: MDGameBundle:Genre:create
 
 md_genre_edit:
-    path:    /admin/ga/ge/ed/{genre_id}
+    path:    /admin/game/genre/edit/{genre_id}
     defaults:
         _controller: MDGameBundle:Genre:edit
     requirements:
         genre_id: \d+
 
 md_genre_delete:
-    path:    /admin/ga/ge/de/{genre_id}
+    path:    /admin/game/genre/delete/{genre_id}
     defaults:
         _controller: MDGameBundle:Genre:delete
     requirements:
         genre_id: \d+
 md_theme_view:
-    path:    /ga/th/vi/{theme_id}
+    path:    /game/theme/view/{theme_id}
     defaults:
         _controller: MDGameBundle:Theme:view
     requirements:
         theme_id: \d+
 
 md_theme_create:
-    path:    /admin/ga/th/cr
+    path:    /admin/game/theme/create
     defaults:
         _controller: MDGameBundle:Theme:create
 
 md_theme_edit:
-    path:    /admin/ga/th/ed/{theme_id}
+    path:    /admin/game/theme/edit/{theme_id}
     defaults:
         _controller: MDGameBundle:Theme:edit
     requirements:
         theme_id: \d+
 
 md_theme_delete:
-    path:    /admin/ga/th/de/{theme_id}
+    path:    /admin/game/theme/delete/{theme_id}
     defaults:
         _controller: MDGameBundle:Theme:delete
     requirements:
         theme_id: \d+
 md_plateforme_view:
-    path:    /ga/pl/vi/{plateforme_id}
+    path:    /game/plateforme/view/{plateforme_id}
     defaults:
         _controller: MDGameBundle:Plateforme:view
     requirements:
         plateforme_id: \d+
 
 md_plateforme_create:
-    path:    /admin/ga/pl/cr
+    path:    /admin/game/plateforme/create
     defaults:
         _controller: MDGameBundle:Plateforme:create
 
 md_plateforme_edit:
-    path:    /admin/ga/pl/ed/{plateforme_id}
+    path:    /admin/game/plateforme/edit/{plateforme_id}
     defaults:
         _controller: MDGameBundle:Plateforme:edit
     requirements:
         plateforme_id: \d+
 
 md_plateforme_delete:
-    path:    /admin/ga/pl/de/{plateforme_id}
+    path:    /admin/game/plateforme/delete/{plateforme_id}
     defaults:
         _controller: MDGameBundle:Plateforme:delete
     requirements:
         plateforme_id: \d+
 md_licence_view:
-    path:    /ga/li/vi/{licence_id}
+    path:    /game/licence/view/{licence_id}
     defaults:
         _controller: MDGameBundle:Licence:view
     requirements:
         licence_id: \d+
 
 md_licence_create:
-    path:    /admin/ga/li/cr
+    path:    /admin/game/licence/create
     defaults:
         _controller: MDGameBundle:Licence:create
 
 md_licence_edit:
-    path:    /admin/ga/li/ed/{licence_id}
+    path:    /admin/game/licence/edit/{licence_id}
     defaults:
         _controller: MDGameBundle:Licence:edit
     requirements:
         licence_id: \d+
 
 md_licence_delete:
-    path:    /admin/ga/li/de/{licence_id}
+    path:    /admin/game/licence/delete/{licence_id}
     defaults:
         _controller: MDGameBundle:Licence:delete
     requirements:
         licence_id: \d+
 md_market_view:
-    path:    /ga/ma/vi/{market_id}
+    path:    /game/market/view/{market_id}
     defaults:
         _controller: MDGameBundle:Market:view
     requirements:
         market_id: \d+
 
 md_market_create:
-    path:    /admin/ga/ma/cr
+    path:    /admin/game/market/create
     defaults:
         _controller: MDGameBundle:Market:create
 
 md_market_edit:
-    path:    /admin/ga/ma/ed/{market_id}
+    path:    /admin/game/market/edit/{market_id}
     defaults:
         _controller: MDGameBundle:Market:edit
     requirements:
         market_id: \d+
 
 md_market_delete:
-    path:    /admin/ga/ma/de/{market_id}
+    path:    /admin/game/market/delete/{market_id}
     defaults:
         _controller: MDGameBundle:Market:delete
     requirements:
         market_id: \d+
 md_publisher_view:
-    path:    /ga/pu/vi/{publisher_id}
+    path:    /game/publisher/view/{publisher_id}
     defaults:
         _controller: MDGameBundle:Publisher:view
     requirements:
         publisher_id: \d+
 
 md_publisher_create:
-    path:    /admin/ga/pu/cr
+    path:    /admin/game/publisher/create
     defaults:
         _controller: MDGameBundle:Publisher:create
 
 md_publisher_edit:
-    path:    /admin/ga/pu/ed/{publisher_id}
+    path:    /admin/game/publisher/edit/{publisher_id}
     defaults:
         _controller: MDGameBundle:Publisher:edit
     requirements:
         publisher_id: \d+
 
 md_publisher_delete:
-    path:    /admin/ga/pu/de/{publisher_id}
+    path:    /admin/game/publisher/delete/{publisher_id}
     defaults:
         _controller: MDGameBundle:Publisher:delete
     requirements:
         publisher_id: \d+
 md_developer_view:
-    path:    /ga/de/vi/{developer_id}
+    path:    /game/developer/view/{developer_id}
     defaults:
         _controller: MDGameBundle:Developer:view
     requirements:
         developer_id: \d+
 
 md_developer_create:
-    path:    /admin/ga/de/cr
+    path:    /admin/game/developer/create
     defaults:
         _controller: MDGameBundle:Developer:create
 
 md_developer_edit:
-    path:    /admin/ga/de/ed/{developer_id}
+    path:    /admin/game/developer/edit/{developer_id}
     defaults:
         _controller: MDGameBundle:Developer:edit
     requirements:
         developer_id: \d+
 
 md_developer_delete:
-    path:    /admin/ga/de/de/{developer_id}
+    path:    /admin/game/developer/delete/{developer_id}
     defaults:
         _controller: MDGameBundle:Developer:delete
     requirements:
         developer_id: \d+
 md_game_view:
-    path:    /ga/ga/vi/{game_id}
+    path:    /game/game/view/{game_id}
     defaults:
         _controller: MDGameBundle:Game:view
     requirements:
         game_id: \d+
 
 md_game_create:
-    path:    /admin/ga/ga/cr
+    path:    /admin/game/game/create
     defaults:
         _controller: MDGameBundle:Game:create
 
 md_game_edit:
-    path:    /admin/ga/ga/ed/{game_id}
+    path:    /admin/game/game/edit/{game_id}
     defaults:
         _controller: MDGameBundle:Game:edit
     requirements:
         game_id: \d+
 
 md_game_delete:
-    path:    /admin/ga/ga/de/{game_id}
+    path:    /admin/game/game/delete/{game_id}
     defaults:
         _controller: MDGameBundle:Game:delete
     requirements:

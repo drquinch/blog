@@ -1,8 +1,0 @@
-{% extends "MDCoreBundle::layout.html.twig %}
-
-(block title %}{% endblock %}
-
-{% block body %}
-    {{ render(controller("MDGameBundle:Publisher:delete", {'id': id})) }}
-    <a href="{{ path('md_core_publisher:view, {'id': id}) }}">Retour vers publisher</a><br />
-{% endblock %}
