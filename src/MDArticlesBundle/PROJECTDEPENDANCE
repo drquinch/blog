@@ -1,5 +1,0 @@
-Project Dependance
-
-Resources\views\*\Core\*.html.twig
-Views which have links with the core bundle.
-Must be included in other views

@@ -2,12 +2,10 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@MDArticlesBundle/Resources/config/services.yml" }
     - { resource: "@MDSecurityBundle/Resources/config/services.yml" }
     - { resource: "@MDCoreBundle/Resources/config/services.yml" }
     - { resource: "@MDCommentBundle/Resources/config/services.yml" }
     - { resource: "@MDPagingBundle/Resources/config/services.yml" }
-    - { resource: "@MDCategoryBundle/Resources/config/services.yml" }
     - { resource: "@MDUserBundle/Resources/config/services.yml" }
     - { resource: "@MDGameBundle/Resources/config/services.yml" }
 
@@ -45,7 +43,6 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        batch_news:       "%batch_news%"
         batch_comment:    "%batch_comment%"
         batch_category:   "%batch_category%"
         batch_game:       "%batch_game%"

@@ -1,0 +1,21 @@
+.save_form
+{
+margin: 20px;
+}
+
+.save_form input, .save_form select
+{
+margin: 5px;
+border: 1px solid rgb(100,100,100);
+background-color: rgb(240,240,240);
+}
+
+.save_form button
+{
+background-color: rgb(0,80,220);
+margin: 5px;
+margin-left: 0px;
+padding: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+}

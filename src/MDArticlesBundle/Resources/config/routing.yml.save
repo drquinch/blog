@@ -1,3 +1,0 @@
-md_articles_showallnews:
-    path:     /show-all-news
-    defaults: { _controller: MDArticlesBundle::index }

@@ -12,6 +12,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DeveloperController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$developers = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Developer')->findLimitedAll($batch, $page);
+	return $this->render('MDGameBundle:Developer:batch.html.twig', array('developers' => $developers));
+    }
+
     /**
      * @ParamConverter("developer", options={"mapping": {"developer_id": "id"}})
      */

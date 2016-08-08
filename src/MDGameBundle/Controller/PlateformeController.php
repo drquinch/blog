@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class PlateformeController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$plateformes = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Plateforme')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Plateforme:batch.html.twig', array('plateformes' => $plateformes));
+    }
+
     /**
      * @ParamConverter("plateforme", options={"mapping": {"plateforme_id": "id"}})
      */

@@ -1,5 +1,1 @@
 services:
-
-    md_game.batch:
-        class:     MDGameBundle\Services\BatchService
-        arguments: ["@doctrine.orm.entity_manager"]

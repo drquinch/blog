@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class MarketController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$markets = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Market')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Market:batch.html.twig', array('markets' => $markets));
+    }
+
     /**
      * @ParamConverter("market", options={"mapping": {"market_id": "id"}})
      */

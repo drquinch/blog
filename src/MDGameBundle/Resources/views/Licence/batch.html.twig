@@ -1,0 +1,28 @@
+{% extends "::layoutbackend.html.twig" %}
+
+{% block stylesheet %}
+{{ parent() }}
+	<link href="{{ asset('bundles/mdgame/css/main_body_admin_management.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<div id="content">
+	<div id="add_button"><a href="{{ path('md_licence_create') }}">+ Ajouter une licence</a></div>
+	<div id="list_news">
+		<table class="elements_table">
+			<tr class="titles_line">
+				<th class="name_element_first_line">Titre de la news</th>
+				<th class="edit_element_first_line">edit</th>
+				<th class="delete_element_first_line">delete</th>
+			</tr>
+{% for licence in licences %}
+			<tr class="{% if loop.index is divisible by(2) %}pair_line{% else %}impair_line{% endif %}">
+				<td><a href="{{ path('md_licence_edit', {'licence_id': licence.id}) }}">{{ licence.name }}</a></td>
+				<td><a href="{{ path('md_licence_edit', {'licence_id': licence.id}) }}"><img src="{{ asset('img/edit_icon_32.png') }}" alt="" /></a></td>
+				<td><a href="{{ path('md_licence_delete', {'licence_id': licence.id}) }}"><img src="{{ asset('img/delete_icon_32.png') }}" alt="" /></a></td>
+			</tr>
+{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}

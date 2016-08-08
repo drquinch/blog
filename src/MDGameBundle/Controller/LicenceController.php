@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class LicenceController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$licences = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Licence')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Licence:batch.html.twig', array('licences' => $licences));
+    }
+
     /**
      * @ParamConverter("licence", options={"mapping": {"licence_id": "id"}})
      */

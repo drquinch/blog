@@ -1,3 +1,13 @@
+md_genre_batch:
+    path:    /game/genre/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Genre:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_genre_view:
     path:    /game/genre/view/{genre_id}
     defaults:
@@ -23,6 +33,17 @@ md_genre_delete:
         _controller: MDGameBundle:Genre:delete
     requirements:
         genre_id: \d+
+
+md_theme_batch:
+    path:    /game/theme/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Theme:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_theme_view:
     path:    /game/theme/view/{theme_id}
     defaults:
@@ -48,6 +69,18 @@ md_theme_delete:
         _controller: MDGameBundle:Theme:delete
     requirements:
         theme_id: \d+
+
+
+md_plateforme_batch:
+    path:    /game/plateforme/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Plateforme:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_plateforme_view:
     path:    /game/plateforme/view/{plateforme_id}
     defaults:
@@ -73,6 +106,18 @@ md_plateforme_delete:
         _controller: MDGameBundle:Plateforme:delete
     requirements:
         plateforme_id: \d+
+
+
+md_licence_batch:
+    path:    /game/licence/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Licence:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_licence_view:
     path:    /game/licence/view/{licence_id}
     defaults:
@@ -98,6 +143,18 @@ md_licence_delete:
         _controller: MDGameBundle:Licence:delete
     requirements:
         licence_id: \d+
+
+
+md_market_batch:
+    path:    /game/market/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Market:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_market_view:
     path:    /game/market/view/{market_id}
     defaults:
@@ -123,6 +180,18 @@ md_market_delete:
         _controller: MDGameBundle:Market:delete
     requirements:
         market_id: \d+
+
+
+md_publisher_batch:
+    path:    /game/publisher/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Publisher:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_publisher_view:
     path:    /game/publisher/view/{publisher_id}
     defaults:
@@ -148,6 +217,17 @@ md_publisher_delete:
         _controller: MDGameBundle:Publisher:delete
     requirements:
         publisher_id: \d+
+
+md_developer_batch:
+    path:    /game/developer/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Developer:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_developer_view:
     path:    /game/developer/view/{developer_id}
     defaults:
@@ -173,6 +253,17 @@ md_developer_delete:
         _controller: MDGameBundle:Developer:delete
     requirements:
         developer_id: \d+
+
+md_game_batch:
+    path:    /game/game/batch/{batch}/{page}
+    defaults:
+        _controller: MDGameBundle:Game:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
 md_game_view:
     path:    /game/game/view/{game_id}
     defaults:

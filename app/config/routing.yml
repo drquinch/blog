@@ -2,10 +2,6 @@ md_game:
     resource: "@MDGameBundle/Resources/config/routing.yml"
     prefix:   /
 
-md_category:
-    resource: "@MDCategoryBundle/Resources/config/routing.yml"
-    prefix:   /
-
 md_paging:
     resource: "@MDPagingBundle/Resources/config/routing.yml"
     prefix:   /
@@ -20,10 +16,6 @@ md_core:
 
 md_security:
     resource: "@MDSecurityBundle/Resources/config/routing.yml"
-    prefix:   /
-
-md_articles:
-    resource: "@MDArticlesBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

@@ -1,0 +1,58 @@
+#subhead
+{
+background-color: rgb(20,20,20);
+}
+
+#subhead a
+{
+color: rgb(240,240,240);
+font-weight: bold;
+border-bottom: 4px solid rgb(0,125,255);
+transition-property: color, background-color;
+transition-duration: 0.5s;
+}
+
+#subhead a:hover
+{
+background-color: rgb(0,125,255);
+color: rgb(10,10,10);
+}
+
+#subhead_left_list
+{
+float: left;
+padding: 0px;
+margin: 0px;
+}
+
+#subhead_left_list li
+{
+display: inline;
+margin: 0px;
+}
+
+#subhead_left_list li a
+{
+padding: 5px;
+padding-left: 15px;
+padding-right: 15px;
+margin: 0px;
+display: inline-block;
+}
+
+#subhead_right_list
+{
+float: right;
+}
+
+#subhead_right_list li
+{
+display: inline-block;
+}
+
+#subhead_right_list li a
+{
+display: block;
+height: 100%;
+padding: 5px;
+}

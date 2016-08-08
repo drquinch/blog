@@ -1,0 +1,32 @@
+#list_elements
+{
+padding-top: 30px;
+padding-left: 30px;
+}
+
+#list_elements a
+{
+display: inline-block;
+padding: 5px;
+}
+
+#list_elements a:hover
+{
+
+}
+
+.el_name
+{
+display: inline-block;
+width: 400px;
+}
+
+.el_li
+{
+background-color: rgb(220,220,220);
+}
+
+.button_add_element
+{
+margin: 30px;
+}

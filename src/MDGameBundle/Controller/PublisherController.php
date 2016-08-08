@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class PublisherController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$publishers = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Publisher')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Publisher:batch.html.twig', array('publishers' => $publishers));
+    }
+
     /**
      * @ParamConverter("publisher", options={"mapping": {"publisher_id": "id"}})
      */

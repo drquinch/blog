@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class ThemeController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$themes = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Theme')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Theme:batch.html.twig', array('themes' => $themes));
+    }
+
     /**
      * @ParamConverter("theme", options={"mapping": {"theme_id": "id"}})
      */

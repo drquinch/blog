@@ -12,6 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class GenreController extends Controller
 {
 
+    public function batchAction($batch, $page)
+    {
+	$genres = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Genre')->findLimitedAll($batch, $page);
+
+	return $this->render('MDGameBundle:Genre:batch.html.twig', array('genres' => $genres));
+    }
+
     /**
      * @ParamConverter("genre", options={"mapping": {"genre_id": "id"}})
      */

@@ -1,0 +1,40 @@
+#left_menu
+{
+float: left;
+background-color: rgb(20,20,20);
+width: 280px;
+height: 100%;
+font-weight: bold;
+color: rgb(240,240,240);
+padding: 10px;
+padding-top: 20px;
+padding-bottom: 100px;
+}
+
+#left_menu a
+{
+color: rgb(240,240,240);
+}
+
+#games_admin_menu, .games_infos_management, .games_articles_management
+{
+margin-left: 20px;
+}
+
+.games_admin_subtitle, .games_infos_management, .games_articles_management
+{
+border-left: 4px solid rgb(0,125,255);
+padding-left: 10px;
+}
+
+.games_admin_subtitle
+{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+#left_menu h3
+{
+margin-top: 10px;
+margin-bottom: 10px;
+}
