@@ -17,11 +17,15 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new MDSecurityBundle\MDSecurityBundle(),
             new MDCoreBundle\MDCoreBundle(),
-            new MDCommentBundle\MDCommentBundle(),
             new MDPagingBundle\MDPagingBundle(),
             new MDUserBundle\MDUserBundle(),
 	    new FOS\UserBundle\FOSUserBundle(),
             new MDGameBundle\MDGameBundle(),
+            new MDMediaBundle\MDMediaBundle(),
+            new MDCategoryBundle\MDCategoryBundle(),
+            new MDTagsBundle\MDTagsBundle(),
+            new MDArticleBundle\MDArticleBundle(),
+            new MDCommentBundle\MDCommentBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

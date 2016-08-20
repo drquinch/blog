@@ -1,0 +1,13 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+<h1>Formulaire d'enregistrement</h1>
+
+{% if form is defined %}
+    {{ include("MDCommentBundle:Comment:form.html.twig") }}
+{% endif %}
+
+{% if comment is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

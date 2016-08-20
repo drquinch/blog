@@ -1,0 +1,46 @@
+md_article_batch:
+    path:    /article/article/batch/{category}/{batch}/{page}
+    defaults:
+        _controller: MDArticleBundle:Article:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+        category: \d+
+
+md_article_batch_all:
+    path:    /article/article/batch//{batch}/{page}
+    defaults:
+        _controller: MDArticleBundle:Article:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
+md_article_view:
+    path:    /article/article/view/{article_id}
+    defaults:
+        _controller: MDArticleBundle:Article:view
+    requirements:
+        article_id: \d+
+
+md_article_create:
+    path:    /admin/article/article/create/
+    defaults:
+        _controller: MDArticleBundle:Article:create
+
+md_article_edit:
+    path:    /admin/article/article/edit/{article_id}
+    defaults:
+        _controller: MDArticleBundle:Article:edit
+    requirements:
+        article_id: \d+
+
+md_article_delete:
+    path:    /admin/article/article/delete/{article_id}
+    defaults:
+        _controller: MDArticleBundle:Article:delete
+    requirements:
+        article_id: \d+

@@ -1,3 +1,34 @@
 <div class="save_form">
-    {{ form(form) }}
+    {{ form_start(form) }}
+
+    {{ form_label(form.name, "Nom de la licence") }}<br>
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name) }}<br>
+
+    {{ form_label(form.website, "Siteweb de la licence") }}<br>
+    {{ form_errors(form.website) }}
+    {{ form_widget(form.website) }}<br>
+
+    {{ form_label(form.publishers, "Sélectionnez un ou plusieurs éditeurs") }}<br>
+    {{ form_errors(form.publishers) }}
+    {{ form_widget(form.publishers) }}<br>
+
+    {{ form_label(form.developers, "Sélectionnez un ou plusieurs développeurs") }}<br>
+    {{ form_errors(form.developers) }}
+    {{ form_widget(form.developers) }}<br>
+
+    {{ form_label(form.plateformes, "Sélectionnez une ou plusieurs plateformes") }}<br>
+    {{ form_errors(form.plateformes) }}
+    {{ form_widget(form.plateformes) }}<br>
+
+    {{ form_label(form.genres, "Sélectionnez un ou plusieurs genres") }}<br>
+    {{ form_errors(form.genres) }}
+    {{ form_widget(form.genres) }}<br>
+
+    {{ form_label(form.themes, "Sélectionnez un ou plusieurs thèmes") }}<br>
+    {{ form_errors(form.themes) }}
+    {{ form_widget(form.themes) }}<br>
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 </div>

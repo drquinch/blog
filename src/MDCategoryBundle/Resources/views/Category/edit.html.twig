@@ -1,0 +1,11 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+{% if form is defined %}
+    {{ include("MDCategoryBundle:Category:form.html.twig") }}
+{% endif %}
+
+{% if category is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

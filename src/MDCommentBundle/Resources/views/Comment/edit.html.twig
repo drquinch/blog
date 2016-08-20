@@ -1,0 +1,11 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+{% if form is defined %}
+    {{ include("MDCommentBundle:Comment:form.html.twig") }}
+{% endif %}
+
+{% if comment is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

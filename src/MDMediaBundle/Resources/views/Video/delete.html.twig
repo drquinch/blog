@@ -1,0 +1,19 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block title %}
+Suppression video
+{% endblock %}
+
+{% block main %}
+    {% if form is defined %}
+        <h2>Suppression video</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_video_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_video_view', {'id': video.id}) }}">Retour vers video</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

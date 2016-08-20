@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Comment
  *
  * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="MDCommentBundle\Entity\CommentRepository")
+ * @ORM\Entity(repositoryClass="MDCommentBundle\Repository\CommentRepository")
  */
 class Comment
 {
@@ -24,20 +24,24 @@ class Comment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date_publication", type="datetime")
      */
-    private $date;
+    private $datePublication;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="comment", type="text")
      */
-    private $content;
+    private $comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MDArticlesBundle\Entity\News")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="MDUserBundle\Entity\User")
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDArticleBundle\Entity\Article")
      */
     private $article;
 
@@ -52,62 +56,85 @@ class Comment
     }
 
     /**
-     * Set date
+     * Set datePublication
      *
-     * @param \DateTime $date
+     * @param \DateTime $datePublication
      *
      * @return Comment
      */
-    public function setDate($date)
+    public function setDatePublication($datePublication)
     {
-        $this->date = $date;
+        $this->datePublication = $datePublication;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get datePublication
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getDatePublication()
     {
-        return $this->date;
+        return $this->datePublication;
     }
 
     /**
-     * Set content
+     * Set comment
      *
-     * @param string $content
+     * @param string $comment
      *
      * @return Comment
      */
-    public function setContent($content)
+    public function setComment($comment)
     {
-        $this->content = $content;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get comment
      *
      * @return string
      */
-    public function getContent()
+    public function getComment()
     {
-        return $this->content;
+        return $this->comment;
     }
 
+    /**
+     * Set author
+     *
+     * @param \MDUserBundle\Entity\User $author
+     *
+     * @return Comment
+     */
+    public function setAuthor(\MDUserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \MDUserBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
     /**
      * Set article
      *
-     * @param \MDArticlesBundle\Entity\News $article
+     * @param \MDArticleBundle\Entity\Article $article
      *
      * @return Comment
      */
-    public function setArticle(\MDArticlesBundle\Entity\News $article)
+    public function setArticle(\MDArticleBundle\Entity\Article $article = null)
     {
         $this->article = $article;
 
@@ -117,7 +144,7 @@ class Comment
     /**
      * Get article
      *
-     * @return \MDArticlesBundle\Entity\News
+     * @return \MDArticleBundle\Entity\Article
      */
     public function getArticle()
     {

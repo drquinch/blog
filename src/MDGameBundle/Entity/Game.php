@@ -43,6 +43,36 @@ class Game
     private $website;
 
     /**
+     * @ORM\Column(name="steamlink", type="string", length=255, nullable=true)
+     */
+    private $steamlink;
+
+    /**
+     * @ORM\Column(name="humblebundlelink", type="string", length=255, nullable=true)
+     */
+    private $humblebundlelink;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
+     */
+    private $coverimage;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
+     */
+    private $smallimage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Image")
+     */
+    private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Video")
+     */
+    private $videos;
+
+    /**
      * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher", cascade={"persist"})
      */
     private $publishers;
@@ -354,5 +384,149 @@ class Game
     public function getThemes()
     {
         return $this->themes;
+    }
+
+    /**
+     * Set steamlink
+     *
+     * @param string $steamlink
+     *
+     * @return Game
+     */
+    public function setSteamlink($steamlink)
+    {
+        $this->steamlink = $steamlink;
+
+        return $this;
+    }
+
+    /**
+     * Get steamlink
+     *
+     * @return string
+     */
+    public function getSteamlink()
+    {
+        return $this->steamlink;
+    }
+
+    /**
+     * Set humblebundlelink
+     *
+     * @param string $humblebundlelink
+     *
+     * @return Game
+     */
+    public function setHumblebundlelink($humblebundlelink)
+    {
+        $this->humblebundlelink = $humblebundlelink;
+
+        return $this;
+    }
+
+    /**
+     * Get humblebundlelink
+     *
+     * @return string
+     */
+    public function getHumblebundlelink()
+    {
+        return $this->humblebundlelink;
+    }
+
+    /**
+     * Set coverimage
+     *
+     * @param \MDMediaBundle\Entity\Image $coverimage
+     *
+     * @return Game
+     */
+    public function setCoverimage(\MDMediaBundle\Entity\Image $coverimage = null)
+    {
+        $this->coverimage = $coverimage;
+
+        return $this;
+    }
+
+    /**
+     * Get coverimage
+     *
+     * @return \MDMediaBundle\Entity\Image
+     */
+    public function getCoverimage()
+    {
+        return $this->coverimage;
+    }
+
+    /**
+     * Set smallimage
+     *
+     * @param \MDMediaBundle\Entity\Image $smallimage
+     *
+     * @return Game
+     */
+    public function setSmallimage(\MDMediaBundle\Entity\Image $smallimage = null)
+    {
+        $this->smallimage = $smallimage;
+
+        return $this;
+    }
+
+    /**
+     * Get smallimage
+     *
+     * @return \MDMediaBundle\Entity\Image
+     */
+    public function getSmallimage()
+    {
+        return $this->smallimage;
+    }
+
+    /**
+     * Set images
+     *
+     * @param \MDMediaBundle\Entity\Image $images
+     *
+     * @return Game
+     */
+    public function setImages(\MDMediaBundle\Entity\Image $images = null)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return \MDMediaBundle\Entity\Image
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set videos
+     *
+     * @param \MDMediaBundle\Entity\Video $videos
+     *
+     * @return Game
+     */
+    public function setVideos(\MDMediaBundle\Entity\Video $videos = null)
+    {
+        $this->videos = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \MDMediaBundle\Entity\Video
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }

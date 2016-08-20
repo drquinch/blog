@@ -1,0 +1,19 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block title %}
+Suppression image
+{% endblock %}
+
+{% block main %}
+    {% if form is defined %}
+        <h2>Suppression image</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_image_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_image_view', {'id': image.id}) }}">Retour vers image</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

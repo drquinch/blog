@@ -1,0 +1,19 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block title %}
+Suppression article
+{% endblock %}
+
+{% block main %}
+    {% if form is defined %}
+        <h2>Suppression article</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_article_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_article_view', {'id': article.id}) }}">Retour vers article</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

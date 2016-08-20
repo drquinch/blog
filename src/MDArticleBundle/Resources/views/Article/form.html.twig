@@ -1,0 +1,58 @@
+<div class="save_form">
+    {{ form_start(form) }}
+
+    {{ form_label(form.category, "Catégorie") }}<br>
+    {{ form_errors(form.category) }}
+    {{ form_widget(form.category) }}<br>
+
+    {{ form_label(form.coverimage, "Image de couverture") }}<br>
+    {{ form_errors(form.coverimage) }}
+    {{ form_widget(form.coverimage) }}<br>
+
+    {{ form_label(form.title, "Titre") }}<br>
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title) }}<br>
+
+    {{ form_label(form.subtitle, "Sous-Titre") }}<br>
+    {{ form_errors(form.subtitle) }}
+    {{ form_widget(form.subtitle) }}<br>
+
+    {{ form_label(form.title, "Titre") }}<br>
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title) }}<br>
+
+    {{ form_label(form.content, "Texte") }}<br>
+    {{ form_errors(form.content) }}
+    {{ form_widget(form.content) }}<br>
+
+    {{ form_label(form.note, "Note") }}<br>
+    {{ form_errors(form.note) }}
+    {{ form_widget(form.note) }}<br>
+
+    {{ form_label(form.published, "Publié") }}<br>
+    {{ form_errors(form.published) }}
+    {{ form_widget(form.published) }}<br>
+
+    {{ form_label(form.games, "Jeux liés") }}<br>
+    {{ form_errors(form.games) }}
+    {{ form_widget(form.games) }}<br>
+
+    {{ form_label(form.licences, "Licences liés") }}<br>
+    {{ form_errors(form.licences) }}
+    {{ form_widget(form.licences) }}<br>
+
+    {{ form_label(form.publishers, "Éditeurs liés") }}<br>
+    {{ form_errors(form.publishers) }}
+    {{ form_widget(form.publishers) }}<br>
+
+    {{ form_label(form.developers, "Developpeurs liés") }}<br>
+    {{ form_errors(form.developers) }}
+    {{ form_widget(form.developers) }}<br>
+
+    {{ form_label(form.tags, "Tags liés") }}<br>
+    {{ form_errors(form.tags) }}
+    {{ form_widget(form.tags) }}<br>
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>

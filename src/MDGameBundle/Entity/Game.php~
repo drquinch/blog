@@ -43,6 +43,36 @@ class Game
     private $website;
 
     /**
+     * @ORM\Column(name="steamlink", type="string", length=255, nullable=true)
+     */
+    private $steamlink;
+
+    /**
+     * @ORM\Column(name="humblebundlelink", type="string", length=255, nullable=true)
+     */
+    private $humblebundlelink;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
+     */
+    private $coverimage;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
+     */
+    private $smallimage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Image")
+     */
+    private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Video")
+     */
+    private $videos;
+
+    /**
      * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher", cascade={"persist"})
      */
     private $publishers;
@@ -61,12 +91,7 @@ class Game
      * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Plateforme", cascade={"persist"})
      */
     private $plateformes;
-
-    //**
-    // * TODO many to many avec table intermediaire et un parametre lien pour lier le jeu directement sur la palteforme de vente
-    // */
-    //private $markets;
-
+    
     /**
      * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Genre", cascade={"persist"})
      */
@@ -199,5 +224,165 @@ class Game
     public function getPublishers()
     {
         return $this->publishers;
+    }
+
+    /**
+     * Add developer
+     *
+     * @param \MDGameBundle\Entity\Developer $developer
+     *
+     * @return Game
+     */
+    public function addDeveloper(\MDGameBundle\Entity\Developer $developer)
+    {
+        $this->developers[] = $developer;
+
+        return $this;
+    }
+
+    /**
+     * Remove developer
+     *
+     * @param \MDGameBundle\Entity\Developer $developer
+     */
+    public function removeDeveloper(\MDGameBundle\Entity\Developer $developer)
+    {
+        $this->developers->removeElement($developer);
+    }
+
+    /**
+     * Get developers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDevelopers()
+    {
+        return $this->developers;
+    }
+
+    /**
+     * Set licence
+     *
+     * @param \MDGameBundle\Entity\Licence $licence
+     *
+     * @return Game
+     */
+    public function setLicence(\MDGameBundle\Entity\Licence $licence = null)
+    {
+        $this->licence = $licence;
+
+        return $this;
+    }
+
+    /**
+     * Get licence
+     *
+     * @return \MDGameBundle\Entity\Licence
+     */
+    public function getLicence()
+    {
+        return $this->licence;
+    }
+
+    /**
+     * Add plateforme
+     *
+     * @param \MDGameBundle\Entity\Plateforme $plateforme
+     *
+     * @return Game
+     */
+    public function addPlateforme(\MDGameBundle\Entity\Plateforme $plateforme)
+    {
+        $this->plateformes[] = $plateforme;
+
+        return $this;
+    }
+
+    /**
+     * Remove plateforme
+     *
+     * @param \MDGameBundle\Entity\Plateforme $plateforme
+     */
+    public function removePlateforme(\MDGameBundle\Entity\Plateforme $plateforme)
+    {
+        $this->plateformes->removeElement($plateforme);
+    }
+
+    /**
+     * Get plateformes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlateformes()
+    {
+        return $this->plateformes;
+    }
+
+    /**
+     * Add genre
+     *
+     * @param \MDGameBundle\Entity\Genre $genre
+     *
+     * @return Game
+     */
+    public function addGenre(\MDGameBundle\Entity\Genre $genre)
+    {
+        $this->genres[] = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Remove genre
+     *
+     * @param \MDGameBundle\Entity\Genre $genre
+     */
+    public function removeGenre(\MDGameBundle\Entity\Genre $genre)
+    {
+        $this->genres->removeElement($genre);
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
+    /**
+     * Add theme
+     *
+     * @param \MDGameBundle\Entity\Theme $theme
+     *
+     * @return Game
+     */
+    public function addTheme(\MDGameBundle\Entity\Theme $theme)
+    {
+        $this->themes[] = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Remove theme
+     *
+     * @param \MDGameBundle\Entity\Theme $theme
+     */
+    public function removeTheme(\MDGameBundle\Entity\Theme $theme)
+    {
+        $this->themes->removeElement($theme);
+    }
+
+    /**
+     * Get themes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getThemes()
+    {
+        return $this->themes;
     }
 }

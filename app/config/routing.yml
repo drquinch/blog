@@ -1,13 +1,29 @@
+md_comment:
+    resource: "@MDCommentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+md_article:
+    resource: "@MDArticleBundle/Resources/config/routing.yml"
+    prefix:   /
+
+md_tags:
+    resource: "@MDTagsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+md_category:
+    resource: "@MDCategoryBundle/Resources/config/routing.yml"
+    prefix:   /
+
+md_media:
+    resource: "@MDMediaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 md_game:
     resource: "@MDGameBundle/Resources/config/routing.yml"
     prefix:   /
 
 md_paging:
     resource: "@MDPagingBundle/Resources/config/routing.yml"
-    prefix:   /
-
-md_comment:
-    resource: "@MDCommentBundle/Resources/config/routing.yml"
     prefix:   /
 
 md_core:

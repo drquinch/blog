@@ -20,11 +20,11 @@ class LicenceType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('website', TextType::class)
-            ->add('publishers', EntityType::class, array('class' => 'MDGameBundle:Publisher', 'choice_label' => 'name', 'multiple' => true, 'expanded' => true))
-            ->add('developers', EntityType::class, array('class' => 'MDGameBundle:Developer', 'choice_label' => 'name', 'multiple' => true, 'expanded' => true))
-            ->add('plateformes', EntityType::class, array('class' => 'MDGameBundle:Plateforme', 'choice_label' => 'name', 'multiple' => true, 'expanded' => true))
-            ->add('genres', EntityType::class, array('class' => 'MDGameBundle:Genre', 'choice_label' => 'name', 'multiple' => true, 'expanded' => true))
-            ->add('themes', EntityType::class, array('class' => 'MDGameBundle:Theme', 'choice_label' => 'name', 'multiple' => true, 'expanded' => true))
+            ->add('publishers', EntityType::class, array('class' => 'MDGameBundle:Publisher', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+            ->add('developers', EntityType::class, array('class' => 'MDGameBundle:Developer', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+            ->add('plateformes', EntityType::class, array('class' => 'MDGameBundle:Plateforme', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+            ->add('genres', EntityType::class, array('class' => 'MDGameBundle:Genre', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+            ->add('themes', EntityType::class, array('class' => 'MDGameBundle:Theme', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
             ->add('save', SubmitType::class);
     }
 

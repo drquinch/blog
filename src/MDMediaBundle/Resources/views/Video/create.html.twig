@@ -1,0 +1,13 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+<h1>Formulaire d'enregistrement</h1>
+
+{% if form is defined %}
+    {{ include("MDMediaBundle:Video:form.html.twig") }}
+{% endif %}
+
+{% if video is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

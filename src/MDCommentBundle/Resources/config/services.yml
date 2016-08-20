@@ -2,7 +2,3 @@ services:
 #    md_comment.example:
 #        class: MDCommentBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
-
-    md_comment.comment.batch:
-        class: MDCommentBundle\Services\BatchService
-        arguments: ["@doctrine.orm.entity_manager"]

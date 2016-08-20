@@ -4,10 +4,14 @@ imports:
     - { resource: services.yml }
     - { resource: "@MDSecurityBundle/Resources/config/services.yml" }
     - { resource: "@MDCoreBundle/Resources/config/services.yml" }
-    - { resource: "@MDCommentBundle/Resources/config/services.yml" }
     - { resource: "@MDPagingBundle/Resources/config/services.yml" }
     - { resource: "@MDUserBundle/Resources/config/services.yml" }
     - { resource: "@MDGameBundle/Resources/config/services.yml" }
+    - { resource: "@MDMediaBundle/Resources/config/services.yml" }
+    - { resource: "@MDCategoryBundle/Resources/config/services.yml" }
+    - { resource: "@MDTagsBundle/Resources/config/services.yml" }
+    - { resource: "@MDArticleBundle/Resources/config/services.yml" }
+    - { resource: "@MDCommentBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

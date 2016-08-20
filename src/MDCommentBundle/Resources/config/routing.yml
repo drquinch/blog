@@ -1,28 +1,35 @@
-md_comment_add:
-    path:    /admin/comment/add
-    defaults: { _controller: MDCommentBundle:Comment:add}
-
-md_comment_viewbatch:
-    path:    /comment/viewbatch/{batch}
-    defaults: { _controller: MDCommentBundle:Comment:viewBatch}
+md_comment_batch:
+    path:    /comment/comment/batch/{batch}/{page}
+    defaults:
+        _controller: MDCommentBundle:Comment:batch
+        batch: 10
+        page: 0
     requirements:
         batch: \d+
+        page: \d
 
 md_comment_view:
-    path:    /comment/view/{id}
-    defaults: { _controller: MDCommentBundle:Comment:view }
+    path:    /comment/comment/view/{comment_id}
+    defaults:
+        _controller: MDCommentBundle:Comment:view
     requirements:
-        id: \d+
+        comment_id: \d+
+
+md_comment_create:
+    path:    /admin/comment/comment/create
+    defaults:
+        _controller: MDCommentBundle:Comment:create
 
 md_comment_edit:
-    path:    /admin/comment/edit/{id}
-    defaults: { _controller: MDcommentBundle:Comment:edit }
+    path:    /admin/comment/comment/edit/{comment_id}
+    defaults:
+        _controller: MDCommentBundle:Comment:edit
     requirements:
-        id: \d+
+        comment_id: \d+
 
 md_comment_delete:
-    path:    /admin/comment/delete/{id}
-    defaults: { _controller: MDCommentBundle:Comment:delete }
+    path:    /admin/comment/comment/delete/{comment_id}
+    defaults:
+        _controller: MDCommentBundle:Comment:delete
     requirements:
-        id: \d+
-
+        comment_id: \d+

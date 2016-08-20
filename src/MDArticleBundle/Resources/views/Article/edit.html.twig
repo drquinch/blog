@@ -1,0 +1,11 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+{% if form is defined %}
+    {{ include("MDArticleBundle:Article:form.html.twig") }}
+{% endif %}
+
+{% if article is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

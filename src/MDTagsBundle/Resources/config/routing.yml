@@ -1,0 +1,35 @@
+md_tag_batch:
+    path:    /tags/tag/batch/{batch}/{page}
+    defaults:
+        _controller: MDTagsBundle:Tag:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
+md_tag_view:
+    path:    /tags/tag/view/{tag_id}
+    defaults:
+        _controller: MDTagsBundle:Tag:view
+    requirements:
+        tag_id: \d+
+
+md_tag_create:
+    path:    /admin/tags/tag/create
+    defaults:
+        _controller: MDTagsBundle:Tag:create
+
+md_tag_edit:
+    path:    /admin/tags/tag/edit/{tag_id}
+    defaults:
+        _controller: MDTagsBundle:Tag:edit
+    requirements:
+        tag_id: \d+
+
+md_tag_delete:
+    path:    /admin/tags/tag/delete/{tag_id}
+    defaults:
+        _controller: MDTagsBundle:Tag:delete
+    requirements:
+        tag_id: \d+

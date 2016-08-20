@@ -1,0 +1,35 @@
+md_category_batch:
+    path:    /category/category/batch/{batch}/{page}
+    defaults:
+        _controller: MDCategoryBundle:Category:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
+md_category_view:
+    path:    /category/category/view/{category_id}
+    defaults:
+        _controller: MDCategoryBundle:Category:view
+    requirements:
+        category_id: \d+
+
+md_category_create:
+    path:    /admin/category/category/create
+    defaults:
+        _controller: MDCategoryBundle:Category:create
+
+md_category_edit:
+    path:    /admin/category/category/edit/{category_id}
+    defaults:
+        _controller: MDCategoryBundle:Category:edit
+    requirements:
+        category_id: \d+
+
+md_category_delete:
+    path:    /admin/category/category/delete/{category_id}
+    defaults:
+        _controller: MDCategoryBundle:Category:delete
+    requirements:
+        category_id: \d+

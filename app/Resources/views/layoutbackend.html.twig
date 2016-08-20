@@ -33,11 +33,19 @@
 			<li class="games_admin_subtitle"><a href="">GÉRER LES ARTICLES</a></li>
 			<li class="games_articles_management">
 				<ul>
-					<li><a href="">NEWS</a></li>
-					<li><a href="">REVIEWS</a></li>
-					<li><a href="">PREVIEWS</a></li>
-					<li><a href="">DOSSIERS</a></li>
-					<li><a href="">ARTICLES</a></li>
+					<li><a href="{{ path('md_article_batch_all') }}">ARTICLE</a></li>
+				</ul>
+			</li>
+			<li class="games_admin_subtitle"><a href="">GÉRER LES CATÉGORIES</a></li>
+			<li class="games_infos_management">
+				<ul>
+					<li><a href="{{ path('md_category_batch') }}">CATEGORIES</a></li>
+				</ul>
+			</li>
+			<li class="games_admin_subtitle"><a href="">GÉRER LES TAGS</a></li>
+			<li class="games_infos_management">
+				<ul>
+					<li><a href="{{ path('md_tag_batch') }}">TAGS</a></li>
 				</ul>
 			</li>
 		</ul>

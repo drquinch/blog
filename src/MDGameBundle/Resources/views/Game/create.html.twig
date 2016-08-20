@@ -1,7 +1,13 @@
-{# Must be included in the core bundle #}
+{% extends '::layoutbackend.html.twig' %}
 
-<h1>Formulaire d'enregistrement</h1>
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('bundles/mdgame/css/form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
+{% block main %}
+<div id="content">
+<h1>Nouvelle Fiche de Jeu</h1>
 {% if form is defined %}
     {{ include("MDGameBundle:Game:form.html.twig") }}
 {% endif %}
@@ -9,3 +15,7 @@
 {% if game is defined %}
     <p>TODO</p>
 {% endif %}
+</div>
+<div class="clear"></div>
+
+{% endblock %}

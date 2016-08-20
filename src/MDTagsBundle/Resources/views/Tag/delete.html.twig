@@ -1,0 +1,19 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block title %}
+Suppression tag
+{% endblock %}
+
+{% block main %}
+    {% if form is defined %}
+        <h2>Suppression tag</h2>
+        <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
+        <form action="{{ path('md_core_tag_delete', {'id': {ctrlname,,}.id}) }}" method="post">
+            <a href="{{ path('md_core_tag_view', {'id': tag.id}) }}">Retour vers tag</a>
+            <input type="submit" value="Supprimer" />
+            {{ form(form) }}
+        </form>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

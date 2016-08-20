@@ -1,0 +1,70 @@
+md_image_batch:
+    path:    /media/image/batch/{batch}/{page}
+    defaults:
+        _controller: MDMediaBundle:Image:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
+md_image_view:
+    path:    /media/image/view/{image_id}
+    defaults:
+        _controller: MDMediaBundle:Image:view
+    requirements:
+        image_id: \d+
+
+md_image_create:
+    path:    /admin/media/image/create
+    defaults:
+        _controller: MDMediaBundle:Image:create
+
+md_image_edit:
+    path:    /admin/media/image/edit/{image_id}
+    defaults:
+        _controller: MDMediaBundle:Image:edit
+    requirements:
+        image_id: \d+
+
+md_image_delete:
+    path:    /admin/media/image/delete/{image_id}
+    defaults:
+        _controller: MDMediaBundle:Image:delete
+    requirements:
+        image_id: \d+
+md_video_batch:
+    path:    /media/video/batch/{batch}/{page}
+    defaults:
+        _controller: MDMediaBundle:Video:batch
+        batch: 10
+        page: 0
+    requirements:
+        batch: \d+
+        page: \d
+
+md_video_view:
+    path:    /media/video/view/{video_id}
+    defaults:
+        _controller: MDMediaBundle:Video:view
+    requirements:
+        video_id: \d+
+
+md_video_create:
+    path:    /admin/media/video/create
+    defaults:
+        _controller: MDMediaBundle:Video:create
+
+md_video_edit:
+    path:    /admin/media/video/edit/{video_id}
+    defaults:
+        _controller: MDMediaBundle:Video:edit
+    requirements:
+        video_id: \d+
+
+md_video_delete:
+    path:    /admin/media/video/delete/{video_id}
+    defaults:
+        _controller: MDMediaBundle:Video:delete
+    requirements:
+        video_id: \d+

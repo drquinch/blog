@@ -1,0 +1,11 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block main %}
+{% if form is defined %}
+    {{ include("MDTagsBundle:Tag:form.html.twig") }}
+{% endif %}
+
+{% if tag is defined %}
+    <p>TODO</p>
+{% endif %}
+{% endblock %}

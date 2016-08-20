@@ -19,11 +19,11 @@ class GameController extends Controller
 	return $this->render('MDGameBundle:Game:batch.html.twig', array('games' => $games));
     }
 
-    /**
-     * @ParamConverter("game", options={"mapping": {"game_id": "id"}})
-     */
-    public function viewAction(Game $game)
+    public function viewAction($game_id)
     {
+
+	$game = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Game')->findGameWithSubobject($game_id);
+
         if ($game === null)
         {
             throw new NotFoundHttpException('ID "'.$id.'" inexistant!');
