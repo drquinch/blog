@@ -1,16 +1,16 @@
-md_article_batch:
-    path:    /article/article/batch/{category}/{batch}/{page}
+md_article_batch_by_category:
+    path:    /article/article/batch/{batch}/{page}/{category}
     defaults:
-        _controller: MDArticleBundle:Article:batch
+        _controller: MDArticleBundle:Article:batchByCategory
         batch: 10
         page: 0
     requirements:
         batch: \d+
         page: \d
-        category: \d+
+        category: news|test
 
 md_article_batch_all:
-    path:    /article/article/batch//{batch}/{page}
+    path:    /article/article/batch/{batch}/{page}
     defaults:
         _controller: MDArticleBundle:Article:batch
         batch: 10

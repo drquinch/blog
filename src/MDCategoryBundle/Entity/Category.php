@@ -29,9 +29,14 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="MDCategoryBundle\Entity\Category")
+     * @ORM\OneToMany(targetEntity="MDCategoryBundle\Entity\Category", mappedBy="parent", cascade={"persist"})
      */
-    private $category;
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDCategoryBundle\Entity\Category", inversedBy="children")
+     */
+    private $parent;
 
     /**
      * Get id
@@ -68,26 +73,68 @@ class Category
     }
 
     /**
-     * Set category
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add child
      *
-     * @param \MDCategoryBundle\Entity\Category $category
+     * @param \MDCategoryBundle\Entity\Category $child
      *
      * @return Category
      */
-    public function setCategory(\MDCategoryBundle\Entity\Category $category = null)
+    public function addChild(\MDCategoryBundle\Entity\Category $child)
     {
-        $this->category = $category;
+        $this->children[] = $child;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Remove child
+     *
+     * @param \MDCategoryBundle\Entity\Category $child
+     */
+    public function removeChild(\MDCategoryBundle\Entity\Category $child)
+    {
+        $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \MDCategoryBundle\Entity\Category $parent
+     *
+     * @return Category
+     */
+    public function setParent(\MDCategoryBundle\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
      *
      * @return \MDCategoryBundle\Entity\Category
      */
-    public function getCategory()
+    public function getParent()
     {
-        return $this->category;
+        return $this->parent;
     }
 }

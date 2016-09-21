@@ -1,0 +1,21 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('bundles/mdgame/css/form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<div id="content">
+<h1>Nouveau thème</h1>
+{% if form is defined %}
+    {{ include("MDGameBundle:Theme:form.html.twig") }}
+{% endif %}
+
+{% if theme is defined %}
+    <p>TODO</p>
+{% endif %}
+</div>
+<div class="clear"></div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+
+{% extends '::layoutbackend.html.twig' %}
+
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('bundles/mdgame/css/form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<div id="content">
+<h1>Nouveau Genre</h1>
+{% if form is defined %}
+    {{ include("MDGameBundle:Genre:form.html.twig") }}
+{% endif %}
+
+{% if genre is defined %}
+    <p>TODO</p>
+{% endif %}
+</div>
+<div class="clear"></div>
+
+{% endblock %}

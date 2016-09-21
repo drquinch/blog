@@ -7,9 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller
 {
-	public function homeAction()
+	public function homeAction($batch, $page, $batchHighlight)
 	{
-		return $this->render('MDCoreBundle:Home:home.html.twig');
+		$repo = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article');
+		$articles = $repo->findPublishedLimitedAll($batch, $page);
+		$highlightedArticles = $repo->findHighlightedLimitedAll($batchHighlight);
+
+		return $this->render('MDCoreBundle:Home:home.html.twig', array('articles' => $articles, 'highlightedArticles' => $highlightedArticles));
 	}
 	
 }

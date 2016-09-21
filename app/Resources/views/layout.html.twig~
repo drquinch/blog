@@ -1,0 +1,56 @@
+{ % extends "::basiclayout.html.twig" %}
+
+{% block body %}
+<div id="head">
+	<div class="clear"></div>
+	<p id="logo_big"><img src="{{ asset('img/LogoSite210x64.png') }}" alt=""></p>
+	<ul id="head_left_menu_list">
+		<li><a href="{{ path('md_core_home') }}">HOME</a></li>
+		<li><a href="">À PROPOS</a></li>
+		<li><a href="{{ path('md_core_contact') }}">CONTACT</a></li>
+	</ul>
+	<form id="search_form">
+		<input type="text">
+		<input type="submit" value="">
+	</form>
+	<ul id="head_social_menu_list">
+		<li><a href="https://www.facebook.com/Striptease-Ludique-1176226515766704" id="fb_logo"></a></li>
+		<li><a href="https://twitter.com/st_ludique" id="twitter_logo"></a></li>
+		<li><a href="" id="rss_logo"></a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<div id="fixed_design">
+	<div id="subhead">
+		<ul id="subhead_left_list">
+			<li><a href="">JEUX-VIDÉOS</a></li><!--
+			--><li><a href="">LIVRES</a></li>
+		</ul>
+		<ul id="subhead_right_list">
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<li><a href="{{ path('md_core_admin_home') }}">{{ app.user.username }}</a></li>
+			{% else %}
+				<li><a href="{{ path('md_core_admin_home') }}">connexion</a></li>
+			{% endif %}
+		</ul>
+		<div class="clear"></div>
+	</div>
+{% block fixed_design %}{% endblock %}
+</div>
+
+<div id="bottom">
+	<div id="left_bottom">
+		<p>
+			<img id="logo_square" src="" alt="">
+			<ul>
+				<li><a href="{{ path('md_core_home') }}" id="link_website_bottom">Striptease-Ludique.com</a></li>
+				<li><a href="">Plan du site</a></li>
+				<li><a href="{{ path('md_core_contact') }}">Contact</a></li>
+				<li><a href="">Webmaster site</a></li>
+			</ul>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends '::layoutbackend.html.twig' %}
+
+{% block stylesheet %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block main %}
+
+{% endblock %}

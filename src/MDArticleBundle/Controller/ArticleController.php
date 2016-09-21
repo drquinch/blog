@@ -12,10 +12,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class ArticleController extends Controller
 {
 
-    public function batchAction($category, $batch, $page)
+    public function batchAction($batch, $page)
     {
-	$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAll($category, $batch, $page);
+	$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAll($batch, $page);
 	return $this->render('MDArticleBundle:Article:batch.html.twig', array('articles' => $articles));
+    }
+
+    public function batchByCategoryAction($batch, $page, $category)
+    {
+
+	$articles = $this->getDoctrine()
+		->getManager()
+		->getRepository('MDArticleBundle:Article')
+		->findLimitedByCategory($batch, $page, $category);
+	
+	return $this->render('MDArticleBundle:Article:batchByCategory.html.twig', array('articles' => $articles));
+
     }
 
     /**
@@ -46,7 +58,8 @@ class ArticleController extends Controller
         {
             $form->handleRequest($request);
             if ($form->isValid())
-            {
+	    {
+		$article->setAuthor($this->getUser());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
                 $em->flush();

@@ -63,12 +63,12 @@ class Game
     private $smallimage;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
      */
     private $images;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Video")
+     * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Video", cascade={"persist"})
      */
     private $videos;
 

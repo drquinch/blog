@@ -29,9 +29,14 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="MDCategoryBundle\Entity\Category")
+     * @ORM\OneToMany(targetEntity="MDCategory\Entity\Category", mappedBy="parent", cascade={"persist"})
      */
-    private $category;
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MDCategory\Entity\Category", inversedBy="children")
+     */
+    private $parent;
 
     /**
      * Get id
@@ -65,5 +70,71 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add child
+     *
+     * @param \MDCategory\Entity\Category $child
+     *
+     * @return Category
+     */
+    public function addChild(\MDCategory\Entity\Category $child)
+    {
+        $this->children[] = $child;
+
+        return $this;
+    }
+
+    /**
+     * Remove child
+     *
+     * @param \MDCategory\Entity\Category $child
+     */
+    public function removeChild(\MDCategory\Entity\Category $child)
+    {
+        $this->children->removeElement($child);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \MDCategory\Entity\Category $parent
+     *
+     * @return Category
+     */
+    public function setParent(\MDCategory\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \MDCategory\Entity\Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

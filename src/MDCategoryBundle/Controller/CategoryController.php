@@ -47,7 +47,7 @@ class CategoryController extends Controller
             if ($form->isValid())
             {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($category);
+		$em->persist($category);
                 $em->flush();
 
                 return $this->render('MDCategoryBundle:Category:create.html.twig', array('category' => $category));

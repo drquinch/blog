@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="MDMediaBundle\Repository\ImageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
@@ -21,14 +22,7 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
+    
     /**
      * @var string
      *
@@ -39,11 +33,13 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, unique=true)
+     * @ORM\Column(name="url", type="string", length=255, unique=false)
      */
     private $url;
 
     private $file;
+
+    private $tempFilename;
 
     /**
      * Get id
@@ -53,30 +49,6 @@ class Image
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Image
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -132,11 +104,49 @@ class Image
 	return $this->file;
     }
 
-    public function setFile(UploadedFile $file = null)
+    public function setFile(UploadedFile $file)
     {
 	$this->file = $file;
+
+	if (null !== $this->url)
+	{
+	    $this->tempFilename = $this->url;
+	    $this->url = null;
+	    $this->alt = null;
+	}
     }
 
+    public function getTempFilename()
+    {
+	return $this->tempFilename;
+    }
+
+    public function setTempFilename($tempFilename)
+    {
+	$this->tempFilename = $tempFilename;
+	return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+	if (null === $this->file)
+	{
+	    return;
+	}
+
+	$this->url = $this->file->guessExtension();
+	$this->alt = $this->file->getClientOriginalName();
+
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
     public function upload()
     {
 	if (null === $this->file)
@@ -144,11 +154,20 @@ class Image
 	    return;
 	}
 
-	$name = ((new \DateTime())->format('YmdHis')).".".$this->file->guessExtension();
-	$this->file->move($this->getUploadRootDir(), $name);
-	$this->name = $name;
-	$this->url = $this->getUploadDir()."/".$name;
-	$this->alt = $name;
+	if (null !== $this->tempFilename)
+	{
+	    $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+	    if (file_exists($oldFile))
+	    {
+		unlink($oldFile);
+	    }
+	}
+	
+	$this->file->move(
+		$this->getUploadRootDir(),
+		$this->id.'.'.$this->url
+	);
+
     }
 
     public function getUploadDir()
@@ -159,6 +178,25 @@ class Image
     protected function getUploadRootDir()
     {
 	return __DIR__.'/../../../'.$this->getUploadDir();
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+	$this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+	if (file_exists($this->tempFilename))
+	{
+	    unlink($this->tempFilename);
+	}
     }
 
 }

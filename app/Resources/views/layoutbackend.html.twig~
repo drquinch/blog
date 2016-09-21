@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheet %}
+<link href="{{ asset('css/admin_left_menu.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block fixed_design %}
+
+<div id="subhead">
+	<ul id="subhead_right_list">
+		<li><a href="{{ path('md_core_admin_home') }}">{{ app.user.username }}</a></li>
+	</ul>
+	<div class="clear"></div>
+</div>
+
+<div id="main">
+	<div id="left_menu">
+		<h3>JEUX-VIDEO</h3>
+		<ul id="games_admin_menu">
+			<li class="games_admin_subtitle"><a href="">GÉRER LES FICHES DE JEU</a></li>
+			<li class="games_infos_management">
+				<ul>
+					<li><a href="{{ path('md_game_batch') }}">JEUX</a></li>
+					<li><a href="{{ path('md_genre_batch') }}">GENRES</a></li>
+					<li><a href="{{ path('md_licence_batch') }}">LICENCES</a></li>
+					<li><a href="{{ path('md_publisher_batch') }}">ÉDITEURS</a></li>
+					<li><a href="{{ path('md_developer_batch') }}">DÉVELOPPEURS</a></li>
+					<li><a href="{{ path('md_plateforme_batch') }}">PLATEFORMES</a></li>
+					<li><a href="{{ path('md_market_batch') }}">DISTRIBUTIONS</a></li>
+					<li><a href="{{ path('md_theme_batch') }}">THEMES</a></li>
+				</ul>
+			</li>
+			<li class="games_admin_subtitle"><a href="">GÉRER LES ARTICLES</a></li>
+			<li class="games_articles_management">
+				<ul>
+					<li><a href="{{ path('md_article_batch_all') }}">ARTICLE</a></li>
+				</ul>
+			</li>
+			<li class="games_admin_subtitle"><a href="">GÉRER LES CATÉGORIES</a></li>
+			<li class="games_infos_management">
+				<ul>
+					<li><a href="{{ path('md_category_batch') }}">CATEGORIES</a></li>
+				</ul>
+			</li>
+			<li class="games_admin_subtitle"><a href="">GÉRER LES TAGS</a></li>
+			<li class="games_infos_management">
+				<ul>
+					<li><a href="{{ path('md_tag_batch') }}">TAGS</a></li>
+				</ul>
+			</li>
+		</ul>
+		<h3>UTILISATEURS</h3>
+		<ul id="users_admin_menu">
+			<li></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+
+	{% block main %}{% endblock %}
+
+	<div class="clear"></div>
+</div>
+
+{% endblock %}

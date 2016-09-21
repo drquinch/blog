@@ -1,0 +1,24 @@
+{% extends "::basiclayout.html.twig" %}
+
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('bundles/mduser/css/login_form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">Login</label><br>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" /><br>
+
+    <label for="password">Mot de passe</label><br>
+    <input type="password" id="password" name="_password" required="required" /><br>
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">se souvenir de moi</label><br>
+
+    <input type="submit" id="_submit" name="_submit" value="valider" />
+</form>
+{% endblock %}

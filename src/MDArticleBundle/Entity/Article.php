@@ -31,7 +31,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="subtitle", type="string", length=255)
+     * @ORM\Column(name="subtitle", type="string", length=255, nullable=true)
      */
     private $subtitle;
 
@@ -114,6 +114,12 @@ class Article
      */
     private $category;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="highlight", type="boolean")
+     */
+    private $highlight;
 
     /**
      * Get id
@@ -278,6 +284,9 @@ class Article
         $this->publishers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->developers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+	$this->dateCreation = new \DateTime();
+	$this->datePublication = new \DateTime();
+	$this->dateLastUpdate = new \DateTime();
     }
 
     /**
@@ -602,5 +611,29 @@ class Article
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * Set highlight
+     *
+     * @param boolean $highlight
+     *
+     * @return Article
+     */
+    public function setHighlight($highlight)
+    {
+        $this->highlight = $highlight;
+
+        return $this;
+    }
+
+    /**
+     * Get highlight
+     *
+     * @return boolean
+     */
+    public function getHighlight()
+    {
+        return $this->highlight;
     }
 }

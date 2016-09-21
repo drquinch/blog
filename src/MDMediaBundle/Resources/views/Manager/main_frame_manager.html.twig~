@@ -1,0 +1,45 @@
+<div id="management_frame" style="margin: auto; border: 2px solid rgb(200,200,200); width: 900px;">
+	
+	<div id="top_management_frame" style="display: flex;">
+		<div class="top_link_management_frame" style="width: 300px; text-align: center; color: rgb(40,40,40);">
+			<a href="" id="select_image" style="text-decoration: none; font-weight: bold;">Select image</a>
+		</div>
+		<div class="top_link_management_frame" style="width: 300px; text-align: center; color: rgb(40,40,40);">
+			<a href="" id="upload_image" style="text-decoration: none; font-weight: bold;">Upload image</a>
+		</div>
+		<div class="top_link_management_frame" style="width: 300px; text-align: center;">
+			<a href="" id="enter_url" style="text-decoration: none; font-weight: bold; color: rgb(40,40,40);">Enter url manually</a>
+		</div>
+	</div>
+	<div id="body_management_frame">
+		<div id="explorer_management_frame" style="display: flex;">
+			{% for dir in directories %}
+			<figure>
+				<a href=""><img src="{{ asset('bundles/mdmedia/img/directoryIcon.png') }}" alt="directory icon" class="figure_image" style="width: 50px;"></a>
+				<figcaption>{{ dir }}</figcaption>
+			</figure>
+			{% endfor %}
+			{% for file in files %}
+			<figure>
+				<a href=""><img src="{{ asset('bundles/mdmedia/img/fileIcon.png') }}" alt="file icon" class="figure_image" style="width: 50px;"></a>
+				<figcaption>{{ file }}</figcaption>
+			</figure>
+			{% endfor %}
+		</div>
+		<div id="edit_form_image_management_frame">
+			
+		</div>
+	</div>
+	<div id="bottom_management_frame" style="display: flex;">
+		<div id="actual_directory">
+			<p id="current_dir">root</p>
+		</div>
+		<div id="bottom_buttons">
+			<ul style="display: flex; list-style-type: none;">
+				<li><a href="" id="new_directory_button">new directory</a></li>
+				<li><a href="" id="select">select</a></li>
+			</ul>	
+		</div>
+	</div>
+	
+</div>

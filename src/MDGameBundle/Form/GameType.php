@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use MDMediaBundle\Form\ImageNestedType;
 
 class GameType extends AbstractType
 {
@@ -23,10 +24,10 @@ class GameType extends AbstractType
             ->add('name', TextType::class)
             ->add('releasedate', DateType::class)
             ->add('website', TextType::class)
-	    ->add('steamlink', TextType::class)
-	    ->add('humblebundlelink', TextType::class)
-	    ->add('coverimage', FileType::class)
-	    ->add('smallimage', FileType::class)
+	    ->add('steamlink', TextType::class, array('required' => false))
+	    ->add('humblebundlelink', TextType::class, array('required' => false))
+	    ->add('coverimage', ImageNestedType::class)
+	    ->add('smallimage', ImageNestedType::class)
             ->add('publishers', EntityType::class, array('class' => 'MDGameBundle:Publisher', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
             ->add('developers', EntityType::class, array('class' => 'MDGameBundle:Developer', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
             ->add('licence', EntityType::class, array('class' => 'MDGameBundle:Licence', 'choice_label' => 'name', 'multiple' => false, 'expanded' => false))

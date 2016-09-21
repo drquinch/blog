@@ -1,3 +1,39 @@
+md_management_first_frame:
+    path:    /admin/media/manager
+    defaults:
+            _controller: MDMediaBundle:Manager:mainFrame
+
+md_management_find_directory_children:
+    path:    /admin/media/find_directory/{directory}
+    defaults:
+            _controller: MDMediaBundle:Manager:findDirectoryChildren
+            directory: root
+
+md_management_form_upload:
+    path:    /admin/media/form_upload
+    defaults:
+            _controller: MDMediaBundle:Manager:formUpload
+
+md_management_form_manually:
+    path:    /admin/media/form_manually
+    defaults:
+            _controller: MDMediaBundle:Manager:formManually
+
+md_management_create_directory:
+    path:    /admin/media/create_directory/{currentDir}/{directory}
+    defaults:
+            _controller: MDMediaBundle:Manager:createDirectory
+
+md_management_edit_directory:
+    path:    /admin/media/edit_directory/{oldDir}/{newDir}
+    defaults:
+            _controller: MDMediaBundle:Manager:editDirectory
+
+md_management_delete_directory:
+    path:    /admin/media/delete_directory/{directory}
+    defaults:
+            _controller: MDMediaBundle:Manager:deleteDirectory
+
 md_image_batch:
     path:    /media/image/batch/{batch}/{page}
     defaults:

@@ -45,3 +45,11 @@ width: 1024px;
 background-color: rgb(225,225,225);
 margin: auto;
 }
+
+.after_form_link
+{
+font-weight: bold;
+padding: 5px;
+margin: 5px;
+border: 2px solid rgb(20,20,20);
+}

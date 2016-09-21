@@ -2,24 +2,11 @@
 
 {% block stylesheet %}
 {{ parent () }}
-<link href="{{ asset('bundles/mdgame/css/main_body_game_card.css') }}" type="text/css" rel="stylesheet"> 
+<link href="{{ asset('bundles/mdgame/css/main_body_game_card.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
 {% block fixed_design %}
 
-	<div id="subhead">
-		<ul id="subhead_left_list">
-			<li><a href="">FICHE DU JEU</a></li><!--
-			--><li><a href="">NEWS</a></li><!--
-			--><li><a href="">DOSSIER</a></li><!--
-			--><li><a href="">ANALYSE</a></li><!--
-			--><li><a href="">ACHETER</a></li>
-		</ul>
-		<ul id="subhead_right_list">
-			<li><a href="">connexion</a></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
 	<div id="main">
 		<div id="right_menu">
 			
@@ -56,7 +43,7 @@
 			</p>
 		</div>
 		<div id="content">
-			<p><img src="" alt="" id="ontop_img"></p>
+			<p><img src="{{ asset( '../' ~ game.coverimage.uploadDir ~ '/' ~ game.coverimage.id ~ '.' ~ game.coverimage.url) }}" alt="{{ game.coverimage.alt }}" id="ontop_img"></p>
 			<h1>{{ game.name|upper }}</h1>
 			<div id="game_infos_block">
 				<div id="game_cover"><img src="" alt=""></div>
@@ -85,19 +72,19 @@
 
 					<li><span class="game_infos_labels">Plateformes :</span> 
 					{% for plateforme in game.plateformes %}
-						<a href="{{ path('md_plateforme_view', {'plateforme_id': plateforme.id}) }}">plateforme.name</a>
+						<a href="{{ path('md_plateforme_view', {'plateforme_id': plateforme.id}) }}">{{ plateforme.name }}</a>
 					{% endfor %}
 					</li>
 
 					<li><span class="game_infos_labels">Distribution PC :</span> 
 					{# {% for market in game.markets %}
-						<a href="{{ path('md_market_id', {'market_id': market.id}) }}">market.name</a>
+						<a href="{{ path('md_market_id', {'market_id': market.id}) }}">{{ market.name }}</a>
 					{% endfor %} #}
 					</li>
 
 					<li><span class="game_infos_labels">Thèmes :</span> 
 					{% for theme in game.themes %}
-						<a href="{{ path('md_theme_view', {'theme_id': theme.id}) }}">theme.name</a>
+						<a href="{{ path('md_theme_view', {'theme_id': theme.id}) }}">{{ theme.name }}</a>
 					{% endfor %}
 					</li>
 

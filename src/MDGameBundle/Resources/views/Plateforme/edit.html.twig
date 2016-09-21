@@ -1,9 +1,15 @@
-{# Must be included in the core bundle #}
+{% extends "::layoutbackend.html.twig" %}
 
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
+
+{% block fixed_design %}
 {% if form is defined %}
     {{ include("MDGameBundle:Plateforme:form.html.twig") }}
 {% endif %}
 
 {% if plateforme is defined %}
-    <p>TODO</p>
+    {{ include("MDGameBundle:Plateforme:linksSendedForm.html.twig") }}
 {% endif %}
+{% endblock %}

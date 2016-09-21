@@ -46,7 +46,7 @@ class ImageController extends Controller
             $form->handleRequest($request);
             if ($form->isValid())
             {
-		$image->upload();
+	//	$image->upload();
 		
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($image);

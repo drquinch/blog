@@ -25,7 +25,8 @@ class AppKernel extends Kernel
             new MDCategoryBundle\MDCategoryBundle(),
             new MDTagsBundle\MDTagsBundle(),
             new MDArticleBundle\MDArticleBundle(),
-            new MDCommentBundle\MDCommentBundle(),
+	    new MDCommentBundle\MDCommentBundle(),
+	    new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

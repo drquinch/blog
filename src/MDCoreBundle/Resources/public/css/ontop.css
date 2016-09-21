@@ -1,0 +1,42 @@
+#ontop_articles_list
+{
+margin: auto;
+margin-top: 20px;
+padding-bottom: 60px;
+border-bottom: 2px solid rgb(40,40,40);
+}
+
+#ontop_articles_list li
+{
+display: inline-block;
+margin-left: 15px;
+}
+
+#ontop_articles_list li a
+{
+color: rgb(240,240,240);
+}
+
+#ontop_articles_list li span
+{
+background-color: rgb(10,10,10);
+width: 306px;
+display: block;
+padding: 5px;
+border-left: 4px solid rgb(0,125,255);
+position: absolute;
+top: 319px;
+}
+
+#ontop_articles_list img
+{
+width: 320px;
+height: 200px;
+background-color: rgb(120,120,120);
+}
+
+.ontop_article_link_text
+{
+font-weight: bold;
+overflow: hidden;
+}
