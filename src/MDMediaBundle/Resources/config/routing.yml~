@@ -20,7 +20,7 @@ md_management_form_manually:
             _controller: MDMediaBundle:Manager:formManually
 
 md_management_create_directory:
-    path:    /admin/media/create_directory/{directory}
+    path:    /admin/media/create_directory/{currentDir}/{directory}
     defaults:
             _controller: MDMediaBundle:Manager:createDirectory
 

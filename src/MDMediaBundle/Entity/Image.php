@@ -37,6 +37,21 @@ class Image
      */
     private $url;
 
+    /**
+     * @ORM\Column(name="name", type="string", length=255, unique=false)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(name="ext", type="string", length=255, unique=false)
+     */
+    private $ext;
+
+    /**
+     * @ORM\Column(name="figcaption", type="string", length=255, unique=false, nullable=true)
+     */
+    private $figcaption;
+
     private $file;
 
     private $tempFilename;
@@ -78,13 +93,13 @@ class Image
     /**
      * Set url
      *
-     * @param string $url
+     * @param string $ext
      *
      * @return Image
      */
-    public function setUrl($url)
+    public function setExt($ext)
     {
-        $this->url = $url;
+        $this->ext = $ext;
 
         return $this;
     }
@@ -94,9 +109,9 @@ class Image
      *
      * @return string
      */
-    public function getUrl()
+    public function getExt()
     {
-        return $this->url;
+        return $this->ext;
     }
 
     public function getFile()
@@ -107,11 +122,15 @@ class Image
     public function setFile(UploadedFile $file)
     {
 	$this->file = $file;
-
-	if (null !== $this->url)
+	
+	// on verifie si on avait déjà un fichier pour cette entité
+	if (null !== $this->ext)
 	{
-	    $this->tempFilename = $this->url;
-	    $this->url = null;
+	    // On sauvegarde l'extension du fichier pour le supprimer plus tard
+	    $this->tempFilename = $this->ext;
+
+	    // on réinitilise les valeurs des attributs
+	    $this->ext = null;
 	    $this->alt = null;
 	}
     }
@@ -138,8 +157,11 @@ class Image
 	    return;
 	}
 
-	$this->url = $this->file->guessExtension();
+	//TODO verifier si le nom du fichier existe deja, si oui, on rajoute un _x ou x = un nombre
+	$this->name = basename($this->file->getClientOriginalName(), '.'.pathinfo($this->file->getClientOriginalName())['extension']);
+	$this->ext = $this->file->guessExtension();
 	$this->alt = $this->file->getClientOriginalName();
+	$this->url = $this->getUploadDir().'/'.$this->name.'.'.$this->ext;
 
     }
 
@@ -156,7 +178,7 @@ class Image
 
 	if (null !== $this->tempFilename)
 	{
-	    $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+	    $oldFile = $this->getUploadRootDir().'/'.$this->name.'.'.$this->tempFilename;
 	    if (file_exists($oldFile))
 	    {
 		unlink($oldFile);
@@ -165,7 +187,7 @@ class Image
 	
 	$this->file->move(
 		$this->getUploadRootDir(),
-		$this->id.'.'.$this->url
+		$this->name.'.'.$this->ext
 	);
 
     }
@@ -185,7 +207,7 @@ class Image
      */
     public function preRemoveUpload()
     {
-	$this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+	$this->tempFilename = $this->getUploadRootDir().'/'.$this->name.'.'.$this->ext;
     }
 
     /**
@@ -199,5 +221,76 @@ class Image
 	}
     }
 
-}
 
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Image
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Image
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set figcaption
+     *
+     * @param string $figcaption
+     *
+     * @return Image
+     */
+    public function setFigcaption($figcaption)
+    {
+        $this->figcaption = $figcaption;
+
+        return $this;
+    }
+
+    /**
+     * Get figcaption
+     *
+     * @return string
+     */
+    public function getFigcaption()
+    {
+        return $this->figcaption;
+    }
+}

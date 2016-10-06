@@ -8,8 +8,8 @@ Suppression image
     {% if form is defined %}
         <h2>Suppression image</h2>
         <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
-        <form action="{{ path('md_core_image_delete', {'id': {ctrlname,,}.id}) }}" method="post">
-            <a href="{{ path('md_core_image_view', {'id': image.id}) }}">Retour vers image</a>
+        <form action="{{ path('md_image_delete', {'image_id': image.id}) }}" method="post">
+            <a href="{{ path('md_image_view', {'image_id': image.id}) }}">Retour vers image</a>
             <input type="submit" value="Supprimer" />
             {{ form(form) }}
         </form>

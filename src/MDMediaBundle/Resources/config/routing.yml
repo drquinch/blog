@@ -30,7 +30,7 @@ md_management_edit_directory:
             _controller: MDMediaBundle:Manager:editDirectory
 
 md_management_delete_directory:
-    path:    /admin/media/delete_directory/{directory}
+    path:    /admin/media/delete_directory/{currentDir}/{directory}
     defaults:
             _controller: MDMediaBundle:Manager:deleteDirectory
 
