@@ -74,6 +74,8 @@ class ManagerController extends Controller
 		}
 	}
 
+	// param $oldDir contient tout le path avec également le dir ou file à renommer
+	// parma $newDir ne contient uniquement que le nouveaux nom du dir ou file sans le path
 	public function editDirectoryAction($oldDir, $newDir)
 	{
 		// 2 comportements possible
@@ -82,36 +84,58 @@ class ManagerController extends Controller
 		// Soit on traite un file (oldDir)
 		// donc on doit renvoyer le form edit
 		// puis après confirmation éditer dans la bdd
-		// TODO revoir les path donnee pour la methode selectDirectoryChildren
-		// TODO extraire le nom du old dir et du new dir
 		$request = $this->get('request_stack')->getMasterRequest();
+		// on extrait ici le nom du dir ou file de oldDir (ce qu'il faudra remplacer par newDir)
+		$oldDir = preg_replace("~_~", "/", $oldDir);
+		$oldDirExploded = explode("/", $oldDir);
+		$toRename = $oldDirExploded[count($oldDirExploded)-1];
+		// on construit le chemin sans le oldDir dedans (servira pour le newDir)
+		$pathWithoutToRename = "";
+		// on evite egalement de prendre le dernier exploded car il correspond à toRename, ce quon ne veut pas avoir dans cette string
+		for ($i = 0; $i < count($oldDirExploded)-1; $i++)
+		{
+			$pathWithoutToRename .= "/".$oldDirExploded[$i];
+		}
+
+		// on verifie si on n'essaye pas de modifier . ou ..
+		if($this->checkNewName($oldDirExploded[count($oldDirExploded)-1]) !== 1)
+		{
+			return "";
+		}
 
 		if (filetype(__DIR__."/../../../".$oldDir) === "dir")
 		{
+			//onverifie d'abord si le newDir ne contient pas de char interdit
+			if($this->checkNewName($newDir) !== 1)
+			{
+				return "";
+			}
 			$form = $this->get('form.factory')->create();
 			if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
 				// on change ici le oldDir par le newDir + render file_tree
-
-				$children = $this->selectDirectoryChildren("/../../../".$newDir);
+				rename(__DIR__."/../../../".$oldDir, __DIR__."/../../..".$pathWithoutToRename."/".$newDir);
+				$children = $this->selectDirectoryChildren("/../../..".$pathWithoutToRename);
 				return $this->render("MDMediaBundle:Manager:file_tree.html.twig", array('directories' => $children[0], 'files' => $children[1]));
-			} else {
-				return $this->render("MDMediaBundle:Manager:edit_dir_form.html.twig", array('form' => $form->createView()));
 			}
+			return $this->render("MDMediaBundle:Manager:edit_dir_form.html.twig", array('form' => $form->createView()));
 		} else {
-			// TODO extraire le nom de limage dans oldDir pour la changer plus tard
-
 			$file = new Image();
-			$form = $this->get('form.factory')->create(ImageType:class, $file);
+			$form = $this->get('form.factory')->create(ImageType::class, $file);
 			if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
 			{
+				$data = $form->getData();
+				// on verifie d'abord si le nouveaux nom ne contient pas de char interdit
+				if($this->checkNewName($data["name"]) !== 1)
+				{
+					return "";
+				}
 				$em = $this->getDoctrine()->getManager();
 				$em->flush();
-				$children = $this->selectDirectoryChildren("/../../../".$oldDir);
+				rename(__DIR__."/../../../".$oldDir, __DIR__."/../../..".$pathWithoutToRename."/".$data["name"]);
+				$children = $this->selectDirectoryChildren("/../../..".$pathWithoutToRename);
 				return $this->render("MDMediaBundle:Manager:file_tree.html.twig", array('directories' => $children[0], 'files' => $children[1]));
-			} else {
-				$children = $this->selectDirectoryChildren("/../../../".$oldDir);
-				return $this->render("MDMediaBundle:Manager:edit_form.html.twig", array('form' => $form->createView()));
 			}
+			return $this->render("MDMediaBundle:Manager:edit_form.html.twig", array('form' => $form->createView()));
 		}
 	}
 
@@ -154,7 +178,13 @@ class ManagerController extends Controller
 		}
 	}	
 
-	
+	// retourne 1 si tout est ok
+	// false ou 0 si il contient un char interdit
+	private function checkNewName($toCheck)
+	{
+		return preg_match("/[a-zA-Z0-9\-]+$/", $toCheck);
+	}
+
 	private function selectDirectoryChildren($directory)
 	{
 		$scan = scandir(__DIR__.$directory);
@@ -165,7 +195,7 @@ class ManagerController extends Controller
 		
 		for($i = 0; $i < $max; $i++)
 		{
-			if(filetype(__DIR__.$directory.$scan[$i]) === "file")
+			if(filetype(__DIR__.$directory."/".$scan[$i]) === "file")
 			{
 				$files[] = $scan[$i];
 			} else

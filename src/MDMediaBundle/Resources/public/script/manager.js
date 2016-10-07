@@ -7,6 +7,8 @@ var selectedFileElt;
 var currentDir = "web/img/uploads/";
 var submitElt = null;
 var basicUrl = "http://localhost/blog/web/app_dev.php/";
+var newDir = "";
+var oldDir = "";
 
 // boucle pour gérer les liens vers d'autres fonctionnalité (donc rien à voir avec la liste de files)
 for(var i = 0; i < links.length; i++)
@@ -35,18 +37,42 @@ for(var i = 0; i < fileLinks.length; i++)
 // on supprime alors la liste des dir et files et on affiche la resultat recu
 document.getElementById("new_directory_button").addEventListener('click', function(event){
 	event.preventDefault();
-	var newDir = prompt("Enter new directory name : ", "new directory name");
+	newDir = prompt("Enter new directory name : ", "new directory name");
 
 	// pour l'url, on retravaille le currentDir pour éviter les conflits: / devient _
 	// côté serveur on fait l'inverse	
 	ajaxGet("http://localhost/blog/web/app_dev.php/admin/media/create_directory/" + currentDir.replace(/\//g, "_") + "/" + newDir, refreshMainFrame);
 });
 
+// Gestion edit dir/file button
+// appelle de editDirAction
+// reception du form et affichage
+// renvois du form avec les données
+document.getElementById("edit_directory_button").addEventListener('click', function(event){
+	event.preventDefault();
+	if(selectedFileElt.getAttribute("class") == "file") {
+		console.log(selectedFileElt.getAttribute("class"));
+
+	} else {
+		console.log(selectedFileElt.getAttribute("class"));
+		newDir = prompt("Enter the new name of dir (only char, numbers or - allowed) : ", "new-dir-name");
+		// si le nom est correcte on appelle le serveur
+		if(newDir.match(/[a-zA-Z0-9\-]+/g)){
+			oldDir = currentDir.replace(/\//g, "_")+selectedFile;
+			ajaxGet(basicUrl+"admin/media/edit_directory/"+oldDir+"/"+newDir, showEditDirForm);
+		} else {
+			alert("The new name contains a forbidden char!");
+		}
+	}
+	console.log(selectedFile);
+	console.log(selectedFileElt);
+});
+
 // Gestion delete directory button
 document.getElementById("delete_directory_button").addEventListener('click', function(event){
 	event.preventDefault();
 	// on récupère le form pour confirmation
-	ajaxGet("http://localhost/blog/web/app_dev.php/admin/media/delete_directory/" + currentDir.replace(/\//g, "_") + "/" + selectedFile, showForm);
+	ajaxGet("http://localhost/blog/web/app_dev.php/admin/media/delete_directory/" + currentDir.replace(/\//g, "_") + "/" + selectedFile, showDeleteForm);
 });
 
 // gestion hover, links de #bottom_buttons
@@ -93,16 +119,19 @@ function highlightSelectedFile(elt)
 	}
 }
 
-function showForm(reponse){
-// prendre la reponse, griser l'arrière, afficher le html reçu au milieu de la page
-// tout ça dans un div show_form
+function showEditDirForm(reponse){
 document.getElementById("form_management_frame").innerHTML = reponse;
-submitElt = document.getElementById("submit_delete");
-	// on récupère submitELt et on l'assigne au submit du form pour récuperer l'event et créer le form_data
-	var formData = null;
-	submitElt.addEventListener('click', function(event){
+showForm(basicUrl + "admin/media/edit_directory/" + oldDir + "/" + newDir, "form%5B_token%5D="+ document.getElementById("form__token").value);
+}
+
+function showDeleteForm(reponse){
+document.getElementById("form_management_frame").innerHTML = reponse;
+showForm(basicUrl + "admin/media/delete_directory/" + currentDir.replace(/\//g,"_") + "/" + selectedFile, "form%5B_token%5D=" + document.getElementById("form__token").value);
+}
+
+function showForm (url, post){
+document.getElementById("submit").addEventListener('click', function(event){
 	event.preventDefault();
-	// on réenvoit le form avec les data
-	ajaxPost(basicUrl + "admin/media/delete_directory/" + currentDir.replace(/\//g,"_") + "/" + selectedFile, "form%5B_token%5D=" + document.getElementById("form__token").value, refreshMainFrame);
-	});
+	ajaxPost(url, post, refreshMainFrame);
+});
 }
