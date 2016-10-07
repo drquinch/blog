@@ -52,7 +52,9 @@ document.getElementById("edit_directory_button").addEventListener('click', funct
 	event.preventDefault();
 	if(selectedFileElt.getAttribute("class") == "file") {
 		console.log(selectedFileElt.getAttribute("class"));
-
+		oldDir = currentDir.replace(/\//g, "_")+selectedFile;
+		newDir = "null";
+		ajaxGet(basicUrl+"admin/media/edit_directory/"+oldDir+"/"+newDir, showEditFileForm);
 	} else {
 		console.log(selectedFileElt.getAttribute("class"));
 		newDir = prompt("Enter the new name of dir (only char, numbers or - allowed) : ", "new-dir-name");
@@ -121,8 +123,19 @@ function highlightSelectedFile(elt)
 
 function showEditDirForm(reponse){
 document.getElementById("form_management_frame").innerHTML = reponse;
-console.log(document.getElementById("form_token"));
 showForm(basicUrl + "admin/media/edit_directory/" + oldDir + "/" + newDir, "form%5B_token%5D="+ document.getElementById("form__token").value);
+}
+
+function showEditFileForm(reponse){
+document.getElementById("form_management_frame").innerHTML = reponse;
+document.getElementById("submit").addEventListener('click', function(event){
+	event.preventDefault();
+var requestForm = "image_edit_nested%5Balt%5D="+document.getElementById("image_edit_nested_alt").value
+	+"&image_edit_nested%5Bname%5D="+document.getElementById("image_edit_nested_name").value
+	+"&image_edit_nested%5Bfigcaption%5D="+document.getElementById("image_edit_nested_figcaption").value
+	+"&image_edit_nested%5B_token%5D="+document.getElementById("image_edit_nested__token").value;
+showForm(basicUrl+"admin/media/edit_directory/"+oldDir+"/"+newDir, requestForm, refreshMainFrame);
+});
 }
 
 function showDeleteForm(reponse){

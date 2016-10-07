@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MDMediaBundle\Entity\Image;
 use MDMediaBundle\Form\ImageType;
+use MDMediaBundle\Form\ImageEditNestedType;
 
 class ManagerController extends Controller
 {
@@ -119,19 +120,22 @@ class ManagerController extends Controller
 			}
 			return $this->render("MDMediaBundle:Manager:edit_dir_form.html.twig", array('form' => $form->createView()));
 		} else {
-			$file = new Image();
-			$form = $this->get('form.factory')->create(ImageType::class, $file);
+			$em = $this->getDoctrine()->getManager();
+			$file = $em->getRepository("MDMediaBundle:Image")->findOneByName(basename($toRename, '.'.pathinfo($toRename)['extension']));
+			$form = $this->get('form.factory')->create(ImageEditNestedType::class, $file);
 			if($request->isMethod('POST') && $form->handleRequest($request)->isValid())
 			{
 				$data = $form->getData();
 				// on verifie d'abord si le nouveaux nom ne contient pas de char interdit
-				if($this->checkNewName($data["name"]) !== 1)
+				if($this->checkNewName($data->getName()) !== 1)
 				{
 					return "";
 				}
-				$em = $this->getDoctrine()->getManager();
 				$em->flush();
-				rename(__DIR__."/../../../".$oldDir, __DIR__."/../../..".$pathWithoutToRename."/".$data["name"]);
+				rename(__DIR__."/../../../".$oldDir, 
+					__DIR__."/../../..".$pathWithoutToRename
+					."/".$data->getName()."."
+					.$file.getExt());
 				$children = $this->selectDirectoryChildren("/../../..".$pathWithoutToRename);
 				return $this->render("MDMediaBundle:Manager:file_tree.html.twig", array('directories' => $children[0], 'files' => $children[1]));
 			}
@@ -195,7 +199,7 @@ class ManagerController extends Controller
 		
 		for($i = 0; $i < $max; $i++)
 		{
-			if(filetype(__DIR__.$directory.$scan[$i]) === "file")
+			if(filetype(__DIR__.$directory."/".$scan[$i]) === "file")
 			{
 				$files[] = $scan[$i];
 			} else

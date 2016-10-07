@@ -6,6 +6,7 @@ use MDMediaBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use MDMediaBundle\Form\ImageType;
+use MDMediaBundle\Form\ImageEditType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -67,7 +68,7 @@ class ImageController extends Controller
     public function editAction(Image $image)
     {
         $request = $this->container->get('request_stack')->getMasterRequest();
-        $form = $this->get('form.factory')->create(ImageType::class, $image);
+        $form = $this->get('form.factory')->create(ImageEditType::class, $image);
 
         if ($request->isMethod('POST'))
         {
