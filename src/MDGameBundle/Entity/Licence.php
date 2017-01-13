@@ -31,7 +31,7 @@ class Licence
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=255, unique=true)
+     * @ORM\Column(name="website", type="string", length=255, unique=false, nullable=true)
      */
     private $website;
 

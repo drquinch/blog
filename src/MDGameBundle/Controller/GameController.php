@@ -18,6 +18,16 @@ class GameController extends Controller
 
 	return $this->render('MDGameBundle:Game:batch.html.twig', array('games' => $games));
     }
+	
+	public function jsonAllAction()
+	{
+		$games = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Game')->findAll();
+		//$response = new Response(json_encode($tags));
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Game:jsonAll.json.twig', array('games' => $games));
+		$response->headers->set('Content-Type', 'application/json');
+		//return $this->render('MDTagsBundle:Tag:jsonAll.json.twig', array('tags' => $tags));
+		return $response;
+	}
 
     public function viewAction($game_id)
     {

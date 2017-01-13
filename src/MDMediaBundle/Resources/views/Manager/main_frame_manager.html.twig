@@ -15,13 +15,13 @@
 		<div id="explorer_management_frame" style="display: flex; width: 598px; height: 446px; overflow: scroll;">
 		    <ul id="list_file" style="list-style-type: none; display: flex; flex-wrap: wrap;">
 			{% for dir in directories %}
-			<li><figure>
+			<li><figure class="directory">
 				<a href=""><img src="{{ asset('bundles/mdmedia/img/directoryIcon.png') }}" alt="directory icon" class="figure_image" style="width: 80px;"></a>
 				<figcaption class="dir" style="text-align: center; background-color: white; overflow: hidden;">{{ dir }}</figcaption>
 			</figure></li>
 			{% endfor %}
 			{% for file in files %}
-			<li><figure>
+			<li><figure class="file">
 				<a href=""><img src="{{ asset('bundles/mdmedia/img/fileIcon.png') }}" alt="file icon" class="figure_image" style="width: 50px;"></a>
 				<figcaption class="file" style="text-align: center; background-color: white; overflow: hidden;">{{ file }}</figcaption>
 			</figure></li>
@@ -38,9 +38,10 @@
 		</div>
 		<div id="bottom_buttons" style="padding: 5px; display: inline; float: right;">
 			<ul style="display: flex; list-style-type: none; margin: 3px;">
+				<li><a href="" id="upload_image_button" style"text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">upload image</a></li>
 				<li><a href="" id="new_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">new directory</a></li>
-				<li><a href="" id="edit_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">edit directory</a></li>
-				<li><a href="" id="delete_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">delete directory</a></li>
+				<li><a href="" id="edit_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">edit</a></li>
+				<li><a href="" id="delete_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">delete</a></li>
 				<li><a href="" id="select" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">select current file</a></li>
 			</ul>
 			<div class="clear" style="clear: both;"></div>

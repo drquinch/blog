@@ -18,6 +18,16 @@ class PublisherController extends Controller
 
 	return $this->render('MDGameBundle:Publisher:batch.html.twig', array('publishers' => $publishers));
     }
+	
+	public function jsonAllAction()
+	{
+		$publishers = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Publisher')->findAll();
+		//$response = new Response(json_encode($tags));
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Publisher:jsonAll.json.twig', array('publishers' => $publishers));
+		$response->headers->set('Content-Type', 'application/json');
+		//return $this->render('MDTagsBundle:Tag:jsonAll.json.twig', array('tags' => $tags));
+		return $response;
+	}
 
     /**
      * @ParamConverter("publisher", options={"mapping": {"publisher_id": "id"}})

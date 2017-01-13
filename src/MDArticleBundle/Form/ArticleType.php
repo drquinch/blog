@@ -12,9 +12,16 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use MDMediaBundle\Form\ImageNestedType;
+use MDTagsBundle\Form\TagsSelectorType;
+use MDGameBundle\Form\GameSelectorType;
+use MDGameBundle\Form\LicenceSelectorType;
+use MDGameBundle\Form\DeveloperSelectorType;
+use MDGameBundle\Form\PublisherSelectorType;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleType extends AbstractType
 {
+	
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -22,18 +29,21 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-	    ->add('category', EntityType::class, array('class' => 'MDCategoryBundle:Category', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+	    ->add('category', EntityType::class, array('class' => 'MDCategoryBundle:Category', 'choice_label' => 'name', 'multiple' => false, 'expanded' => false))
             ->add('title', TextType::class)
             ->add('subtitle', TextType::class, array('required' => false))
             ->add('content', CKEditorType::class)
             ->add('published', CheckboxType::class, array('required' => false))
-	    ->add('note', IntegerType::class)
-	    ->add('games', EntityType::class, array('class' => 'MDGameBundle:Game', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
-	    ->add('licences', EntityType::class, array('class' => 'MDGameBundle:Licence', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
-	    ->add('publishers', EntityType::class, array('class' => 'MDGameBundle:Publisher', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
-	    ->add('developers', EntityType::class, array('class' => 'MDGameBundle:Developer', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
+	    //->add('games', EntityType::class, array('class' => 'MDGameBundle:Game', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
+	    //->add('licences', EntityType::class, array('class' => 'MDGameBundle:Licence', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
+	    //->add('publishers', EntityType::class, array('class' => 'MDGameBundle:Publisher', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
+	    //->add('developers', EntityType::class, array('class' => 'MDGameBundle:Developer', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))->add('games', EntityType::class, array('class' => 'MDGameBundle:Game', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false, 'required' => false))
+		->add('games', GameSelectorType::class)
+	    ->add('licences', LicenceSelectorType::class)
+	    ->add('publishers', PublisherSelectorType::class)
+	    ->add('developers', DeveloperSelectorType::class)
 	    ->add('coverimage', ImageNestedType::class )
-	    ->add('tags', EntityType::class, array('class' => 'MDTagsBundle:Tag', 'choice_label' => 'name', 'multiple' => true, 'expanded' => false))
+		->add('tags', TagsSelectorType::class)
 	    ->add('save', SubmitType::class)
         ;
     }

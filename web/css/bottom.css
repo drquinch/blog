@@ -39,3 +39,20 @@ font-size: 20px;
 display: block;
 margin-bottom: 70px;
 }
+
+@media all and (min-width: 720px)
+{
+	#bottom
+	{
+		width: 100%;
+	}
+}
+
+@media all and (max-width: 720px)
+{
+	
+	#bottom
+	{
+		width: 720px;
+	}
+}

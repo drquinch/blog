@@ -1,0 +1,10 @@
+{
+	"elements":[
+		{% for developer in developers %}
+			{% if loop.last %}
+				{"element": "{{ developer.name }}"}
+			{% else %}
+				{"element": "{{ developer.name }}"},
+			{% endif %}
+		{% endfor %}]
+}

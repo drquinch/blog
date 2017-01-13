@@ -1,0 +1,12 @@
+			{% for dir in directories %}
+			<li><figure>
+				<a href=""><img src="{{ asset('bundles/mdmedia/img/directoryIcon.png') }}" alt="directory icon" class="figure_image" style="width: 80px;"></a>
+				<figcaption style="text-align: center; background-color: white; overflow: hidden;">{{ dir }}</figcaption>
+			</figure></li>
+			{% endfor %}
+			{% for file in files %}
+			<li><figure>
+				<a href=""><img src="{{ asset('bundles/mdmedia/img/fileIcon.png') }}" alt="file icon" class="figure_image" style="width: 50px;"></a>
+				<figcaption style="text-align: center; background-color: white; overflow: hidden;">{{ file }}</figcaption>
+			</figure></li>
+			{% endfor %}

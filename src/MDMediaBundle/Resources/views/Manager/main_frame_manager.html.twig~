@@ -1,4 +1,4 @@
-<div id="management_frame" style="margin: auto; width: 900px; font-family: 'Open Sans', Arial;">
+<body><div id="management_frame" style="margin: auto; width: 900px; font-family: 'Open Sans', Arial;">
 	
 	<div id="top_management_frame" style="display: flex;">
 		<div class="top_link_management_frame" style="width: 300px; text-align: center; color: rgb(40,40,40); background-color: rgb(250,250,250); padding-top: 10px; padding-bottom: 10px; border-top: 1px solid rgb(219,228,239); border-left: 1px solid rgb(219,228,239); border-right: 1px solid rgb(219,228,239);">
@@ -11,19 +11,19 @@
 			<a href="" id="enter_url" style="text-decoration: none; font-weight: bold; color: rgb(40,40,40);">Enter url manually</a>
 		</div>
 	</div>
-	<div id="body_management_frame" style="display: flex;border-left: 1px solid rgb(219,228,239); border-right: 1px solid rgb(219,228,239); background-color: rgb(250,250,250); width: 898px;">
+	<div id="body_management_frame" style="display: flex;border-left: 1px solid rgb(219,228,239); border-right: 1px solid rgb(219,228,239); background-color: rgb(250,250,250); width: 898px; height: 446px;">
 		<div id="explorer_management_frame" style="display: flex; width: 598px; height: 446px; overflow: scroll;">
 		    <ul id="list_file" style="list-style-type: none; display: flex; flex-wrap: wrap;">
 			{% for dir in directories %}
 			<li><figure>
 				<a href=""><img src="{{ asset('bundles/mdmedia/img/directoryIcon.png') }}" alt="directory icon" class="figure_image" style="width: 80px;"></a>
-				<figcaption style="text-align: center; background-color: white; overflow: hidden;">{{ dir }}</figcaption>
+				<figcaption class="dir" style="text-align: center; background-color: white; overflow: hidden;">{{ dir }}</figcaption>
 			</figure></li>
 			{% endfor %}
 			{% for file in files %}
 			<li><figure>
 				<a href=""><img src="{{ asset('bundles/mdmedia/img/fileIcon.png') }}" alt="file icon" class="figure_image" style="width: 50px;"></a>
-				<figcaption style="text-align: center; background-color: white; overflow: hidden;">{{ file }}</figcaption>
+				<figcaption class="file" style="text-align: center; background-color: white; overflow: hidden;">{{ file }}</figcaption>
 			</figure></li>
 			{% endfor %}
 		    </ul>
@@ -38,9 +38,10 @@
 		</div>
 		<div id="bottom_buttons" style="padding: 5px; display: inline; float: right;">
 			<ul style="display: flex; list-style-type: none; margin: 3px;">
+				<li><a href="" id="upload_image_button" style"text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">upload image</a></li>
 				<li><a href="" id="new_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">new directory</a></li>
-				<li><a href="" id="edit_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">edit directory</a></li>
-				<li><a href="" id="delete_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">delete directory</a></li>
+				<li><a href="" id="edit_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">edit</a></li>
+				<li><a href="" id="delete_directory_button" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">delete</a></li>
 				<li><a href="" id="select" style="text-decoration: none; color: rgb(240,240,240); background-color: rgb(0,130,252); font-weight: bold; border: 1px solid rgb(20,99,176); border-radius: 3px; padding: 8px; margin: 3px;">select current file</a></li>
 			</ul>
 			<div class="clear" style="clear: both;"></div>
@@ -49,3 +50,4 @@
 </div>
 <script src="{{ asset('bundles/mdmedia/script/ajax.js') }}"></script>
 <script src="{{ asset('bundles/mdmedia/script/manager.js') }}"></script>
+</body>

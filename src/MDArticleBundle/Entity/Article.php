@@ -43,11 +43,6 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(name="note", type="integer")
-     */
-    private $note;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime")
@@ -80,22 +75,22 @@ class Article
     private $author;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Game")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Game", cascade={"persist"})
      */
     private $games;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence", cascade={"persist"})
      */
     private $licences;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher", cascade={"persist"})
      */
     private $publishers;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer", cascade={"persist"})
      */
     private $developers;
 
@@ -105,7 +100,7 @@ class Article
     private $coverimage;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDTagsBundle\Entity\Tag")
+     * @ORM\ManyToMany(targetEntity="MDTagsBundle\Entity\Tag", cascade={"persist"})
      */
     private $tags;
 
@@ -117,7 +112,7 @@ class Article
     /**
      * @var bool
      *
-     * @ORM\Column(name="highlight", type="boolean")
+     * @ORM\Column(name="highlight", type="boolean", nullable=true)
      */
     private $highlight;
 
@@ -587,30 +582,6 @@ class Article
     public function getCategory()
     {
         return $this->category;
-    }
-
-    /**
-     * Set note
-     *
-     * @param integer $note
-     *
-     * @return Article
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return integer
-     */
-    public function getNote()
-    {
-        return $this->note;
     }
 
     /**

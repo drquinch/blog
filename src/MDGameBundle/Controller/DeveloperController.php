@@ -17,6 +17,16 @@ class DeveloperController extends Controller
 	$developers = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Developer')->findLimitedAll($batch, $page);
 	return $this->render('MDGameBundle:Developer:batch.html.twig', array('developers' => $developers));
     }
+	
+	public function jsonAllAction()
+	{
+		$developers = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Developer')->findAll();
+		//$response = new Response(json_encode($tags));
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Developer:jsonAll.json.twig', array('developers' => $developers));
+		$response->headers->set('Content-Type', 'application/json');
+		//return $this->render('MDTagsBundle:Tag:jsonAll.json.twig', array('tags' => $tags));
+		return $response;
+	}
 
     /**
      * @ParamConverter("developer", options={"mapping": {"developer_id": "id"}})

@@ -1,58 +1,45 @@
-<div class="save_form">
+<div id="article_form">
     {{ form_start(form) }}
 
-    {{ form_label(form.category, "Catégorie") }}<br>
-    {{ form_errors(form.category) }}
-    {{ form_widget(form.category) }}<br>
-
-    {{ form_label(form.coverimage, "Image de couverture") }}<br>
     {{ form_errors(form.coverimage) }}
     {{ form_widget(form.coverimage) }}<br>
 
-    {{ form_label(form.title, "Titre") }}<br>
     {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}<br>
+    {{ form_widget(form.title, {'attr': {'id': 'input_title', 'value': 'Titre *'}}) }}<br>
 
-    {{ form_label(form.subtitle, "Sous-Titre") }}<br>
     {{ form_errors(form.subtitle) }}
-    {{ form_widget(form.subtitle) }}<br>
+    {{ form_widget(form.subtitle, {'attr': {'id': 'input_subtitle', 'value': 'Sous-Titre'}}) }}<br>
 
-    {{ form_label(form.title, "Titre") }}<br>
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}<br>
+    {{ form_errors(form.category) }}
+    {{ form_widget(form.category) }}<br>
 
-    {{ form_label(form.content, "Texte") }}<br>
     {{ form_errors(form.content) }}
     {{ form_widget(form.content) }}<br>
-
-    {{ form_label(form.note, "Note") }}<br>
-    {{ form_errors(form.note) }}
-    {{ form_widget(form.note) }}<br>
 
     {{ form_label(form.published, "Publié") }}<br>
     {{ form_errors(form.published) }}
     {{ form_widget(form.published) }}<br>
 
-    {{ form_label(form.games, "Jeux liés") }}<br>
-    {{ form_errors(form.games) }}
-    {{ form_widget(form.games) }}<br>
+    <span class="center">
+    {{ form_label(form.games, "Jeux") }}<br>{{ form_errors(form.games) }}
+    {{ form_widget(form.games, {'attr': {'id': 'input_game'}}) }}<a href="" class="addnew_button button">+ new game</a></span><br>
 
-    {{ form_label(form.licences, "Licences liés") }}<br>
-    {{ form_errors(form.licences) }}
-    {{ form_widget(form.licences) }}<br>
+    <span class="center">
+    {{ form_label(form.licences, "Licence") }}<br>{{ form_errors(form.licences) }}
+    {{ form_widget(form.licences, {'attr': {'id': 'input_licence'}}) }}<a href="" class="addnew_button button">+ new licence</a></span><br>
 
-    {{ form_label(form.publishers, "Éditeurs liés") }}<br>
-    {{ form_errors(form.publishers) }}
-    {{ form_widget(form.publishers) }}<br>
+    <span class="center">
+    {{ form_label(form.publishers, "Éditeur") }}<br>{{ form_errors(form.publishers) }}
+    {{ form_widget(form.publishers, {'attr': {'id': 'input_publisher'}}) }}<a href="" class="addnew_button button">+ new publisher</a></span><br>
 
-    {{ form_label(form.developers, "Developpeurs liés") }}<br>
-    {{ form_errors(form.developers) }}
-    {{ form_widget(form.developers) }}<br>
+    <span class="center">
+    {{ form_label(form.developers, "Developpeur") }}<br>{{ form_errors(form.developers) }}
+    {{ form_widget(form.developers, {'attr': {'id': 'input_developer'}}) }}<a href="" class="addnew_button button">+ new developer</a></span><br>
 
-    {{ form_label(form.tags, "Tags liés") }}<br>
-    {{ form_errors(form.tags) }}
-    {{ form_widget(form.tags) }}<br>
+    <span class="center">
+    {{ form_label(form.tags, "Tags") }}<br>{{ form_errors(form.tags) }}
+    {{ form_widget(form.tags, {'attr': {'id': 'input_tags'}}) }}</span><br>
 
-    {{ form_rest(form) }}
-    {{ form_end(form) }}
+    <span class="center">{{ form_rest(form) }}
+    {{ form_end(form) }}</span>
 </div>

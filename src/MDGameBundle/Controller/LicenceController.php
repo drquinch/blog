@@ -18,6 +18,14 @@ class LicenceController extends Controller
 
 	return $this->render('MDGameBundle:Licence:batch.html.twig', array('licences' => $licences));
     }
+	
+	public function jsonAllAction()
+	{
+		$licences = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Licence')->findAll();
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Licence:jsonAll.json.twig', array('licences' => $licences));
+		$response->headers->set('Content-Type', 'application/json');
+		return $response;
+	}
 
     /**
      * @ParamConverter("licence", options={"mapping": {"licence_id": "id"}})

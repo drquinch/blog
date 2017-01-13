@@ -3,11 +3,10 @@
 {% block body %}
 <div id="head">
 	<div class="clear"></div>
-	<p id="logo_big"><img src="{{ asset('img/LogoSite210x64.png') }}" alt=""></p>
+	<p id="logo_big"><a href="{{ path('md_core_home') }}"></a></p>
 	<ul id="head_left_menu_list">
-		<li><a href="{{ path('md_core_home') }}">HOME</a></li>
-		<li><a href="">À PROPOS</a></li>
-		<li><a href="{{ path('md_core_contact') }}">CONTACT</a></li>
+		<li><a href="">À PROPOS</a></li><!--
+		--><li><a href="{{ path('md_core_contact') }}">CONTACT</a></li>
 	</ul>
 	<form id="search_form">
 		<input type="text">
@@ -24,7 +23,8 @@
 <div id="fixed_design">
 	<div id="subhead">
 		<ul id="subhead_left_list">
-			<li><a href="">JEUX-VIDÉOS</a></li><!--
+			<li><a href="">ALL</a></li><!--
+			--><li><a href="">JEUX-VIDÉOS</a></li><!--
 			--><li><a href="">LIVRES</a></li>
 		</ul>
 		<ul id="subhead_right_list">

@@ -1,0 +1,10 @@
+{
+	"elements":[
+		{% for game in games %}
+			{% if loop.last %}
+				{"element": "{{ game.name }}"}
+			{% else %}
+				{"element": "{{ game.name }}"},
+			{% endif %}
+		{% endfor %}]
+}

@@ -2,3 +2,4 @@ services:
 #    md_article.example:
 #        class: MDArticleBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+

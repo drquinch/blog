@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use MDTagsBundle\Form\TagType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Response;
 
 class TagController extends Controller
 {
@@ -31,6 +32,16 @@ class TagController extends Controller
         return $this->render('MDTagsBundle:Tag:view.html.twig', array('tag' => $tag));
 
     }
+	
+	public function jsonAllAction()
+	{
+		$tags = $this->getDoctrine()->getManager()->getRepository('MDTagsBundle:Tag')->findAll();
+		//$response = new Response(json_encode($tags));
+		$response = $this->get('templating')->renderResponse('MDTagsBundle:Tag:jsonAll.json.twig', array('tags' => $tags));
+		$response->headers->set('Content-Type', 'application/json');
+		//return $this->render('MDTagsBundle:Tag:jsonAll.json.twig', array('tags' => $tags));
+		return $response;
+	}
 
     /**
      * @Security("has_role('ROLE_WRITTER')")

@@ -43,11 +43,6 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(name="note", type="integer")
-     */
-    private $note;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime")
@@ -117,7 +112,7 @@ class Article
     /**
      * @var bool
      *
-     * @ORM\Column(name="highlight", type="boolean")
+     * @ORM\Column(name="highlight", type="boolean", nullable=true)
      */
     private $highlight;
 
@@ -611,5 +606,29 @@ class Article
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * Set highlight
+     *
+     * @param boolean $highlight
+     *
+     * @return Article
+     */
+    public function setHighlight($highlight)
+    {
+        $this->highlight = $highlight;
+
+        return $this;
+    }
+
+    /**
+     * Get highlight
+     *
+     * @return boolean
+     */
+    public function getHighlight()
+    {
+        return $this->highlight;
     }
 }

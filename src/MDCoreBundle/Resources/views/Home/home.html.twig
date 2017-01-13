@@ -4,60 +4,26 @@
 
 {% block stylesheet %}{{ parent() }}
 <link href="{{ asset('bundles/mdcore/css/main_body_home.css') }}" type="text/css" rel="stylesheet">
-<link href="{{ asset('bundles/mdcore/css/ontop.css') }}" type="text/css" rel="stylesheet">{% endblock %}
+{% endblock %}
 
 {% block fixed_design %}
-
-	<div id="ontop_articles">
-		<ul id="ontop_articles_list">
-			{% for highlight in highlightedArticles %}
-				<li><a href="{{ path('md_article_view', {'article_id': highlight.id}) }}" class="ontop_articles_img"><img src="{{ asset('img/uploads/' ~ highlight.coverimage.id ~ '.' ~ highlight.coverimage.url) }}" alt="{{ highlight.coverimage.alt }}"><!--
-			--><span class="ontop_article_link_text">[{{ highlight.category.name }}] {{ highlight.title }}</span></a></li>
-			{% endfor %}
-		</ul>
-		<div class="clear"></div>
-	</div>
 	<div id="main">
-		<div id="left_menu">
-			<p id="pub_left_menu">
-			<img src="" alt="">
-			</p>
-			<div id="most_popular_block">
-				<h3>Les Plus Populaires</h3>
-				<p class="most_popular"><img src="" alt="" class="img_most_popular"><span class="text_most_popular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-				<p class="most_popular"><img src="" alt="" class="img_most_popular"><span class="text_most_popular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-				<p class="most_popular"><img src="" alt="" class="img_most_popular"><span class="text_most_popular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
-			</div>
-		</div>
 		<div id="content">
-			<ul id="content_top_links">
-				<li><a href="" class="content_top_link_selected top_link_element">Pêle-Mêle |</a></li>
-				<li><a href="" class="top_link_element">News |</a></li>
-				<li><a href="" class="top_link_element">Tests |</a></li>
-			</ul>
-			<div id="resume_articles">
 				{% for article in articles %}
-				<div class="resume_article">
-					<p class="img_article">
-					<img src="{{ asset('img/uploads/' ~ article.coverimage.id ~ '.' ~ article.coverimage.url) }}" alt="{{ article.coverimage.alt }}">
-					</p>
-					<div class="right_info_article">
-						<h2>[{{ article.category.name|upper }}] {{ article.title }}</h2>
-						<h3>{{ article.subtitle }}</h3>
-						<ul class="info_articles">
-							<li class="first_line_article"><span class="date_article">{{ article.dateCreation|date('d-m-Y H:i:s') }}</span> par <span class="author_article"><a href="">{{ article.author.username }}</a></span> 
-							| <span class="tags_title_articles">tags</span> : 
-							{% for tag in article.tags %}	
-								<span class="tags_article"><a href="">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
-							{% endfor %}
-							</li>
-							<li class="first_paragraphe_article"><span class="first_paragraph">{{ article.content }}</span></li>
-						</ul>
+				<p class="article">
+					<div class="link">
+						<a href="">
+							<span class="article_bgn">
+							<span class="article_title">
+							{#[{{ article.category.parent.name }}][{{ article.category.name }}]#}{{ article.title }}
+							{% if article.subtitle %} : {{ article.subtitle }}{% endif %}
+							</span>
+							</span>
+							<img src="{{ "/blog/" ~ article.coverimage.url }}" alt="{{ article.coverimage.alt }}" />
+						</a>
 					</div>
-				</div>
-
+				</p>
 				{% endfor %}
-			</div>
 		</div>
 	</div>
 	<div class="clear"></div>

@@ -1,1 +1,21 @@
 services:
+ md_game.form.type.game:
+        class: MDGameBundle\Form\GameSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+ md_game.form.type.licence:
+        class: MDGameBundle\Form\LicenceSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+ md_game.form.type.developer:
+        class: MDGameBundle\Form\DeveloperSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+ md_game.form.type.publisher:
+        class: MDGameBundle\Form\PublisherSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }

@@ -1,0 +1,10 @@
+{
+	"elements":[
+		{% for tag in tags %}
+			{% if loop.last %}
+				{"element": "{{ tag.name }}"}
+			{% else %}
+				{"element": "{{ tag.name }}"},
+			{% endif %}
+		{% endfor %}]
+}

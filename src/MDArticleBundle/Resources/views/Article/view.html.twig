@@ -1,10 +1,30 @@
 {% extends '::layout.html.twig' %}
 
 {% block stylesheet %}
-{{ parent() }}
-
+{{ parent() }}<link href="{{ asset('bundles/mdarticle/css/main_body_article.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
-{% block main %}
-
+{% block fixed_design %}
+	<div id="article">
+		<p id="coverimage"><img src="{{ "/blog/" ~ article.coverimage.url }}" alt="{{ article.coverimage.alt }}" />
+			{% for game in article.games %}
+			<span id="bgn_showgamecard">
+			<span id="text_showgamecard">
+			<a href="{{ path('md_game_view', {'game_id': game.id}) }}">voir la fiche du jeu</a>
+			</span>
+			</span>
+			{% endfor %}
+		</p>
+		<div id="content">
+			<h1 id="article_title">{{ article.title }}</h1>
+			<h2 id="article_subtitle">{{ article.subtitle }}</h2>
+			<p id="article_info">écrit par <span class="bold">{{ article.author.username }}</span>, le <span class="bold">article.date_publication</span> | vu <span class="bold">30293 fois</span></p>
+			<div id="article_core">
+				{{ article.content }}
+			</div>
+			{% for game in article.games %}
+			<p id="bottom_showgamecard"><a href="{{ path('md_game_view', {'game_id': game.id}) }}">voir la fiche de jeu</a></p>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

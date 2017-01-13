@@ -8,6 +8,11 @@ md_tag_batch:
         batch: \d+
         page: \d
 
+md_tag_json_all:
+    path:    /tags/tag/json_all
+    defaults:
+        _controller: MDTagsBundle:Tag:jsonAll
+
 md_tag_view:
     path:    /tags/tag/view/{tag_id}
     defaults:

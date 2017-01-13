@@ -19,9 +19,26 @@ class ManagerController extends Controller
 		return $this->render('MDMediaBundle:Manager:main_frame_manager.html.twig', array('directories' => $children['0'], 'files' => $children['1']));
 	}
 
-	public function findDirectoryChildren($directory)
+	// On commence par remplacer les _ du directory par des /
+	// selectDirChildren
+	// render response
+	public function findDirectoryChildrenAction($directory)
 	{
+		$dir = str_replace("_", "/", $directory);
+		$errors = array();
 
+		if (preg_match("/^(web\/img\/uploads\/){1}([a-zA-Z0-9_-]+[\/]{1})*$/", $dir))
+		{
+			if (file_exists(__DIR__."/../../../".$dir))
+			{
+				$children = $this->selectDirectoryChildren("/../../../".$dir);
+				return $this->render("MDMediaBundle:Manager:file_tree.html.twig", array('directories' => $children['0'], 'files' => $children['1']));
+			}
+			$errors[] = "Le dossier ".$dir." n'existe pas !";
+		}
+
+		$errors[] = "Le dossier ".$dir." n'existe pas!";
+		return $this->render("MDMediaBundle:Manager:file_tree_error.html.twig", array("errors" => $errors));
 	}
 
 	public function formUpload()
@@ -56,7 +73,7 @@ class ManagerController extends Controller
 					if(mkdir(__DIR__."/../../../".$curdir."/".$directory, 0777, true))
 					{
 						$children = $this->selectDirectoryChildren("/../../../".$curdir);
-						return $this->render('MDMediaBundle:Manager:main_frame_manager.html.twig', array('directories' => $children[0], 'files' => $children[1]));
+						return $this->render('MDMediaBundle:Manager:file_tree.html.twig', array('directories' => $children[0], 'files' => $children[1]));
 					} else
 					{
 						$errors[] = "failed to create directory!";
@@ -71,7 +88,7 @@ class ManagerController extends Controller
 		{
 			return $this->render('MDMediaBundle:Manager:file_tree_error.html.twig', array('errors' => $errors));
 		} else {
-			return $this->render('MDMediaBundle:Manager:confirm_form.html.twig', array('form' => $form->createView(), 'currentDir' => $currentDir, 'directory' => $directory));
+			return $this->render('MDMediaBundle:Manager:confirm_create_form.html.twig', array('form' => $form->createView(), 'currentDir' => $currentDir, 'directory' => $directory));
 		}
 	}
 
@@ -101,7 +118,7 @@ class ManagerController extends Controller
 		// on verifie si on n'essaye pas de modifier . ou ..
 		if($this->checkNewName($oldDirExploded[count($oldDirExploded)-1]) !== 1)
 		{
-			return "";
+			return "c";
 		}
 
 		if (filetype(__DIR__."/../../../".$oldDir) === "dir")
@@ -109,7 +126,7 @@ class ManagerController extends Controller
 			//onverifie d'abord si le newDir ne contient pas de char interdit
 			if($this->checkNewName($newDir) !== 1)
 			{
-				return "";
+				return "b";
 			}
 			$form = $this->get('form.factory')->create();
 			if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
@@ -127,15 +144,16 @@ class ManagerController extends Controller
 			{
 				$data = $form->getData();
 				// on verifie d'abord si le nouveaux nom ne contient pas de char interdit
+				// TODO renvoyer une error, faire view pour gestion erreur et lafficher cote client
 				if($this->checkNewName($data->getName()) !== 1)
 				{
-					return "";
+					return $this->render("MDMediaBundle:Manager:edit_error.html.twig", array("error" => "Le nom du fichier ne peut contenir que des nombres, des lettres, des underscores et/ou des tirets!"));
 				}
 				$em->flush();
 				rename(__DIR__."/../../../".$oldDir, 
 					__DIR__."/../../..".$pathWithoutToRename
 					."/".$data->getName()."."
-					.$file.getExt());
+					.$file->getExt());
 				$children = $this->selectDirectoryChildren("/../../..".$pathWithoutToRename);
 				return $this->render("MDMediaBundle:Manager:file_tree.html.twig", array('directories' => $children[0], 'files' => $children[1]));
 			}

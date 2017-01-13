@@ -1,0 +1,10 @@
+{
+	"elements":[
+		{% for licence in licences %}
+			{% if loop.last %}
+				{"element": "{{ licence.name }}"}
+			{% else %}
+				{"element": "{{ licence.name }}"},
+			{% endif %}
+		{% endfor %}]
+}

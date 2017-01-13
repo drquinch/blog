@@ -1,0 +1,10 @@
+{
+	"elements":[
+		{% for publisher in publishers %}
+			{% if loop.last %}
+				{"element": "{{ publisher.name }}"}
+			{% else %}
+				{"element": "{{ publisher.name }}"},
+			{% endif %}
+		{% endfor %}]
+}

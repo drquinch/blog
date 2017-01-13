@@ -41,15 +41,30 @@ clear: both;
 
 #fixed_design
 {
-width: 1024px;
 background-color: rgb(225,225,225);
 margin: auto;
 }
 
-.after_form_link
+@media all and (min-width: 1024px)
 {
-font-weight: bold;
-padding: 5px;
-margin: 5px;
-border: 2px solid rgb(20,20,20);
+	#fixed_design
+	{
+		width: 1024px;
+	}
+}
+
+@media all and (max-width: 1024px)
+{
+	#fixed_design
+	{
+		width: 100%;
+	}
+}
+
+@media all and (max-width: 720px)
+{
+	#fixed_design
+	{
+		width: 720px;
+	}
 }

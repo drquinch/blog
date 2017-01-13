@@ -289,3 +289,23 @@ md_game_delete:
         _controller: MDGameBundle:Game:delete
     requirements:
         game_id: \d+
+
+md_game_json_all:
+    path:    /game/game/json_all
+    defaults:
+        _controller: MDGameBundle:Game:jsonAll
+        
+md_licence_json_all:
+    path:    /game/licence/json_all
+    defaults:
+        _controller: MDGameBundle:Licence:jsonAll
+        
+md_developer_json_all:
+    path:    /game/developer/json_all
+    defaults:
+        _controller: MDGameBundle:Developer:jsonAll
+        
+md_publisher_json_all:
+    path:    /game/publisher/json_all
+    defaults:
+        _controller: MDGameBundle:Publisher:jsonAll
