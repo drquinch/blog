@@ -21,7 +21,7 @@ function ajaxGet(url, callback) {
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
 function ajaxGetSync(url, callback) {
     var req = new XMLHttpRequest();
-    req.open("GET", url);
+    req.open("GET", url, false);
     req.onreadystatechange = function () {
         if (req.status >= 200 && req.status < 400) {
             // Appelle la fonction callback en lui passant la réponse de la requête

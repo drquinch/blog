@@ -80,17 +80,17 @@ class Article
     private $games;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence")
      */
     private $licences;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher")
      */
     private $publishers;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer")
      */
     private $developers;
 
