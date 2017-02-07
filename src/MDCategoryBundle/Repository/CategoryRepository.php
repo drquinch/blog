@@ -22,4 +22,11 @@ class CategoryRepository extends EntityRepository
                      ->getQuery()
                      ->getSingleScalarResult();
     }
+	
+	public function getCategoryQueryBuilder()
+	{
+		return $this->createQueryBuilder('c')
+					->where('c.parent IS NOT NULL');
+	}
+	
 }

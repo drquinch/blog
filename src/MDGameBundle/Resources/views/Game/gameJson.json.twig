@@ -1,0 +1,63 @@
+{
+	"games":[
+		{% for game in games %}
+				
+					{"id": {{ game.id }},
+					"name": "{{ game.name }}",
+					"releasedate": "{{ game.releasedate|date('d-m-Y H:i:s') }}",
+					"website": "{{ game.website }}",
+					"steamlink": "{{ game.steamlink }}",
+					"humblebundlelink": "{{ game.humblebundlelink }}",
+					"coverimage": {% if game.coverimage is not null %}
+										{{ game.coverimage.id }},
+									{% else %}
+										"null",
+									{% endif %}
+					"smallimage": {% if game.smallimage is not null %}
+										{{ game.smallimage.id }},
+									{% else %}
+										"null",
+									{% endif %}
+					"developers": [
+						{% for dev in game.developers %}
+									{"id": {{ dev.id }},
+									"name": "{{ dev.name }}",
+									"website": "{{ dev.website }}"}
+								{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"publishers": [
+						{% for publ in game.publishers %}
+									{"id": {{ publ.id }},
+									"name": "{{ publ.name }}",
+									"website": "{{ publ.website }}"
+								}{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"licence": {% if game.licence is not null %}
+									[{
+										"id": {{ game.licence.id }},
+										"name": "{{ game.licence.name }}",
+										"website": "{{ game.licence.website }}"}],
+								{% else %}
+									"null",
+								{% endif %}
+					"genres": [
+						{% for gen in game.genres %}
+								{"id": {{ gen.id }},
+									"name": "{{ gen.name }}"
+								}{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"themes": [
+						{% for the in game.themes %}
+									{"id": {{ the.id }},
+									"name": "{{ the.name }}"}
+								{% if not loop.last %},{% endif %}
+						{% endfor %}
+					]
+					}
+				{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}

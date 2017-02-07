@@ -55,8 +55,13 @@ class StringToLicenceTransformer implements DataTransformerInterface
 		$licence = strtok($string, ', ');
 		while($licence !== false)
 		{
-			$tempLicence = new Licence();
-			$tempLicence->setName($licence);
+			$tempLicence = $this->manager->getRepository('MDGameBundle:Licence')
+							->findOneByName($licence);
+			if(!$tempLicence)
+			{
+				$tempLicence = new Licence();
+				$tempLicence->setName($licence);
+			}
 			if(!$licences->contains($tempLicence))
 			{
 				$licences[] = $tempLicence;

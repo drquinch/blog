@@ -295,10 +295,20 @@ md_game_json_all:
     defaults:
         _controller: MDGameBundle:Game:jsonAll
         
+md_game_json_batch:
+    path:    /game/game/json/batch/{names}/{delimiter}
+    defaults:
+        _controller: MDGameBundle:Game:jsonBatch
+        
 md_licence_json_all:
     path:    /game/licence/json_all
     defaults:
         _controller: MDGameBundle:Licence:jsonAll
+     
+md_licence_json_batch:
+    path:    /game/licence/json/batch/{names}/{delimiter}
+    defaults:
+        _controller: MDGameBundle:Licence:jsonBatch
         
 md_developer_json_all:
     path:    /game/developer/json_all

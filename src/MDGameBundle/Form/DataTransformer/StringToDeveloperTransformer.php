@@ -55,8 +55,13 @@ class StringToDeveloperTransformer implements DataTransformerInterface
 		$developer = strtok($string, ', ');
 		while($developer !== false)
 		{
-			$tempDeveloper = new Developer();
-			$tempDeveloper->setName($developer);
+			$tempDeveloper = $this->manager->getRepository('MDGameBundle:Developer')
+							->findOneByName($developer);
+			if(!$tempDeveloper)
+			{
+				$tempDeveloper = new Developer();
+				$tempDeveloper->setName($developer);
+			}
 			if(!$developers->contains($tempDeveloper))
 			{
 				$developers[] = $tempDeveloper;

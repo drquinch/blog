@@ -73,8 +73,13 @@ class StringToGameTransformer implements DataTransformerInterface
 		$game = strtok($string, ', ');
 		while($game !== false)
 		{
-			$tempGame = new Game();
-			$tempGame->setName($game);
+			$tempGame = $this->manager->getRepository('MDGameBundle:Game')
+							->findOneByName($game);
+			if(!$tempGame)
+			{
+				$tempGame = new Game();
+				$tempGame->setName($game);
+			}
 			if(!$games->contains($tempGame))
 			{
 				$games[] = $tempGame;

@@ -55,8 +55,13 @@ class StringToPublisherTransformer implements DataTransformerInterface
 		$publisher = strtok($string, ', ');
 		while($publisher !== false)
 		{
-			$tempPublisher = new Publisher();
-			$tempPublisher->setName($publisher);
+			$tempPublisher = $this->manager->getRepository('MDGameBundle:Publisher')
+							->findOneByName($publisher);
+			if(!$tempPublisher)
+			{
+				$tempPublisher = new Game();
+				$tempPublisher->setName($publisher);
+			}
 			if(!$publishers->contains($tempPublisher))
 			{
 				$publishers[] = $tempPublisher;

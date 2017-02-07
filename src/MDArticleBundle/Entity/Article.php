@@ -62,13 +62,6 @@ class Article
     private $dateLastUpdate;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="published", type="boolean")
-     */
-    private $published;
-
-    /**
      * @ORM\ManyToOne(targetEntity="MDUserBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -80,17 +73,12 @@ class Article
     private $games;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Licence", cascade={"persist"})
      */
     private $licences;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher")
-     */
-    private $publishers;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer")
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Developer", cascade={"persist"})
      */
     private $developers;
 
@@ -105,7 +93,7 @@ class Article
     private $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MDCategoryBundle\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="MDCategoryBundle\Entity\Category", cascade={"persist"})
      */
     private $category;
 
@@ -245,30 +233,7 @@ class Article
     {
         return $this->datePublication;
     }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published
-     *
-     * @return Article
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return bool
-     */
-    public function getPublished()
-    {
-        return $this->published;
-    }
+	
     /**
      * Constructor
      */
@@ -279,9 +244,8 @@ class Article
         $this->publishers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->developers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-	$this->dateCreation = new \DateTime();
-	$this->datePublication = new \DateTime();
-	$this->dateLastUpdate = new \DateTime();
+		$this->dateCreation = new \DateTime();
+		$this->dateLastUpdate = new \DateTime();
     }
 
     /**

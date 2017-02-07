@@ -123,5 +123,25 @@ class GameController extends Controller
         return $this->render('MDGameBundle:Game:delete.html.twig', array('game' => $game, 'form' => $form->createView()));
 
     }
+	
+	public function jsonBatchAction($names, $delimiter)
+	{
+		// séparer les names en array, aller les rechercher ds bdd (p-e faire une nvl req), les passer à la vue
+		$games = array();
+		$repo = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Game');
+		$name = strtok($names, $delimiter);
+		$namesArray = array();
+		while ($name != false)
+		{
+			$namesArray[] = trim($name);
+			$name = strtok($delimiter);
+		}
+		$games = $repo->findGamesByNameWithSubobject($namesArray);
+		
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Game:gameJson.json.twig', array('games' =>$games));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
+	}
 
 }

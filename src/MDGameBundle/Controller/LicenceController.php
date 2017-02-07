@@ -121,5 +121,41 @@ class LicenceController extends Controller
         return $this->render('MDGameBundle:Licence:delete.html.twig', array('licence' => $licence, 'form' => $form->createView()));
 
     }
+	
+	public function jsonBatchAction($names, $delimiter)
+	{
+		// séparer les names en array, aller les rechercher ds bdd (p-e faire une nvl req), les passer à la vue
+		$licences = array();
+		$repo = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Licence');
+		$repoGame = $this->getDoctrine()->getManager()->getRepository('MDGameBundle:Game');
+		$name = strtok($names, $delimiter);
+		$namesArray = array();
+		while ($name != false)
+		{
+			$namesArray[] = trim($name);
+			$name = strtok($delimiter);
+		}
+		$licences = $repo->findLicencesByName($namesArray);
+		$games = $repoGame->findGamesByLicences($licences);
+		$gamesByLicences = array();
+		$arr = array();
+		for ($h = 0; $h < count($licences); $h++)
+		{
+			$arr = array();
+			for ($i = 0; $i < count($games); $i++)
+			{
+				if($licences[$h]->getName() === $games[$i]->getLicence()->getName())
+				{
+					$arr[] = $games[$i];
+				}
+			}
+			$gamesByLicences[$licences[$h]->getName()] = $arr;
+		}
+		
+		$response = $this->get('templating')->renderResponse('MDGameBundle:Licence:licenceJson.json.twig', array('licences' => $licences, 'games' => $gamesByLicences));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		return $response;
+	}
 
 }

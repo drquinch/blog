@@ -16,29 +16,35 @@
     {{ form_errors(form.content) }}
     {{ form_widget(form.content) }}<br>
 
-    {{ form_label(form.published, "Publié") }}<br>
-    {{ form_errors(form.published) }}
-    {{ form_widget(form.published) }}<br>
+	<span class="center">
+    {{ form_label(form.datePublication, "Date de publication") }}<br>
+    {{ form_errors(form.datePublication) }}
+    {{ form_widget(form.datePublication) }}</span><br>
 
     <span class="center">
     {{ form_label(form.games, "Jeux") }}<br>{{ form_errors(form.games) }}
-    {{ form_widget(form.games, {'attr': {'id': 'input_game'}}) }}<a href="" class="addnew_button button">+ new game</a></span><br>
+    {{ form_widget(form.games, {'attr': {'id': 'input_game', 'class': 'fullfill_input to_fill reset_input'}}) }}<a href="" class="addnew_button button">+ new game</a>
+	<button type="button" class="fullfill">Fullfill</button><button type="button" class="reset" id="reset_games">Reset</button></span><br>
 
     <span class="center">
     {{ form_label(form.licences, "Licence") }}<br>{{ form_errors(form.licences) }}
-    {{ form_widget(form.licences, {'attr': {'id': 'input_licence'}}) }}<a href="" class="addnew_button button">+ new licence</a></span><br>
+    {{ form_widget(form.licences, {'attr': {'id': 'input_licence', 'class': 'fullfill_input to_fill reset_input'}}) }}<a href="" class="addnew_button button">+ new licence</a>
+	<button type="button" class="fullfill">Fullfill</button><button type="button" class="reset" id="reset_licences">Reset</button></span><br>
 
     <span class="center">
     {{ form_label(form.publishers, "Éditeur") }}<br>{{ form_errors(form.publishers) }}
-    {{ form_widget(form.publishers, {'attr': {'id': 'input_publisher'}}) }}<a href="" class="addnew_button button">+ new publisher</a></span><br>
+    {{ form_widget(form.publishers, {'attr': {'id': 'input_publisher', 'class': 'to_fill reset_input'}}) }}<a href="" class="addnew_button button">+ new publisher</a>
+	<button type="button" class="reset" id="reset_publishers">Reset</button></span><br>
 
     <span class="center">
     {{ form_label(form.developers, "Developpeur") }}<br>{{ form_errors(form.developers) }}
-    {{ form_widget(form.developers, {'attr': {'id': 'input_developer'}}) }}<a href="" class="addnew_button button">+ new developer</a></span><br>
+    {{ form_widget(form.developers, {'attr': {'id': 'input_developer', 'class': 'to_fill reset_input'}}) }}<a href="" class="addnew_button button">+ new developer</a>
+	<button type="button" class="reset" id="reset_developers">Reset</button></span><br>
 
     <span class="center">
     {{ form_label(form.tags, "Tags") }}<br>{{ form_errors(form.tags) }}
-    {{ form_widget(form.tags, {'attr': {'id': 'input_tags'}}) }}</span><br>
+    {{ form_widget(form.tags, {'attr': {'id': 'input_tags', 'class': 'to_fill reset_input'}}) }}
+	<button type="button" class="reset" id="reset_tags">Reset</button></span><br>
 
     <span class="center">{{ form_rest(form) }}
     {{ form_end(form) }}</span>

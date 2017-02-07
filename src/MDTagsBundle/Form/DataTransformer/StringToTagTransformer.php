@@ -57,37 +57,45 @@ class StringToTagTransformer implements DataTransformerInterface
 	 */
 	 public function reverseTransform($string)
 	 {
-		 // $name is optional
-		/*if(!$name)
-		{
-			return;
-		}
-		 
-		$tag = $this->manager
-					->getRepository('MDTagsBundle:Tag')
-					->find($name);
 		
-		if(null===$game)
-		{
-			throw new TransformationFailedException(sprintf(
-			'A game with name "%s" does not exist!', $name
-			));
-		}
-		
-		return $tag;*/
 		$tags = new ArrayCollection();
-		$tag = strtok($string, ', ');
+		$tag = strtok($string, ',');
 		while($tag !== false)
 		{
-			$tempTag = new Tag();
-			$tempTag->setName($tag);
+			$tempTag = $this->manager->getRepository('MDTagsBundle:Tag')
+						->findOneByName($tag);
+			if(!$tempTag)
+			{
+				$tempTag = new Tag();
+				$tempTag->setName($tag);
+			}
 			if(!$tags->contains($tempTag))
 			{
 				$tags[] = $tempTag;
 			}
-			$tag = strtok(', ');
+			$tag = strtok(',');
 		}
 		
+		/*$tags = new ArrayCollection();
+		$tags = explode(', ', $string);
+		$tagsLength = count($tags);
+		$finalTags = new ArrayCollection();
+		for ($i = 0; $i < $tagsLength; $i++)
+		{
+			$tempTag = $this->manager->getRepository('MDTagsBundle:Tag')
+						->findOneByName($tags[$i]);
+			if(!$tempTag)
+			{
+				$tempTag = new Tag();
+				$tempTag->setName($tags[$i]);
+			}
+			if(!$finalTags->contains($tempTag))
+			{
+				$finalTags[] = $tempTag;
+			}
+		}*/
+		
+		//return $finalTags;
 		return $tags;
 	 }
 }

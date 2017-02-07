@@ -1,0 +1,51 @@
+{
+	"licences":[
+		{% for lic in licences %}
+				
+					{"id": {{ lic.id }},
+					"name": "{{ lic.name }}",
+					"website": "{{ lic.website }}",
+					"developers": [
+						{% for dev in lic.developers %}
+									{"id": {{ dev.id }},
+									"name": "{{ dev.name }}",
+									"website": "{{ dev.website }}"}
+								{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"publishers": [
+						{% for publ in lic.publishers %}
+									{"id": {{ publ.id }},
+									"name": "{{ publ.name }}",
+									"website": "{{ publ.website }}"
+								}{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"genres": [
+						{% for gen in lic.genres %}
+								{"id": {{ gen.id }},
+									"name": "{{ gen.name }}"
+								}{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"themes": [
+						{% for the in lic.themes %}
+									{"id": {{ the.id }},
+									"name": "{{ the.name }}"}
+								{% if not loop.last %},{% endif %}
+						{% endfor %}
+					],
+					"games": [
+						{% for key, value in games %}
+							{% if key == lic.name %}
+								{% for v in value %}
+									{"name": "{{ v.name }}"}{% if not loop.last %},{% endif %}
+								{% endfor %}
+							{% endif %}
+						{% endfor %}
+					]
+					}
+				{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}

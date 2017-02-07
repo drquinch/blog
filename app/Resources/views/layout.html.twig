@@ -1,7 +1,7 @@
 {% extends "::basiclayout.html.twig" %}
 
 {% block body %}
-<div id="head">
+<header id="head">
 	<div class="clear"></div>
 	<p id="logo_big"><a href="{{ path('md_core_home') }}"></a></p>
 	<ul id="head_left_menu_list">
@@ -13,19 +13,19 @@
 		<input type="submit" value="">
 	</form>
 	<ul id="head_social_menu_list">
-		<li><a href="https://www.facebook.com/Striptease-Ludique-1176226515766704" id="fb_logo"></a></li>
-		<li><a href="https://twitter.com/st_ludique" id="twitter_logo"></a></li>
-		<li><a href="" id="rss_logo"></a></li>
+		<li><a target="_blank" href="https://www.facebook.com/Striptease-Ludique-1176226515766704" id="fb_logo"></a></li>
+		<li><a target="_blank" href="https://twitter.com/st_ludique" id="twitter_logo"></a></li>
+		<!--<li><a target="_blank" href="" id="rss_logo"></a></li>-->
 	</ul>
 	<div class="clear"></div>
-</div>
+</header>
 
-<div id="fixed_design">
-	<div id="subhead">
+<section id="fixed_design">
+	<section id="subhead">
 		<ul id="subhead_left_list">
-			<li><a href="">ALL</a></li><!--
-			--><li><a href="">JEUX-VIDÉOS</a></li><!--
-			--><li><a href="">LIVRES</a></li>
+			<li><a href="" class="top_link_element">ALL</a></li><!--
+			--><li><a href="" class="top_link_element">JEUX-VIDÉOS</a></li><!--
+			--><li><a href="" class="top_link_element">LIVRES</a></li>
 		</ul>
 		<ul id="subhead_right_list">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -35,22 +35,22 @@
 			{% endif %}
 		</ul>
 		<div class="clear"></div>
-	</div>
+	</section>
 {% block fixed_design %}{% endblock %}
-</div>
+</section>
 
-<div id="bottom">
+<footer id="bottom">
 	<div id="left_bottom">
 		<p>
-			<img id="logo_square" src="" alt="">
+			<img id="logo_square" src="{{ asset('img/logo400x400.png') }}" alt="logo striptease-ludique.com">
 			<ul>
 				<li><a href="{{ path('md_core_home') }}" id="link_website_bottom">Striptease-Ludique.com</a></li>
-				<li><a href="">Plan du site</a></li>
+				<!--<li><a href="">Plan du site</a></li>-->
 				<li><a href="{{ path('md_core_contact') }}">Contact</a></li>
-				<li><a href="">Webmaster site</a></li>
+				<!--<li><a href="">Webmaster site</a></li>-->
 			</ul>
 		</p>
 	</div>
 	<div class="clear"></div>
-</div>
+</footer>
 {% endblock %}
