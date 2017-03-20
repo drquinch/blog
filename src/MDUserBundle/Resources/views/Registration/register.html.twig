@@ -1,0 +1,12 @@
+{% extends "::basiclayout.html.twig" %}
+
+{% block stylesheet %}
+	<link href="{{ asset('bundles/mduser/css/login_form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+{% include "MDUserBundle:Registration:register_content.html.twig" %}
+{% endblock body %}
+
+{% block scripts %}
+{% endblock %}

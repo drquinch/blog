@@ -10,6 +10,19 @@ md_core_home:
          page: \d*
          batchHighlight: \d*
 
+md_core_pagingByCat:
+    path:    /pagingbycat/{batch}/{page}/{category}/{catParent}/{repName}
+    defaults:
+        _controller: MDCoreBundle:Home:pagingByCat
+        batch: 10
+        page: 0
+    requirements:
+         batch: \d*
+         page: \d*
+         batchHighlight: \d*
+         category: jeux-video|news|analyse|livre|dossier|critique|general|edito|science-fiction|autres
+         catParent: jeux-video|livre|general|null
+
 md_core_admin_home:
     path: /admin
     defaults:
@@ -19,3 +32,6 @@ md_core_contact:
     path:    /contact
     defaults: { _controller: MDCoreBundle:Contact:contact }
 
+md_core_about:
+    path:    /about
+    defaults: { _controller: MDCoreBundle:About:about }

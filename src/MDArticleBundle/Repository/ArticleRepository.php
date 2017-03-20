@@ -6,6 +6,35 @@ use Doctrine\ORM\EntityRepository;
 
 class ArticleRepository extends EntityRepository
 {
+	public function findLimitedAllNoJoin($batch)
+	{
+		return $this->createQueryBuilder('x')
+					->setMaxResults($batch)
+					->orderBy('x.dateLastUpdate', 'DESC')
+					->getQuery()
+					->getResult();
+	}
+	
+    public function findLimitedAllByUser($batch, $page, $user)
+    {
+	    return $this->createQueryBuilder('x')
+		    ->leftJoin('x.author', 'author')
+		    ->addSelect('author')
+		    ->leftJoin('x.coverimage', 'image')
+	    	    ->addSelect('image')
+		    ->leftJoin('x.tags', 'tags')
+		    ->addSelect('tags')
+		    ->leftJoin('x.category', 'category')
+		    ->addSelect('category')
+			->where('x.author = :author')
+			->setParameter('author', $user)
+                     ->setFirstResult($page*$batch)
+		     ->setMaxResults($batch)
+		     ->orderBy('x.datePublication', 'DESC')
+                     ->getQuery()
+                     ->getResult();
+    }
+	
     public function findLimitedAll($batch, $page)
     {
 	    return $this->createQueryBuilder('x')
@@ -29,6 +58,16 @@ class ArticleRepository extends EntityRepository
         return $this->createQueryBuilder('x')
                      ->select('COUNT(x)')
                      ->getQuery()
+                     ->getSingleScalarResult();
+    }
+
+    public function getCountByCat($cat)
+    {
+		return $this->createQueryBuilder('x')
+                     ->select('COUNT(x)')
+					 ->where('x.category = :cat')
+					 ->setParameter('cat', $cat)
+					->getQuery()
                      ->getSingleScalarResult();
     }
 
@@ -77,9 +116,30 @@ class ArticleRepository extends EntityRepository
 		    ->addSelect('tags')
 		    ->leftJoin('x.category', 'category')
 		    ->addSelect('category')
-		->where('category.name = :category')
-		->setParameter('category', $category)
-		->andWhere('x.published = true')
+		->where('x.category = :cat')
+		->setParameter('cat', $category)
+		->andWhere('x.datePublication < :datePubl')
+		->setParameter('datePubl', new \DateTime())
+		->setFirstResult($page*$batch)
+		->setMaxResults($batch)
+		->orderBy('x.datePublication', 'DESC')
+		->getQuery()
+		->getResult();
+    }
+
+    public function findLimitedAllByCategory($batch, $page, $category)
+    {
+	return $this->createQueryBuilder('x')
+		    ->leftJoin('x.author', 'author')
+		    ->addSelect('author')
+		    ->leftJoin('x.coverimage', 'image')
+	    	    ->addSelect('image')
+		    ->leftJoin('x.tags', 'tags')
+		    ->addSelect('tags')
+		    ->leftJoin('x.category', 'category')
+		    ->addSelect('category')
+		->where('x.category = :cat')
+		->setParameter('cat', $category)
 		->setFirstResult($page*$batch)
 		->setMaxResults($batch)
 		->orderBy('x.datePublication', 'DESC')

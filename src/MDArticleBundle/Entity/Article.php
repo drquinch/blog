@@ -3,6 +3,7 @@
 namespace MDArticleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Article
@@ -83,7 +84,13 @@ class Article
     private $developers;
 
     /**
+     * @ORM\ManyToMany(targetEntity="MDGameBundle\Entity\Publisher", cascade={"persist"})
+     */
+    private $publishers;
+
+    /**
      * @ORM\ManyToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
+	 * @ORM\JoinColumn(nullable=true)
      */
     private $coverimage;
 
@@ -103,7 +110,37 @@ class Article
      * @ORM\Column(name="highlight", type="boolean", nullable=true)
      */
     private $highlight;
+	
+	/**
+	 * @Gedmo\Slug(fields={"title", "subtitle"})
+	 * @ORM\Column(name="slug", type="string", length=255, unique=true, nullable=true)
+	 */
+	private $slug;
 
+	/**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+	
     /**
      * Get id
      *

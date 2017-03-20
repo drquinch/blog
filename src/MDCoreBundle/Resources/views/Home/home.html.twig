@@ -8,23 +8,29 @@
 
 {% block fixed_design %}
 	<div id="main">
-		<div id="content">
+		<div id="resume_articles">
 				{% for article in articles %}
 				<p class="article">
 					<div class="link">
-						<a href="">
+						<a href="{{ path('md_article_view', {'article_id': article.id}) }}">
 							<span class="article_bgn">
 							<span class="article_title">
 							{#[{{ article.category.parent.name }}][{{ article.category.name }}]#}{{ article.title }}
 							{% if article.subtitle %} : {{ article.subtitle }}{% endif %}
 							</span>
 							</span>
-							<img src="{{ "/blog/" ~ article.coverimage.url }}" alt="{{ article.coverimage.alt }}" />
+							<img src="{{ '/blog/web/' ~ article.coverimage.url }}" alt="{{ article.coverimage.alt }}" />
 						</a>
 					</div>
 				</p>
 				{% endfor %}
 		</div>
+		<div class="clear"></div>
+		<p class="bottom_pages_links">
+		{% for page in pages %}
+			<a href="{{ path('md_core_home', {'batchHighlight': 3, 'batch': 10, 'page': page}) }}" class="page_link">{{ page }}</a>
+		{% endfor %}
+		</p>
 	</div>
 	<div class="clear"></div>
 

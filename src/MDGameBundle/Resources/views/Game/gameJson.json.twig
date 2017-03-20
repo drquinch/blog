@@ -6,8 +6,6 @@
 					"name": "{{ game.name }}",
 					"releasedate": "{{ game.releasedate|date('d-m-Y H:i:s') }}",
 					"website": "{{ game.website }}",
-					"steamlink": "{{ game.steamlink }}",
-					"humblebundlelink": "{{ game.humblebundlelink }}",
 					"coverimage": {% if game.coverimage is not null %}
 										{{ game.coverimage.id }},
 									{% else %}

@@ -2,7 +2,7 @@
 
 <div class="resume_article">
 	<p class="img_article">
-		<img src="{{ asset('img/uploads/' ~ article.coverimage.id ~ '.' ~ article.coverimage.url) }}" alt="{{ article.coverimage.alt }}">
+		<img src="{{ asset(article.coverimage.url) }}" alt="{{ article.coverimage.alt }}">
 	</p>
 	<div class="right_info_article">
 		<h2>[{{ article.category.name|upper }}] {{ article.title }}</h2>
@@ -14,7 +14,7 @@
 				<span class="tags_article"><a href="">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
 			{% endfor %}
 			</li>
-			<li class="first_paragraphe_article"><span class="first_paragraph">{{ article.content }}</span></li>
+			<li class="first_paragraphe_article"><span class="first_paragraph">{{ article.content|raw }}</span></li>
 		</ul>
 	</div>
 </div>

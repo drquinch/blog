@@ -1,0 +1,9 @@
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+		{% for owner in hwi_oauth_resource_owners() %}
+		<a href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+		{% endfor %}
+        <input type="submit" value="confirmer" />
+    </div>
+{{ form_end(form) }}

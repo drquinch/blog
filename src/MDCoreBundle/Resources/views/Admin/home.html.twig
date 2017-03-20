@@ -5,38 +5,29 @@
 {% block stylesheet %}{{ parent() }}
 <link href="{{ asset('bundles/mdcore/css/main_body_admin_home.css') }}" type="text/css" rel="stylesheet">{% endblock %}
 
-{% block fixed_design %}
+{% block main %}
 
-	{{ parent() }}
 		<div id="content">
 			<div id="user_infos">
-				<h2>DRQUINCH</h2>
+				<img src="{#{{ asset('/blog/' ~ app.user.profil_image.url) }}#}" alt="" />
+				<h2>{{ app.user.username|upper }}</h2>
 				<ul id="info_title_admin">
-					<li>Articles : 100</li>
-					<li>Tests : 10</li>
-					<li>News : 94</li>
-					<li>Previews : 150</li>
-					<li>Dossier : 9</li>
-					<li>Commentaires : 142</li>
-					<li>adresse mail : doryn.mirek@striptease-ludique.com</li>
+					<li>Role : {% if is_granted("ROLE_WRITTER") %}Rédacteur{% elseif is_granted("ROLE_USER") %}membre{% elseif is_granted("ROLE_ADMIN") %}administrateur{% elseif is_granted("ROLE_SUPER_ADMIN")%} administrateur{% endif %}</li>
+					<li>Date de naissance : {{ app.user.birthdate|date("d/m/Y") }}</li>
+					<li>adresse mail : {{ app.user.email }}</li>
 				</ul>
 			</div>
-			<div id="last_articles">
-				<h2>DERNIERS ARTICLES</h2>
-				<ul>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">TEST Titre test</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">ARTICLE Titre article</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">DOSSIER Titre dossier</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-					<li><a href=""><img src="" alt="" /><span class="name_article">NEWS Titre news</span></a></li>
-				</ul>
-			</div>
+			{#{% if is_granted("ROLE_WRITER") %}#}
+				<div id="last_articles">
+					<h2>DERNIERS ARTICLES</h2>
+					<ul>
+						{% for art in articles %}
+							<li><a href=""><img src="{{ '/blog/' ~ art.coverimage.url }}" alt="" /><span class="name_article">{{ art.title }}</span></a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			{#{% endif %}#}
 		</div>
-	</div>
 	<div class="clear"></div>
 
 {% endblock %}

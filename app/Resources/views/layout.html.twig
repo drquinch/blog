@@ -5,13 +5,13 @@
 	<div class="clear"></div>
 	<p id="logo_big"><a href="{{ path('md_core_home') }}"></a></p>
 	<ul id="head_left_menu_list">
-		<li><a href="">À PROPOS</a></li><!--
+		<li><a href="{{ path('md_core_about') }}">À PROPOS</a></li><!--
 		--><li><a href="{{ path('md_core_contact') }}">CONTACT</a></li>
 	</ul>
-	<form id="search_form">
+	<!--<form id="search_form">
 		<input type="text">
 		<input type="submit" value="">
-	</form>
+	</form>-->
 	<ul id="head_social_menu_list">
 		<li><a target="_blank" href="https://www.facebook.com/Striptease-Ludique-1176226515766704" id="fb_logo"></a></li>
 		<li><a target="_blank" href="https://twitter.com/st_ludique" id="twitter_logo"></a></li>
@@ -24,16 +24,29 @@
 	<section id="subhead">
 		<ul id="subhead_left_list">
 			<li><a href="" class="top_link_element">ALL</a></li><!--
-			--><li><a href="" class="top_link_element">JEUX-VIDÉOS</a></li><!--
-			--><li><a href="" class="top_link_element">LIVRES</a></li>
-		</ul>
-		<ul id="subhead_right_list">
+			--><li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">JEUX-VIDÉOS</a><!--
+					--><ul class="dropdown_menu">
+						<li><a href="" class="sub_link_element">news</a></li><!--
+						--><li><a href="" class="sub_link_element">critique</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">analyse</a></li>--><!--
+						--><li><a href="" class="sub_link_element">dossier</a></li><!--
+					--></ul><!--
+			--></li><!--
+			--><!--<li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">LIVRES</a><!--
+					--><!--<ul class="dropdown_menu"><!--
+						--><!--<li><a href="" class="sub_link_element">jeux-vidéos</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">science-fiction</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">autres</a></li><!--
+					--><!--</ul><!--
+				--><!--</li><!--
+		--></ul>
+		<!--<ul id="subhead_right_list">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 				<li><a href="{{ path('md_core_admin_home') }}">{{ app.user.username }}</a></li>
 			{% else %}
 				<li><a href="{{ path('md_core_admin_home') }}">connexion</a></li>
 			{% endif %}
-		</ul>
+		</ul>-->
 		<div class="clear"></div>
 	</section>
 {% block fixed_design %}{% endblock %}

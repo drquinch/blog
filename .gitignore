@@ -6,5 +6,5 @@
 
 /var/*
 /web/img/uploads/*
-/vendor/
+/vendor/*
 /web/bundles/

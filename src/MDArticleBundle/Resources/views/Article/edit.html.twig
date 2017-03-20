@@ -1,6 +1,14 @@
-{% extends '::layoutbackend.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block main %}
+
+{% block stylesheet %}
+{{ parent() }}<!--
+<link href="{{ asset('bundles/mdarticle/css/form.css') }}" type="text/css" rel="stylesheet">-->
+<link href="{{ asset('bundles/mdarticle/css/main_body_article_form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{% block fixed_design %}
+<div id="content">
 {% if form is defined %}
     {{ include("MDArticleBundle:Article:form.html.twig") }}
 {% endif %}
@@ -8,4 +16,14 @@
 {% if article is defined %}
     <p>TODO</p>
 {% endif %}
+</div>
+<div class="clear"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset('script/ajax.js') }}"></script>
+<script src="{{ asset('bundles/mdarticle/script/fullfill.js') }}"></script>
+<script src="{{ asset('bundles/mdarticle/script/reset.js') }}"></script>
+<script src="{{ asset('bundles/mdarticle/script/autocompletion.js') }}"></script>
+<script src="{{ asset('bundles/mdarticle/script/createArticleInput.js') }}"></script>
 {% endblock %}

@@ -1,4 +1,9 @@
 services:
-#    md_media.example:
-#        class: MDMediaBundle\Example
+#    md_article.example:
+#        class: MDArticleBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    mdmedia.image_type_extension:
+        class: MDMediaBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }

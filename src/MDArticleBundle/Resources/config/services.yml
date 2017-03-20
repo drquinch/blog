@@ -2,4 +2,8 @@ services:
 #    md_article.example:
 #        class: MDArticleBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
-
+#    form.type.user:
+#        class: MDArticleBundle\Form\ArticleType;
+#        arguments: ["@security.context"]
+#        tags:
+#            - { name: form.type, alias: article_type}

@@ -43,16 +43,6 @@ class Game
     private $website;
 
     /**
-     * @ORM\Column(name="steamlink", type="string", length=255, nullable=true)
-     */
-    private $steamlink;
-
-    /**
-     * @ORM\Column(name="humblebundlelink", type="string", length=255, nullable=true)
-     */
-    private $humblebundlelink;
-
-    /**
      * @ORM\OneToOne(targetEntity="MDMediaBundle\Entity\Image", cascade={"persist"})
      */
     private $coverimage;
@@ -384,54 +374,6 @@ class Game
     public function getThemes()
     {
         return $this->themes;
-    }
-
-    /**
-     * Set steamlink
-     *
-     * @param string $steamlink
-     *
-     * @return Game
-     */
-    public function setSteamlink($steamlink)
-    {
-        $this->steamlink = $steamlink;
-
-        return $this;
-    }
-
-    /**
-     * Get steamlink
-     *
-     * @return string
-     */
-    public function getSteamlink()
-    {
-        return $this->steamlink;
-    }
-
-    /**
-     * Set humblebundlelink
-     *
-     * @param string $humblebundlelink
-     *
-     * @return Game
-     */
-    public function setHumblebundlelink($humblebundlelink)
-    {
-        $this->humblebundlelink = $humblebundlelink;
-
-        return $this;
-    }
-
-    /**
-     * Get humblebundlelink
-     *
-     * @return string
-     */
-    public function getHumblebundlelink()
-    {
-        return $this->humblebundlelink;
     }
 
     /**

@@ -13,12 +13,13 @@ margin-top: 5px;
 margin-bottom: 10px;
 }
 
-input[type=text], input[type=password]
+input[type=text], input[type=password], input[type=email]
 {
 background-color: rgb(240,240,240);
-border: 1px solid rgb(150,150,150);
+border-bottom: 1px solid rgb(150,150,150);
 padding-top: 3px;
 padding-bottom: 1px;
+margin-left: 25px;
 }
 
 input[type=submit]

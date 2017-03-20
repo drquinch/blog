@@ -1,9 +1,18 @@
-{% extends "MDCoreBundle::layout.html.twig" %}
+{% extends "::layout.html.twig" %}
 
 {% block title %}{{ parent() }}{% endblock %}
 
-{% block body %}
+{% block stylesheet %}<link href="{{ asset('bundles/mdcore/css/contact.css') }}" type="text/css" rel="stylesheet">{% endblock %}
 
-contact block
+{% block fixed_design %}
+
+<div id="contact_main">
+	<h1>Contact</h1>
+
+	<p>Pour toute informations, questions, suggestions, remarques, &#8230; à formuler, envoyez un mail ici : contact@striptease-ludique.com</p>
+	<p>Vous êtes développeur et souhaitez que je parle de votre jeu? C&rsquo;est ici : developers@striptease-ludique.com</p>
+</div>
+
+<div class="clear"></div>
 
 {% endblock %}

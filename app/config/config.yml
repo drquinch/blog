@@ -18,6 +18,26 @@ imports:
 parameters:
     locale: fr 
 
+# HWI/OAuth Configuration
+
+hwi_oauth:
+    connect:
+        confirmation: true
+        registration_form: fos_user.registration.form.factory
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebookID
+    resource_owners:
+        facebook:
+            type:    facebook
+            client_id:    1853728794843896
+            client_secret:    35232977abaebdff09c4d46a20a6642f
+            scope:    "email"
+            options:
+                csrf:    true
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -72,7 +92,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-
+    
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -80,12 +100,21 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
+  
+# FOS_USER Configuraiton
 fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    MDUserBundle\Entity\User
+    
+    from_email:
+        address: "contact@striptease-ludique.com"
+        sender_name: "DrQuinch"
 
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
 #assetic:
 #    debug:          "%kernel.debug%"
 #    use_controller: "%kernel.debug%"

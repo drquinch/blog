@@ -1,0 +1,3 @@
+{% for page in pages %}
+<a href="{{ path('md_article_batch_by_category', {'batch': 10, 'page': page, 'category': category, 'parent': catParent}) }}" class="page_link">{{ page }}</a>
+{% endfor %}

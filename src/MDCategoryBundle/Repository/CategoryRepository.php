@@ -29,4 +29,25 @@ class CategoryRepository extends EntityRepository
 					->where('c.parent IS NOT NULL');
 	}
 	
+	public function findOneByNameWithParentNull ($cat)
+	{
+		return $this->createQueryBuilder('x')
+					->where('x.name = :name')
+					->setParameter('name', $cat)
+					->andWhere('x.parent is null')
+					->getQuery()
+					->getResult();
+	}
+	
+	public function findOneByNameWithParent ($cat, $parent)
+	{
+		return $this->createQueryBuilder('x')
+					->where('x.name = :name')
+					->setParameter('name', $cat)
+					->andWhere('x.parent = :parent')
+					->setParameter('parent', $parent)
+					->getQuery()
+					->getResult();
+	}
+	
 }

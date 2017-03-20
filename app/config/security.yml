@@ -46,6 +46,13 @@ security:
             form_login:
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
+            oauth:
+                resource_owners:
+                    facebook:        "/connect/check-facebook"
+                login_path:        /connect
+                failure_path:      /connect
+                oauth_user_provider:
+                    service:        hwi_oauth.user.provider.fosub_bridge
             logout:
                 path:   fos_user_security_logout
                 target: /

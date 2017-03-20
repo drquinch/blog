@@ -59,7 +59,7 @@ class StringToPublisherTransformer implements DataTransformerInterface
 							->findOneByName($publisher);
 			if(!$tempPublisher)
 			{
-				$tempPublisher = new Game();
+				$tempPublisher = new Publisher();
 				$tempPublisher->setName($publisher);
 			}
 			if(!$publishers->contains($tempPublisher))

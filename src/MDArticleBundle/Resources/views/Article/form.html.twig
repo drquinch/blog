@@ -2,13 +2,14 @@
     {{ form_start(form) }}
 
     {{ form_errors(form.coverimage) }}
-    {{ form_widget(form.coverimage) }}<br>
+    {{ form_widget(form.coverimage) }}
+	<br>
 
     {{ form_errors(form.title) }}
-    {{ form_widget(form.title, {'attr': {'id': 'input_title', 'value': 'Titre *'}}) }}<br>
+    {{ form_widget(form.title, {'attr': {'id': 'input_title'}}) }}<br>
 
     {{ form_errors(form.subtitle) }}
-    {{ form_widget(form.subtitle, {'attr': {'id': 'input_subtitle', 'value': 'Sous-Titre'}}) }}<br>
+    {{ form_widget(form.subtitle, {'attr': {'id': 'input_subtitle'}}) }}<br>
 
     {{ form_errors(form.category) }}
     {{ form_widget(form.category) }}<br>

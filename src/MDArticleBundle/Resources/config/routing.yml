@@ -1,5 +1,5 @@
 md_article_batch_by_category:
-    path:    /article/article/batch/{batch}/{page}/{category}
+    path:    /article/article/batch/{batch}/{page}/{category}/{parent}
     defaults:
         _controller: MDArticleBundle:Article:batchByCategory
         batch: 10
@@ -7,17 +7,20 @@ md_article_batch_by_category:
     requirements:
         batch: \d+
         page: \d
-        category: news|test
+        category: news|jeux-video|dossier|analyse|livre|critique|general|edito|science-fiction|autres
+        parent: general|jeux-video|livre|null
 
 md_article_batch_all:
-    path:    /article/article/batch/{batch}/{page}
+    path:    /admin/article/article/batch/{batch}/{page}/{category}
     defaults:
         _controller: MDArticleBundle:Article:batch
         batch: 10
         page: 0
+        category: all
     requirements:
         batch: \d+
         page: \d
+        category: jeux-video|news|critique_jv|dossier|analyse|livre|critique_livre|all
 
 md_article_view:
     path:    /article/article/view/{article_id}

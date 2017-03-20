@@ -19,14 +19,16 @@ class AppKernel extends Kernel
             new MDCoreBundle\MDCoreBundle(),
             new MDPagingBundle\MDPagingBundle(),
             new MDUserBundle\MDUserBundle(),
-	    new FOS\UserBundle\FOSUserBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
             new MDGameBundle\MDGameBundle(),
             new MDMediaBundle\MDMediaBundle(),
             new MDCategoryBundle\MDCategoryBundle(),
             new MDTagsBundle\MDTagsBundle(),
             new MDArticleBundle\MDArticleBundle(),
-	    new MDCommentBundle\MDCommentBundle(),
-	    new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+			new MDCommentBundle\MDCommentBundle(),
+			new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+			new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+			new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -35,7 +37,8 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-	    $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
+			$bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
+		
         }
 
         return $bundles;

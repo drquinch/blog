@@ -53,6 +53,10 @@ class Image
     private $figcaption;
 
     private $file;
+	
+	//sert à indiquer le path apres le uploadDir de base
+	//format .../.../... (pas de / avant et après)
+	private $path;
 
     private $tempFilename;
 
@@ -113,6 +117,30 @@ class Image
     {
         return $this->ext;
     }
+	
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Image
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
 
     public function getFile()
     {
@@ -161,7 +189,7 @@ class Image
 	$this->name = basename($this->file->getClientOriginalName(), '.'.pathinfo($this->file->getClientOriginalName())['extension']);
 	$this->ext = $this->file->guessExtension();
 	$this->alt = $this->file->getClientOriginalName();
-	$this->url = $this->getUploadDir().'/'.$this->name.'.'.$this->ext;
+	$this->url = $this->getUploadDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
 
     }
 
@@ -178,7 +206,7 @@ class Image
 
 	if (null !== $this->tempFilename)
 	{
-	    $oldFile = $this->getUploadRootDir().'/'.$this->name.'.'.$this->tempFilename;
+	    $oldFile = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->tempFilename;
 	    if (file_exists($oldFile))
 	    {
 		unlink($oldFile);
@@ -186,7 +214,7 @@ class Image
 	}
 	
 	$this->file->move(
-		$this->getUploadRootDir(),
+		$this->getUploadRootDir().'/'.$this->getPath(),
 		$this->name.'.'.$this->ext
 	);
 
@@ -207,7 +235,7 @@ class Image
      */
     public function preRemoveUpload()
     {
-	$this->tempFilename = $this->getUploadRootDir().'/'.$this->name.'.'.$this->ext;
+	$this->tempFilename = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
     }
 
     /**

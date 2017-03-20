@@ -32,4 +32,24 @@ class Paging
 
 		return $pages;
 	}
+	
+	public function pagingByCategory($batch, $repName, $cat)
+	{
+		//on récupère le repository et calcul le nombre d'entrée
+		$repository = $this->em->getRepository($repName);
+		$total = $repository->getCountByCat($cat);
+
+		//calcule de la pagination
+		$paging = ceil($total/$batch);
+
+		//on crée l'array de page
+		//il suffira de passer l'array à la page et boucler dessus
+		$pages = array();
+		for($i = 0; $i < $paging; $i++)
+		{
+			array_push($pages, $i);
+		}
+
+		return $pages;
+	}
 }

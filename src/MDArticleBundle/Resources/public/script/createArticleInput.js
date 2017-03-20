@@ -66,6 +66,15 @@ for (var i = 0; i < urls.length; i++)
 // si la value est vide on remet la value par defaut
 var titleInput = document.getElementById("article_title");
 var subtitleInput = document.getElementById("article_subtitle");
+if (!titleInput.value)
+{
+	titleInput.value = "Titre *";
+}
+
+if (!subtitleInput.value)
+{
+	subtitleInput.value = "Sous-Titre";
+}
 var defaultTitle = titleInput.value;
 var defaultSubtitle = subtitleInput.value;
 

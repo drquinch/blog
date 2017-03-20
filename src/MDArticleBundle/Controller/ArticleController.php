@@ -12,21 +12,36 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class ArticleController extends Controller
 {
 
-    public function batchAction($batch, $page)
+    public function batchAction($batch, $page, $category)
     {
-	$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAll($batch, $page);
-	return $this->render('MDArticleBundle:Article:batch.html.twig', array('articles' => $articles));
+		$articles = array();
+		if ($category !== null && $category !== "")
+		{
+			$cat = $this->getDoctrine()->getManager()->getRepository('MDCategoryBundle:Category')->findOneByName($category);
+			$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAllByCategory($batch, $page, $cat);
+		} else {
+			$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAll($batch, $page);
+		}
+		return $this->render('MDArticleBundle:Article:batch.html.twig', array('articles' => $articles));
     }
 
-    public function batchByCategoryAction($batch, $page, $category)
+	// return le minimum de html (utilisé via methode ajax)
+    public function batchByCategoryAction($batch, $page, $category, $parent)
     {
-
-	$articles = $this->getDoctrine()
-		->getManager()
-		->getRepository('MDArticleBundle:Article')
-		->findLimitedByCategory($batch, $page, $category);
-	
-	return $this->render('MDArticleBundle:Article:batchByCategory.html.twig', array('articles' => $articles));
+		$catParent = $this->getDoctrine()
+						->getManager()
+						->getRepository('MDCategoryBundle:Category')
+						->findOneByNameWithParentNull($parent);
+		$cat = $this->getDoctrine()
+				->getManager()
+				->getRepository('MDCategoryBundle:Category')
+				->findOneByNameWithParent($category, $catParent);
+		$articles = $this->getDoctrine()
+			->getManager()
+			->getRepository('MDArticleBundle:Article')
+			->findLimitedByCategory($batch, $page, $cat);
+		
+		return $this->render('MDArticleBundle:Article:batchByCategory.html.twig', array('articles' => $articles));
 
     }
 
@@ -51,15 +66,22 @@ class ArticleController extends Controller
     {
         $request = $this->container->get('request_stack')->getMasterRequest();
         $article = new Article();
-	$article->setDateCreation(new \DateTime());
-        $form = $this->get('form.factory')->create(ArticleType::class, $article);
+		$article->setDateCreation(new \DateTime());
+        $form = $this->get('form.factory')->create(ArticleType::class, $article, array('security_token' => $this->get('security.token_storage')));
 
         if ($request->isMethod('POST'))
         {
             $form->handleRequest($request);
+			//TODO tester avec $form["nom_champs"] = url du fichier
+			/*
+			$username = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
+			$categoryArt = $form->get('category')->getName();
+			$slug = str_replace(' ', '-', $form->get('title')->getData()).'-'.str_replace(' ', '-', $form->get('subtitle')->getData());
+			$path = 'articles/'.$username.'/'.$categoryArt.'/'.$slug;
+			$form->get('coverimage')->get('path')->setData($path);*/
             if ($form->isValid())
-	    {
-		$article->setAuthor($this->getUser());
+			{
+				$article->setAuthor($this->getUser());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
                 $em->flush();
@@ -79,6 +101,7 @@ class ArticleController extends Controller
     public function editAction(Article $article)
     {
         $request = $this->container->get('request_stack')->getMasterRequest();
+		$article->setDateLastUpdate(new \DateTime());
         $form = $this->get('form.factory')->create(ArticleType::class, $article);
 
         if ($request->isMethod('POST'))

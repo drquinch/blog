@@ -43,12 +43,13 @@ class CurlCrawler extends BaseCrawler
         curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->timeout);
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, ini_get('open_basedir') ? 0 : 1);
         curl_setopt($curl, CURLOPT_MAXREDIRS, 3);
         curl_setopt($curl, CURLOPT_FAILONERROR, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($curl, CURLOPT_CAINFO, $certFile);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'SecurityChecker-CLI/4 CURL PHP');
 
         $response = curl_exec($curl);
 

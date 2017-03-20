@@ -9,7 +9,21 @@ class AdminController extends Controller
 
 	public function homeAction()
 	{
-		return $this->render('MDCoreBundle:Admin:home.html.twig');
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$artLen = 6;
+		$maxCharTitle = 12;
+		$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAllByUser($artLen, 0, $user);
+		$artLen = count($articles);
+		
+		for ($i = 0; $i < $artLen; $i++)
+		{
+			if (strlen($articles[$i]->getTitle()) > $maxCharTitle)
+			{
+				$articles[$i]->setTitle(substr($articles[$i]->getTitle(), 0, $maxCharTitle) . "...");
+			}
+		}
+		
+		return $this->render('MDCoreBundle:Admin:home.html.twig', array('articles' => $articles));
 	}
 
 	public function listGameFunctionAction()
