@@ -144,34 +144,34 @@ class Image
 
     public function getFile()
     {
-	return $this->file;
+		return $this->file;
     }
 
     public function setFile(UploadedFile $file)
     {
-	$this->file = $file;
-	
-	// on verifie si on avait déjà un fichier pour cette entité
-	if (null !== $this->ext)
-	{
-	    // On sauvegarde l'extension du fichier pour le supprimer plus tard
-	    $this->tempFilename = $this->ext;
+		$this->file = $file;
+		
+		// on verifie si on avait déjà un fichier pour cette entité
+		if (null !== $this->ext)
+		{
+			// On sauvegarde l'extension du fichier pour le supprimer plus tard
+			$this->tempFilename = $this->ext;
 
-	    // on réinitilise les valeurs des attributs
-	    $this->ext = null;
-	    $this->alt = null;
-	}
+			// on réinitilise les valeurs des attributs
+			$this->ext = null;
+			$this->alt = null;
+		}
     }
 
     public function getTempFilename()
     {
-	return $this->tempFilename;
+		return $this->tempFilename;
     }
 
     public function setTempFilename($tempFilename)
     {
-	$this->tempFilename = $tempFilename;
-	return $this;
+		$this->tempFilename = $tempFilename;
+		return $this;
     }
 
     /**
@@ -180,16 +180,16 @@ class Image
      */
     public function preUpload()
     {
-	if (null === $this->file)
-	{
-	    return;
-	}
+		if (null === $this->file)
+		{
+			return;
+		}
 
-	//TODO verifier si le nom du fichier existe deja, si oui, on rajoute un _x ou x = un nombre
-	$this->name = basename($this->file->getClientOriginalName(), '.'.pathinfo($this->file->getClientOriginalName())['extension']);
-	$this->ext = $this->file->guessExtension();
-	$this->alt = $this->file->getClientOriginalName();
-	$this->url = $this->getUploadDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
+		//TODO verifier si le nom du fichier existe deja, si oui, on rajoute un _x ou x = un nombre
+		$this->name = basename($this->file->getClientOriginalName(), '.'.pathinfo($this->file->getClientOriginalName())['extension']);
+		$this->ext = $this->file->guessExtension();
+		$this->alt = $this->file->getClientOriginalName();
+		$this->url = trim($this->getUploadDir(), 'web/').'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
 
     }
 
@@ -199,35 +199,35 @@ class Image
      */
     public function upload()
     {
-	if (null === $this->file)
-	{
-	    return;
-	}
+		if (null === $this->file)
+		{
+			return;
+		}
 
-	if (null !== $this->tempFilename)
-	{
-	    $oldFile = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->tempFilename;
-	    if (file_exists($oldFile))
-	    {
-		unlink($oldFile);
-	    }
-	}
-	
-	$this->file->move(
-		$this->getUploadRootDir().'/'.$this->getPath(),
-		$this->name.'.'.$this->ext
-	);
+		if (null !== $this->tempFilename)
+		{
+			$oldFile = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->tempFilename;
+			if (file_exists($oldFile))
+			{
+				unlink($oldFile);
+			}
+		}
+		
+		$this->file->move(
+			$this->getUploadRootDir().'/'.$this->getPath(),
+			$this->name.'.'.$this->ext
+		);
 
     }
 
     public function getUploadDir()
     {
-	return 'web/img/uploads';
+		return 'web/img/uploads';
     }
 
     protected function getUploadRootDir()
     {
-	return __DIR__.'/../../../'.$this->getUploadDir();
+		return __DIR__.'/../../../'.$this->getUploadDir();
     }
 
     /**
@@ -235,7 +235,7 @@ class Image
      */
     public function preRemoveUpload()
     {
-	$this->tempFilename = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
+		$this->tempFilename = $this->getUploadRootDir().'/'.$this->getPath().'/'.$this->name.'.'.$this->ext;
     }
 
     /**
@@ -243,10 +243,10 @@ class Image
      */
     public function removeUpload()
     {
-	if (file_exists($this->tempFilename))
-	{
-	    unlink($this->tempFilename);
-	}
+		if (file_exists($this->tempFilename))
+		{
+			unlink($this->tempFilename);
+		}
     }
 
 

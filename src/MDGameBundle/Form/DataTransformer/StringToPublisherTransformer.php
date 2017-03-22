@@ -52,7 +52,8 @@ class StringToPublisherTransformer implements DataTransformerInterface
 	 public function reverseTransform($string)
 	 {
 		$publishers = new ArrayCollection();
-		$publisher = strtok($string, ', ');
+		$publisher = strtok($string, ',');
+		$publisher = trim($publisher);
 		while($publisher !== false)
 		{
 			$tempPublisher = $this->manager->getRepository('MDGameBundle:Publisher')

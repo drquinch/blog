@@ -1,4 +1,4 @@
-{% for article in articles %}
+{#{% for article in articles %}
 
 <div class="resume_article">
 	<p class="img_article">
@@ -19,4 +19,20 @@
 	</div>
 </div>
 
+{% endfor %}#}
+
+{% for article in articles %}
+				<p class="article">
+					<div class="link">
+						<a href="{{ path('md_article_view', {'article_slug': article.slug}) }}">
+							<span class="article_bgn">
+							<span class="article_title">
+							{#[{{ article.category.parent.name }}][{{ article.category.name }}]#}{{ article.title }}
+							{% if article.subtitle %} : {{ article.subtitle }}{% endif %}
+							</span>
+							</span>
+							<img src="{{ '/blog/web/' ~ article.coverimage.url }}" alt="{{ article.coverimage.alt }}" />
+						</a>
+					</div>
+				</p>
 {% endfor %}

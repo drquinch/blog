@@ -6,13 +6,44 @@
 <link href="{{ asset('bundles/mdcore/css/main_body_home.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
+{% block subhead %}
+	<section id="subhead">
+		<ul id="subhead_left_list">
+			<li><a href="" class="top_link_element">ALL</a></li><!--
+			--><li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">JEUX-VIDÉOS</a><!--
+					--><ul class="dropdown_menu">
+						<!--<li><a href="" class="sub_link_element">news</a></li><!--
+						--><li><a href="" class="sub_link_element">critique</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">analyse</a></li>--><!--
+						--><!--<li><a href="" class="sub_link_element">dossier</a></li><!--
+					--></ul><!--
+			--></li><!--
+			--><!--<li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">LIVRES</a><!--
+					--><!--<ul class="dropdown_menu"><!--
+						--><!--<li><a href="" class="sub_link_element">jeux-vidéos</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">science-fiction</a></li><!--
+						--><!--<li><a href="" class="sub_link_element">autres</a></li><!--
+					--><!--</ul><!--
+				--><!--</li><!--
+		--></ul>
+		<!--<ul id="subhead_right_list">
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<li><a href="{{ path('md_core_admin_home') }}">{{ app.user.username }}</a></li>
+			{% else %}
+				<li><a href="{{ path('md_core_admin_home') }}">connexion</a></li>
+			{% endif %}
+		</ul>-->
+		<div class="clear"></div>
+	</section>
+{% endblock %}
+
 {% block fixed_design %}
 	<div id="main">
 		<div id="resume_articles">
 				{% for article in articles %}
 				<p class="article">
 					<div class="link">
-						<a href="{{ path('md_article_view', {'article_id': article.id}) }}">
+						<a href="{{ path('md_article_view', {'article_slug': article.slug}) }}">
 							<span class="article_bgn">
 							<span class="article_title">
 							{#[{{ article.category.parent.name }}][{{ article.category.name }}]#}{{ article.title }}

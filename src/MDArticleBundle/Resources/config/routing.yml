@@ -22,12 +22,18 @@ md_article_batch_all:
         page: \d
         category: jeux-video|news|critique_jv|dossier|analyse|livre|critique_livre|all
 
+#md_article_view:
+#    path:    /article/article/view/{article_id}
+#    defaults:
+#        _controller: MDArticleBundle:Article:view
+#    requirements:
+#        article_id: \d+
+
 md_article_view:
-    path:    /article/article/view/{article_id}
+    path:    /article/article/view/{article_slug}
     defaults:
         _controller: MDArticleBundle:Article:view
-    requirements:
-        article_id: \d+
+        
 
 md_article_create:
     path:    /admin/article/article/create/

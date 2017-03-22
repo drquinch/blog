@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function batchAction($batch, $page, $category)
     {
 		$articles = array();
-		if ($category !== null && $category !== "")
+		if ($category !== null && $category !== "" && $category !== "all")
 		{
 			$cat = $this->getDoctrine()->getManager()->getRepository('MDCategoryBundle:Category')->findOneByName($category);
 			$articles = $this->getDoctrine()->getManager()->getRepository('MDArticleBundle:Article')->findLimitedAllByCategory($batch, $page, $cat);
@@ -46,7 +46,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @ParamConverter("article", options={"mapping": {"article_id": "id"}})
+     * @ParamConverter("article", options={"mapping": {"article_slug": "slug"}})
      */
     public function viewAction(Article $article)
     {
@@ -102,7 +102,7 @@ class ArticleController extends Controller
     {
         $request = $this->container->get('request_stack')->getMasterRequest();
 		$article->setDateLastUpdate(new \DateTime());
-        $form = $this->get('form.factory')->create(ArticleType::class, $article);
+        $form = $this->get('form.factory')->create(ArticleType::class, $article, array('security_token' => $this->get('security.token_storage')));
 
         if ($request->isMethod('POST'))
         {

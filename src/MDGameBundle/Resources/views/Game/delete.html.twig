@@ -8,8 +8,8 @@ Suppression game
     {% if form is defined %}
         <h2>Suppression game</h2>
         <p>Voulez-vous supprimer TODO mettre title/name/etc.</p>
-        <form action="{{ path('md_core_game_delete', {'id': {ctrlname,,}.id}) }}" method="post">
-            <a href="{{ path('md_core_game_view', {'id': game.id}) }}">Retour vers game</a>
+        <form action="{{ path('md_game_delete', {'game_id': game.id}) }}" method="post">
+            <a href="{{ path('md_game_view', {'game_id': game.id}) }}">Retour vers game</a>
             <input type="submit" value="Supprimer" />
             {{ form(form) }}
         </form>

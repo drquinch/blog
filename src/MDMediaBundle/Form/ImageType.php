@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ImageType extends AbstractType
 {
@@ -18,6 +19,9 @@ class ImageType extends AbstractType
     {
         $builder
 	    ->add('file', FileType::class)
+		->add('path', TextType::class, array('required' => false))
+		->add('alt', TextType::class, array('required' => false))
+		->add('figcaption', TextType::class, array('required' => false))
 	    ->add('save', SubmitType::class)
         ;
     }

@@ -1,5 +1,10 @@
 {% extends '::layoutbackend.html.twig' %}
 
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('bundles/mdmedia/css/form.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
 {% block main %}
 {% if form is defined %}
     {{ include("MDMediaBundle:Image:form.html.twig") }}

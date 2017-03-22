@@ -70,7 +70,8 @@ class StringToGameTransformer implements DataTransformerInterface
 		
 		return $tag;*/
 		$games = new ArrayCollection();
-		$game = strtok($string, ', ');
+		$game = strtok($string, ',');
+		$game = trim($game);
 		while($game !== false)
 		{
 			$tempGame = $this->manager->getRepository('MDGameBundle:Game')

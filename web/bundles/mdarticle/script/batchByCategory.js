@@ -31,12 +31,12 @@ topLinkElements[1].addEventListener("click", function(e){
 		getPages("livre", "null");
 	});
 	*/
-subLinkElements[0].addEventListener("click", function(e){
+/*subLinkElements[0].addEventListener("click", function(e){
 		e.preventDefault();
 		getArticles("news", "jeux-video");
 		getPages("news", "jeux-video");
-	});
-subLinkElements[1].addEventListener("click", function(e){
+	});*/
+subLinkElements[0].addEventListener("click", function(e){
 		e.preventDefault();
 		getArticles("critique", "jeux-video");
 		getPages("critique", "jeux-video");
@@ -46,11 +46,11 @@ subLinkElements[1].addEventListener("click", function(e){
 		getArticles("analyse", "jeux-video");
 		getPages("analyse", "jeux-video");
 	});*/
-subLinkElements[2].addEventListener("click", function(e){//TODO a changer et prendre 4eme element du tableau
+/*subLinkElements[2].addEventListener("click", function(e){//TODO a changer et prendre 4eme element du tableau
 		e.preventDefault();
 		getArticles("dossier", "jeux-video");
 		getPages("dossier", "jeux-video");
-	});
+	});*/
 /*subLinkElements[4].addEventListener("click", function(e){
 		e.preventDefault();
 		getArticles("jeux-video", "livre");

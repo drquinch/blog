@@ -52,7 +52,8 @@ class StringToDeveloperTransformer implements DataTransformerInterface
 	 public function reverseTransform($string)
 	 {
 		$developers = new ArrayCollection();
-		$developer = strtok($string, ', ');
+		$developer = strtok($string, ',');
+		$developer = trim($developer);
 		while($developer !== false)
 		{
 			$tempDeveloper = $this->manager->getRepository('MDGameBundle:Developer')

@@ -43,6 +43,7 @@ clear: both;
 {
 background-color: rgb(225,225,225);
 margin: auto;
+/*padding-top: 30px;*/
 }
 
 @media all and (min-width: 1024px)

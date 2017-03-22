@@ -21,34 +21,7 @@
 </header>
 
 <section id="fixed_design">
-	<section id="subhead">
-		<ul id="subhead_left_list">
-			<li><a href="" class="top_link_element">ALL</a></li><!--
-			--><li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">JEUX-VIDÉOS</a><!--
-					--><ul class="dropdown_menu">
-						<li><a href="" class="sub_link_element">news</a></li><!--
-						--><li><a href="" class="sub_link_element">critique</a></li><!--
-						--><!--<li><a href="" class="sub_link_element">analyse</a></li>--><!--
-						--><li><a href="" class="sub_link_element">dossier</a></li><!--
-					--></ul><!--
-			--></li><!--
-			--><!--<li class="dropdown_menu_li_lvl1"><a href="" class="top_link_element">LIVRES</a><!--
-					--><!--<ul class="dropdown_menu"><!--
-						--><!--<li><a href="" class="sub_link_element">jeux-vidéos</a></li><!--
-						--><!--<li><a href="" class="sub_link_element">science-fiction</a></li><!--
-						--><!--<li><a href="" class="sub_link_element">autres</a></li><!--
-					--><!--</ul><!--
-				--><!--</li><!--
-		--></ul>
-		<!--<ul id="subhead_right_list">
-			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<li><a href="{{ path('md_core_admin_home') }}">{{ app.user.username }}</a></li>
-			{% else %}
-				<li><a href="{{ path('md_core_admin_home') }}">connexion</a></li>
-			{% endif %}
-		</ul>-->
-		<div class="clear"></div>
-	</section>
+{% block subhead %}{% endblock %}
 {% block fixed_design %}{% endblock %}
 </section>
 

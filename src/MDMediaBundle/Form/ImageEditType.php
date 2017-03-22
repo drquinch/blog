@@ -20,6 +20,7 @@ class ImageEditType extends AbstractType
 		->add('alt', TextType::class)
 		->add('name', TextType::class)
 		->add('figcaption', TextType::class)
+		->add('path', TextType::class, array('required' => false))
 	    ->add('save', SubmitType::class)
         ;
     }

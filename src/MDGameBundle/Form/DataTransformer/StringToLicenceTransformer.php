@@ -52,7 +52,8 @@ class StringToLicenceTransformer implements DataTransformerInterface
 	 public function reverseTransform($string)
 	 {
 		$licences = new ArrayCollection();
-		$licence = strtok($string, ', ');
+		$licence = strtok($string, ',');
+		$licence = trim($licence);
 		while($licence !== false)
 		{
 			$tempLicence = $this->manager->getRepository('MDGameBundle:Licence')
