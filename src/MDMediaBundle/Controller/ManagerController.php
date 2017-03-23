@@ -42,12 +42,12 @@ class ManagerController extends Controller
 		return $this->render("MDMediaBundle:Manager:file_tree_error.html.twig", array("errors" => $errors));
 	}
 
-	public function formUpload()
+	private function formUpload()
 	{
 
 	}
 
-	public function formManually()
+	private function formManually()
 	{
 
 	}

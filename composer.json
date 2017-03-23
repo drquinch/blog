@@ -1,4 +1,5 @@
 {
+    "description": "Blog Project with Symfony3",
     "name": "root/blog",
     "license": "proprietary",
     "type": "project",
